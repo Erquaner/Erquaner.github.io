@@ -1,0 +1,6 @@
+.DS_Store
+*.swap
+
+public
+gh-pages.pub
+gh-pages
