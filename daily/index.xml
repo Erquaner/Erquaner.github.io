@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>小笔记 on Eating...Hungry..</title>
+    <link>http://localhost:1313/daily/</link>
+    <description>Recent content in 小笔记 on Eating...Hungry..</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 01 Feb 2020 10:47:01 +0800</lastBuildDate><atom:link href="http://localhost:1313/daily/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>createElement and render</title>
+      <link>http://localhost:1313/daily/2020-02-01-/</link>
+      <pubDate>Sat, 01 Feb 2020 10:47:01 +0800</pubDate>
+      
+      <guid>http://localhost:1313/daily/2020-02-01-/</guid>
+      <description>一旦使用上次所写的rendering 整个dom树便在递归之前不能停止。如果元素树比较庞大，再有一些高级响应的操作，变会卡顿 引入小工作单元 组成</description>
+    </item>
+    
+    <item>
+      <title>音视频</title>
+      <link>http://localhost:1313/daily/2021-04-23/</link>
+      <pubDate>Sat, 01 Feb 2020 10:47:01 +0800</pubDate>
+      
+      <guid>http://localhost:1313/daily/2021-04-23/</guid>
+      <description>直播相关音视频理论 一个完整的直播链路： 采集 —&amp;gt; 编码 —&amp;gt; 封装 —&amp;gt; 推流 —&amp;gt; 服务器 客户端 —&amp;gt; 拉流 —&amp;gt; 解码 —&amp;g</description>
+    </item>
+    
+    <item>
+      <title>createElement and render</title>
+      <link>http://localhost:1313/daily/2020-01-31-createelement-render/</link>
+      <pubDate>Fri, 31 Jan 2020 10:47:01 +0800</pubDate>
+      
+      <guid>http://localhost:1313/daily/2020-01-31-createelement-render/</guid>
+      <description>1 2 3 4 5 6 7 8 9 10 const element = &amp;lt;h1 title=&amp;#34;foo&amp;#34;&amp;gt;Hello&amp;lt;/h1&amp;gt; const container = document.getElementById(&amp;#34;root&amp;#34;) ReactDOM.render(element, container) // 替换 const element = &amp;lt;h1 title=&amp;#34;foo&amp;#34;&amp;gt;Hello&amp;lt;/h1&amp;gt; const element = React.createElement( &amp;#34;h1&amp;#34;, { title: &amp;#34;foo&amp;#34; }, &amp;#34;Hello&amp;#34; ) 由此定义转换成如下格式 1 2 3 4 5 6 7 const element = { type: &amp;#34;h1&amp;#34;, props: { title: &amp;#34;foo&amp;#34;, children: &amp;#34;Hello&amp;#34;,</description>
+    </item>
+    
+    <item>
+      <title>TypeScript 中使用 mobx</title>
+      <link>http://localhost:1313/daily/2020-01-04-mobx%E9%9A%8F%E7%AC%94/</link>
+      <pubDate>Sat, 04 Jan 2020 10:47:01 +0800</pubDate>
+      
+      <guid>http://localhost:1313/daily/2020-01-04-mobx%E9%9A%8F%E7%AC%94/</guid>
+      <description>为了更好的学习mobx，自己搭建了一个可以使用mobx的环境，小试牛刀。 当然还可以直接用codebox</description>
+    </item>
+    
+    <item>
+      <title>mobx简介</title>
+      <link>http://localhost:1313/daily/2020-01-03-mobx%E9%9A%8F%E7%AC%94/</link>
+      <pubDate>Fri, 03 Jan 2020 10:46:33 +0800</pubDate>
+      
+      <guid>http://localhost:1313/daily/2020-01-03-mobx%E9%9A%8F%E7%AC%94/</guid>
+      <description>介绍 mobx和redux类似，是响应式编程，实现状态的存储和管理。 主要是三步： 定义可观察的状态 创建试图来响应状态的变化 更改对应的状态 Observable 第一步</description>
+    </item>
+    
+    <item>
+      <title>antv/f2(下)</title>
+      <link>http://localhost:1313/daily/2019-12-28-antv-f2%E4%B8%8B/</link>
+      <pubDate>Sat, 28 Dec 2019 11:39:23 +0800</pubDate>
+      
+      <guid>http://localhost:1313/daily/2019-12-28-antv-f2%E4%B8%8B/</guid>
+      <description>业务中涉及到了层叠折线图和层叠柱状图，其实主要全面的看了文档，就能知道哪些可以自定义实现，主要涉及的配置如下。 具体配置 当我们需要改变纵轴的显</description>
+    </item>
+    
+    <item>
+      <title>antv/f2(中)</title>
+      <link>http://localhost:1313/daily/2019-12-27-antv-f2%E4%B8%AD/</link>
+      <pubDate>Fri, 27 Dec 2019 11:39:23 +0800</pubDate>
+      
+      <guid>http://localhost:1313/daily/2019-12-27-antv-f2%E4%B8%AD/</guid>
+      <description>html中创建antv f2图表 既可以通过将脚本下载到本地也可以直接引入在线资源。 1 2 3 &amp;lt;!-- 引入在线资源 --&amp;gt; &amp;lt;script src=&amp;#34;https://gw.alipayobjects.com/os/antv/assets/f2/3.4.2/f2.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;!-- 友情提醒：请按需更新版本号。 --&amp;gt; 1</description>
+    </item>
+    
+    <item>
+      <title>antv/f2(上)</title>
+      <link>http://localhost:1313/daily/2019-12-25-antv-f2%E4%B8%8A/</link>
+      <pubDate>Wed, 25 Dec 2019 11:39:23 +0800</pubDate>
+      
+      <guid>http://localhost:1313/daily/2019-12-25-antv-f2%E4%B8%8A/</guid>
+      <description>Antv Antv是蚂蚁金服全新一代数据可视化解决方案。 官网传送口 主要有以下产品 我们可以看到f2是一个专注于移动，开箱即用的可视化解决方案，完美支持</description>
+    </item>
+    
+    <item>
+      <title>React小记</title>
+      <link>http://localhost:1313/daily/2019-12-22-%E9%9A%8F%E7%AC%94/</link>
+      <pubDate>Sun, 22 Dec 2019 11:39:23 +0800</pubDate>
+      
+      <guid>http://localhost:1313/daily/2019-12-22-%E9%9A%8F%E7%AC%94/</guid>
+      <description>冬至快乐！吃饺子了吗？我和某亭象征性的吃了汤圆！ React.FC&amp;lt;&amp;gt; React.FC是标识函数式组件的 1 2 3 4 5 6 7 8 9 10 11 12 interface IProps { title: string; } const testFunc = (props: IProps) =&amp;gt; { // 此时</description>
+    </item>
+    
+    <item>
+      <title>九宫格抽奖</title>
+      <link>http://localhost:1313/daily/2019-12-21-%E4%B9%9D%E5%AE%AB%E6%A0%BC%E6%8A%BD%E5%A5%96/</link>
+      <pubDate>Sat, 21 Dec 2019 11:39:23 +0800</pubDate>
+      
+      <guid>http://localhost:1313/daily/2019-12-21-%E4%B9%9D%E5%AE%AB%E6%A0%BC%E6%8A%BD%E5%A5%96/</guid>
+      <description>九宫格抽奖 整理一下写过的九宫格抽奖吧。 一般抽奖的奖品数据都是从后端返回的。所以九宫格的话，奖品个数是8个。 这个时候奖品数据返回的顺序其实就需</description>
+    </item>
+    
+    <item>
+      <title>切换主题色</title>
+      <link>http://localhost:1313/daily/2019-12-20-%E5%88%87%E6%8D%A2%E4%B8%BB%E9%A2%98%E8%89%B2/</link>
+      <pubDate>Fri, 20 Dec 2019 11:38:34 +0800</pubDate>
+      
+      <guid>http://localhost:1313/daily/2019-12-20-%E5%88%87%E6%8D%A2%E4%B8%BB%E9%A2%98%E8%89%B2/</guid>
+      <description>css in js 以前我们经常会说网页开发离不开Html, Css, JavaScript。对于网页开发，一般会对这三种技术分离。简单来说就是少写行内样式，行内脚</description>
+    </item>
+    
+    <item>
+      <title>useReduer（下）</title>
+      <link>http://localhost:1313/daily/2019-12-17-usereduer%E4%B8%8B/</link>
+      <pubDate>Tue, 17 Dec 2019 21:22:09 +0800</pubDate>
+      
+      <guid>http://localhost:1313/daily/2019-12-17-usereduer%E4%B8%8B/</guid>
+      <description>useReduer（下） 在实际应用中，我们常常需要很多个变量去管理多个状态。 以下面这个登陆逻辑为例。 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20</description>
+    </item>
+    
+    <item>
+      <title>userReducer（上）</title>
+      <link>http://localhost:1313/daily/2019-12-16-userreducer%E4%B8%8A/</link>
+      <pubDate>Mon, 16 Dec 2019 10:49:22 +0800</pubDate>
+      
+      <guid>http://localhost:1313/daily/2019-12-16-userreducer%E4%B8%8A/</guid>
+      <description>userReducer（上） 理解useReducer useReducer是一个高级Hook，它不像useEffect、useState等必须</description>
+    </item>
+    
+    <item>
+      <title>unstable_batchedUpdates</title>
+      <link>http://localhost:1313/daily/2019-12-14-unstable_batchedupdates/</link>
+      <pubDate>Sat, 14 Dec 2019 10:32:35 +0800</pubDate>
+      
+      <guid>http://localhost:1313/daily/2019-12-14-unstable_batchedupdates/</guid>
+      <description>用了Hook一直有一个疑问那就是，怎么能简单的避免异步setState的时候触发多次渲染。 避免多次渲染 首先想到的就是和class一样，定义一</description>
+    </item>
+    
+    <item>
+      <title>那些年与charles与接口的过往</title>
+      <link>http://localhost:1313/daily/2019-12-11-charles/</link>
+      <pubDate>Wed, 11 Dec 2019 22:25:07 +0800</pubDate>
+      
+      <guid>http://localhost:1313/daily/2019-12-11-charles/</guid>
+      <description>前言 移动端的开发离不开charles 当然正常的web开发可能都离不开charles 就说说那些年用charles改过的接口把 rewrite接口</description>
+    </item>
+    
+    <item>
+      <title>那些年移动端的调试</title>
+      <link>http://localhost:1313/daily/2019-12-10-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95/</link>
+      <pubDate>Tue, 10 Dec 2019 10:56:48 +0800</pubDate>
+      
+      <guid>http://localhost:1313/daily/2019-12-10-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95/</guid>
+      <description>前言 移动端的h5开发，就避免不了对ios、安卓这些设备的调试 以前调试兼容性的问题的时候，我会先把代码发到远端然后在测试环境进行查看。 这样的话</description>
+    </item>
+    
+    <item>
+      <title>自定义微信小程序导航栏</title>
+      <link>http://localhost:1313/daily/2019-12-09-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AF%BC%E8%88%AA%E6%A0%8F/</link>
+      <pubDate>Mon, 09 Dec 2019 10:22:51 +0800</pubDate>
+      
+      <guid>http://localhost:1313/daily/2019-12-09-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AF%BC%E8%88%AA%E6%A0%8F/</guid>
+      <description>今天记录一下之前写过的一个微信小程序的自定义导航栏吧！ 有的时候因为业务、视觉的需要，我们可能不需要顶部默认的导航栏，而是想要类似全屏的效果。</description>
+    </item>
+    
+    <item>
+      <title>菜圈的bug</title>
+      <link>http://localhost:1313/daily/2019-12-08-%E9%9A%8F%E7%AC%94/</link>
+      <pubDate>Sun, 08 Dec 2019 20:26:44 +0800</pubDate>
+      
+      <guid>http://localhost:1313/daily/2019-12-08-%E9%9A%8F%E7%AC%94/</guid>
+      <description>今天发现了一个bug 我的页面是有三个状态或者更多，我会定义一个renderTree函数，根据pageStatus的不同返回不同的dom 这个时</description>
+    </item>
+    
+    <item>
+      <title>useEffect 和 useLayoutEffect</title>
+      <link>http://localhost:1313/daily/2019-12-03-useeffect-%E5%92%8C-uselayouteffect/</link>
+      <pubDate>Tue, 03 Dec 2019 15:50:01 +0800</pubDate>
+      
+      <guid>http://localhost:1313/daily/2019-12-03-useeffect-%E5%92%8C-uselayouteffect/</guid>
+      <description>体验useEffect 和 useLayoutEffect 的区别 当我一直很愁页面加一个loading态来防止初始状态和获取数据之后的页面抖动，我以为可以用useLayout</description>
+    </item>
+    
+    <item>
+      <title>iif defer</title>
+      <link>http://localhost:1313/daily/2019-12-01-iif-defer/</link>
+      <pubDate>Sun, 01 Dec 2019 19:09:39 +0800</pubDate>
+      
+      <guid>http://localhost:1313/daily/2019-12-01-iif-defer/</guid>
+      <description>RXJS&amp;ndash;iif defer iif defer iif相当于js三目运算符，返回Observable,接受2-3个参数 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 import { iif, of } from &amp;#39;rxjs&amp;#39;; let subscribeToFirst: boolean;</description>
+    </item>
+    
+    <item>
+      <title>搭建rxjs环境</title>
+      <link>http://localhost:1313/daily/2019-11-30-%E6%90%AD%E5%BB%BArxjs%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Sat, 30 Nov 2019 16:25:20 +0800</pubDate>
+      
+      <guid>http://localhost:1313/daily/2019-11-30-%E6%90%AD%E5%BB%BArxjs%E7%8E%AF%E5%A2%83/</guid>
+      <description>前言 昨天，星期五，大部分时间都在看木柴rxjs的代码 对于rxjs不是很了解，但是好像是时候学习一下了。 rx简单介绍 首先从rxjs介绍的话 RxJS 是</description>
+    </item>
+    
+  </channel>
+</rss>

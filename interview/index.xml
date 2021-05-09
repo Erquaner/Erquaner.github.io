@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>面试 on Eating...Hungry..</title>
+    <link>http://localhost:1313/interview/</link>
+    <description>Recent content in 面试 on Eating...Hungry..</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 20 Apr 2021 16:25:20 +0800</lastBuildDate><atom:link href="http://localhost:1313/interview/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>css</title>
+      <link>http://localhost:1313/interview/css/</link>
+      <pubDate>Tue, 20 Apr 2021 16:25:20 +0800</pubDate>
+      
+      <guid>http://localhost:1313/interview/css/</guid>
+      <description>BFC BFC 即 Block Formatting Contexts (块级格式化上下文)，就像一个封闭的箱子，不会影响外部的样式，并且具有一些普通容器所没有的特性。</description>
+    </item>
+    
+    <item>
+      <title>apply call bind</title>
+      <link>http://localhost:1313/interview/apply-call-bind/</link>
+      <pubDate>Mon, 19 Apr 2021 16:25:20 +0800</pubDate>
+      
+      <guid>http://localhost:1313/interview/apply-call-bind/</guid>
+      <description>三者调用及区别 1 2 3 apply: (thisArg, [param1,param2, param3...]) =&amp;gt; result call: (thisArg, param1,param2, param3...) =&amp;gt; result bind: (thisArg, param1,param2, param3...) =&amp;gt; function 三个函数都是为了修改this指向问题，除了传参不同，apply、call返回的是传入</description>
+    </item>
+    
+  </channel>
+</rss>

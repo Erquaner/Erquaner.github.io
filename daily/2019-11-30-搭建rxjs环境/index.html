@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>搭建rxjs环境 - Eating...Hungry..</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Quaner" /><meta name="description" content="前言 昨天，星期五，大部分时间都在看木柴rxjs的代码 对于rxjs不是很了解，但是好像是时候学习一下了。 rx简单介绍 首先从rxjs介绍的话 RxJS 是" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.80.0 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/daily/2019-11-30-%E6%90%AD%E5%BB%BArxjs%E7%8E%AF%E5%A2%83/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="搭建rxjs环境" />
+<meta property="og:description" content="前言 昨天，星期五，大部分时间都在看木柴rxjs的代码 对于rxjs不是很了解，但是好像是时候学习一下了。 rx简单介绍 首先从rxjs介绍的话 RxJS 是" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/daily/2019-11-30-%E6%90%AD%E5%BB%BArxjs%E7%8E%AF%E5%A2%83/" />
+<meta property="article:published_time" content="2019-11-30T16:25:20+08:00" />
+<meta property="article:modified_time" content="2019-11-30T16:25:20+08:00" />
+<meta itemprop="name" content="搭建rxjs环境">
+<meta itemprop="description" content="前言 昨天，星期五，大部分时间都在看木柴rxjs的代码 对于rxjs不是很了解，但是好像是时候学习一下了。 rx简单介绍 首先从rxjs介绍的话 RxJS 是">
+<meta itemprop="datePublished" content="2019-11-30T16:25:20+08:00" />
+<meta itemprop="dateModified" content="2019-11-30T16:25:20+08:00" />
+<meta itemprop="wordCount" content="763">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="搭建rxjs环境"/>
+<meta name="twitter:description" content="前言 昨天，星期五，大部分时间都在看木柴rxjs的代码 对于rxjs不是很了解，但是好像是时候学习一下了。 rx简单介绍 首先从rxjs介绍的话 RxJS 是"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Quaner</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/daily/">
+        <li class="mobile-menu-item">小笔记</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Quaner</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/daily/">小笔记</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <h2 id="前言">前言</h2>
+<p>昨天，星期五，大部分时间都在看木柴rxjs的代码</p>
+<p>对于rxjs不是很了解，但是好像是时候学习一下了。</p>
+<h2 id="rx简单介绍">rx简单介绍</h2>
+<p>首先从rxjs介绍的话</p>
+<p>RxJS 是一个库，它通过使用 observable 序列来编写异步和基于事件的程序。它提供了一个核心类型 Observable，附属类型 (Observer、 Schedulers、 Subjects) 和受 [Array#extras] 启发的操作符 (map、filter、reduce、every, 等等)，这些数组操作符可以把异步事件作为集合来处理。<!-- raw HTML omitted -->
+可以把 RxJS 当做是用来处理事件的 Lodash 。</p>
+<p>此处摘自rxjs官方文档，其实我简单一点理解就是运用可以将普通的同步异步的方法转换成rxjs里的观察者，从而可以作为集合进行一系列的处理。</p>
+<p>为了实践，我先简单的搭建了一下rxjs环境。</p>
+<h2 id="搭建rxjs环境">搭建rxjs环境</h2>
+<ul>
+<li>可以新建rxjs文件夹来放置代码</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"> mkdir rxjs &amp;&amp; cd rxjs
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>使用yarn作为包管理器，创建package.json</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">yarn init -y
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>然后add项目需要的rxjs、webpack、因为用的语言是typescript,所以还需要加上ts</p>
+<p>我们还需要安装webpack-cli作为开发依赖：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">yarn add rxjs webpack webpack-dev-server typescript ts-loader
+yarn add webpack-cli --dev
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>然后在package.json中加入以下代码</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"> &#34;scripts&#34;: {
+    &#34;start&#34;: &#34;webpack-dev-server --mode development&#34;
+  },
+</code></pre></td></tr></table>
+</div>
+</div><pre><code>这样便可以用yarn run start 来启动项目
+</code></pre>
+<ul>
+<li>创建另一个名为tsconfig.json的文件，进行以下配置， 将es8转换成es6</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">{
+  &#34;compilerOptions&#34;: {
+    &#34;outDir&#34;: &#34;./dist/&#34;,
+    &#34;noImplicitAny&#34;: true,
+    &#34;module&#34;: &#34;es6&#34;,
+    &#34;moduleResolution&#34;: &#34;node&#34;,
+    &#34;sourceMap&#34;: true,
+    &#34;target&#34;: &#34;es6&#34;,
+    &#34;typeRoots&#34;: [
+      &#34;node_modules/@types&#34;
+    ],
+    &#34;lib&#34;: [
+      &#34;es2017&#34;,
+      &#34;dom&#34;
+    ]
+  }
+}
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>此时创建一个 webpack.config.js 文件,配置了项目入口为src/index.ts文件</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">const path = require(&#39;path&#39;);
+
+module.exports = {
+  entry: &#39;./src/index.ts&#39;,
+  devtool: &#39;inline-source-map&#39;,
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: &#39;ts-loader&#39;,
+        exclude: /node_modules/
+      }
+    ]
+  },
+  resolve: {
+    extensions: [ &#39;.ts&#39;, &#39;.js&#39;, &#39;.tsx&#39; ]
+  },
+  output: {
+    filename: &#39;bundle.js&#39;,
+    path: path.resolve(__dirname, &#39;dist&#39;)
+  }
+};
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>最后一步创建入口文件src文件夹下的index.ts文件</p>
+<p>这时你可以写一些rxjs的代码了</p>
+<p>然后yarn run start就可以运行整个项目了</p>
+<p>此处附上<a href="https://coursetro.com/posts/code/147/How-to-Install-RxJS---Setting-up-a-Development-Environment">原文链接</a></p>
+</li>
+</ul>
+
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>Quaner</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

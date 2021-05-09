@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>mobx简介 - Eating...Hungry..</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Quaner" /><meta name="description" content="介绍 mobx和redux类似，是响应式编程，实现状态的存储和管理。 主要是三步： 定义可观察的状态 创建试图来响应状态的变化 更改对应的状态 Observable 第一步" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.80.0 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/daily/2020-01-03-mobx%E9%9A%8F%E7%AC%94/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="mobx简介" />
+<meta property="og:description" content="介绍 mobx和redux类似，是响应式编程，实现状态的存储和管理。 主要是三步： 定义可观察的状态 创建试图来响应状态的变化 更改对应的状态 Observable 第一步" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/daily/2020-01-03-mobx%E9%9A%8F%E7%AC%94/" />
+<meta property="article:published_time" content="2020-01-03T10:46:33+08:00" />
+<meta property="article:modified_time" content="2020-01-03T10:46:33+08:00" />
+<meta itemprop="name" content="mobx简介">
+<meta itemprop="description" content="介绍 mobx和redux类似，是响应式编程，实现状态的存储和管理。 主要是三步： 定义可观察的状态 创建试图来响应状态的变化 更改对应的状态 Observable 第一步">
+<meta itemprop="datePublished" content="2020-01-03T10:46:33+08:00" />
+<meta itemprop="dateModified" content="2020-01-03T10:46:33+08:00" />
+<meta itemprop="wordCount" content="438">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="mobx简介"/>
+<meta name="twitter:description" content="介绍 mobx和redux类似，是响应式编程，实现状态的存储和管理。 主要是三步： 定义可观察的状态 创建试图来响应状态的变化 更改对应的状态 Observable 第一步"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Quaner</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/daily/">
+        <li class="mobile-menu-item">小笔记</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Quaner</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/daily/">小笔记</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <h2 id="介绍">介绍</h2>
+<p>mobx和redux类似，是响应式编程，实现状态的存储和管理。</p>
+<p>主要是三步：</p>
+<ul>
+<li>
+<p>定义可观察的状态</p>
+</li>
+<li>
+<p>创建试图来响应状态的变化</p>
+</li>
+<li>
+<p>更改对应的状态</p>
+</li>
+</ul>
+<h2 id="observable">Observable</h2>
+<p>第一步就是使用<code>observable</code>来标记可观察的变量。</p>
+<p><code>observable</code>的值可以是JS基本数据类型、引用类型、普通对象、类实例、数组和映射</p>
+<h2 id="computed">Computed</h2>
+<p><code>computed</code>可以对<code>observable</code>作出响应</p>
+<p>如果你想响应式的产生一个可以被其它 <code>observer</code> 使用的值，请使用 <code>computed</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">import</span> <span class="p">{</span> <span class="nx">observable</span><span class="p">,</span> <span class="nx">computed</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&#34;mobx&#34;</span><span class="p">;</span>
+
+<span class="kd">@observable</span>
+<span class="nx">a</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="kd">@observable</span>
+<span class="nx">b</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="kd">@computed</span>
+<span class="kr">get</span> <span class="nx">total() {</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>装饰器可以在 <code>ES7</code> 或者 <code>TypeScript</code> 类属性中属性使用，将其转换成可观察的。</p>
+<h2 id="action">Action</h2>
+<p><code>computed</code>可以改变<code>observable</code></p>
+<p>action 装饰器/函数遵循 javascript 中标准的绑定规则。</p>
+<p>action.bound 可以用来自动地将动作绑定到目标对象。</p>
+<p>注意:</p>
+<ul>
+<li>
+<p>与 action 不同的是，(@)action.bound 不需要一个name参数，名称将始终基于动作绑定的属性。</p>
+</li>
+<li>
+<p>action.bound 不要和箭头函数一起使用；箭头函数已经是绑定过的并且不能重新绑定。</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts">
+<span class="kd">@observable</span> <span class="nx">code</span>: <span class="kt">number</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kd">@observable</span> <span class="nx">num</span>: <span class="kt">number</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="kd">@action</span> 
+<span class="nx">increment</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">code</span><span class="o">++</span>
+<span class="p">}</span>
+
+<span class="kd">@action</span><span class="p">.</span><span class="nx">bound</span>
+<span class="nx">decrement() {</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">code</span><span class="o">--</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>Quaner</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
