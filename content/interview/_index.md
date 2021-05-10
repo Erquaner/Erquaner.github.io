@@ -4,6 +4,12 @@ menu: "interview"
 weight: 40
 ---
 
-[apply call bind](./apply-call-bind)
-
 [css](./css)
+
+[html](./html)
+
+[http](./http)
+
+[js](./js)
+
+
