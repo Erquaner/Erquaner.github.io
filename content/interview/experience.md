@@ -5,5 +5,5 @@ draft: false
 hiddenFromHomePage: true
 ---
 
-[超有爱](./bai-ci-zhan)
+[超有爱](../bai-ci-zhan)
 
