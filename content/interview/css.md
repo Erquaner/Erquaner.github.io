@@ -69,8 +69,36 @@ BFC 即 Block Formatting Contexts (块级格式化上下文)，就像一个封�
 
 -----------------------------------
 
+## 3.清除浮动
 
-## 3.flex布局
+- clear清除浮动（添加空div法）在浮动元素下方添加空div,并给该元素写css样式：
+  ```css
+  div {
+      clear:both;height:0;overflow:hidden;
+  }
+  ```
+- 给浮动元素父级设置高度
+- 父级同时浮动（需要给父级同级元素添加浮动）
+- 父级设置成inline-block，其margin: 0 auto居中方式失效
+- 给父级添加overflow:hidden 清除浮动方法
+- 万能清除法 after伪类 清浮动（现在主流方法，推荐使用）
+    ```css
+    .float_div:after{
+      content:".";
+      clear:both;
+      display:block;
+      height:0;
+      overflow:hidden;
+      visibility:hidden;
+    }
+    .float_div{
+      zoom:1
+    }
+    ```
+    
+-----------------------
+
+## 4.flex布局
 
 ### 基本概念
 
@@ -107,7 +135,7 @@ BFC 即 Block Formatting Contexts (块级格式化上下文)，就像一个封�
 
 --------------------------------
 
-## 4.css匹配是从右向左匹配的
+## 5.css匹配是从右向左匹配的
 
 如下面为例
 ```html 
@@ -135,7 +163,7 @@ BFC 即 Block Formatting Contexts (块级格式化上下文)，就像一个封�
 
 ----------------------
 
-## 5.居中布局
+## 6.居中布局
 
 ### 行内元素
   
@@ -166,7 +194,7 @@ BFC 即 Block Formatting Contexts (块级格式化上下文)，就像一个封�
 
 --------------------
 
-## 6.grid
+## 7.grid
 
 grid是网格布局，分成一块一块的网格；可以说flex是一维布局，而grid是二维布局。和flex类似分为容器和项目。
 
@@ -174,13 +202,92 @@ grid是网格布局，分成一块一块的网格；可以说flex是一维布局
 
 - `display: grid`容器是块级元素; `display:inline-grid;`容器是行内元素
 - `grid-template-columns` 设置列宽; `grid-template-rows` 设置行高
+  ```css
+  /*  声明了三列，宽度分别为 200px 100px 200px */
+  grid-template-columns: 200px 100px 200px;
+   /*  声明了两行，行高分别为 50px 50px  */
+  grid-template-rows: 50px 50px;
+  ```
+    - **repeat() 函数**：可以简化重复的值。该函数接受两个参数，第一个参数是重复的次数，第二个参数是所要重复的值。上面的两行等高就可以写成这样: `grid-template-rows: repeat(2, 50px);`
+    - **auto-fill 关键字**：表示自动填充，让一行（或者一列）中尽可能的容纳更多的单元格。`grid-template-columns: repeat(auto-fill, 100px)` 表示列宽是 100 px，但列的数量是不固定的，随着浏览器的宽度自适应放置元素。
+    - **fr 关键字**：fr 单位代表网格容器中可用空间的一等份。`grid-template-columns: 200px 1fr 2fr` 表示第一个列宽设置为 200px，后面剩余的宽度分为两部分，宽度分别为剩余宽度的 1/3 和 2/3。
+    - **minmax() 函数**：它接受两个参数，分别为最小值和最大值。`grid-template-columns: 1fr 1fr minmax(300px, 2fr)` 表示第三个列宽最少也是要 300px，但是最大不能大于第一第二列宽的两倍。
+    - **auto 关键字**：`grid-template-columns: 100px auto 100px` 表示第一第三列为 100px，中间由浏览器决定长度.
+- `grid-row-gap` 设置行间距。
+- `grid-column-gap`设置列间距。
+- `grid-gap` 是`grid-row-gap`、`grid-column-gap`的简写形式。
+```css 
+  /* 行间距10 */
+  grid-row-gap: 10px; 
+  /* 列间距20 */
+  grid-column-gap: 20px ;
 
-[示例](https://codepen.io/yjuanjuan/pen/GRWJLdN)
+  /* 行间距10,列间距20 */
+  grid-gap: 10px 20px; 
+```
+- `grid-template-areas`:用于定义区域，一个区域由一个或者多个单元格组成(与`grid-area`搭配使用)
 
-## 7.旋转跳跃
+- `grid-auto-flow`:类似flex的flex-direction,定义元素怎样排列。默认的放置顺序是"先行后列"(row),column-"先列后行"。`dense`表示尽可能的铺满表格。
+- `justify-items`: start | end | center | stretch 设置单元格内容的水平位置（左中右）
+- `align-items` : start | end | center | stretch 设置单元格的垂直位置（上中下） 
+- `justify-content`: start | end | center | stretch | space-around | space-between | space-evenly 整个内容区域在容器里面的水平位置（左中右）
+- `align-content`:  start | end | center | stretch | space-around | space-between | space-evenly  整个内容区域的垂直位置（上中下）。
+- `grid-template-columns` 、 `grid-template-rows` 设置隐性网格的列宽列高。
+
+    > grid-template-columns 属性和 grid-template-rows 属性只是指定了两行两列，但实际有九个元素，就会产生隐式网格。通过 grid-auto-rows 可以指定隐式网格的行高为 50px。
+
+### 项目属性
+
+- `grid-column-start` ：左边框所在的垂直网格线
+- `grid-row-start` ：上边框所在的水平网格线
+- `grid-row-end` ：下边框所在的水平网格线
+- `grid-column-end` ：右边框所在的垂直网格线
 
 
-## 8.响应式布局
+-  `grid-area`:指定项目放在哪一个区域（与`grid-template-areas`搭配使用）
+
+- `justify-self` 属性设置单元格内容的水平位置（左中右），跟justify-items用法完全一致，但只作用于单个项目
+- `align-self` 属性设置单元格内容的垂直位置（上中下），跟align-items用法完全一致，但只作用于单个项目
+
+### 兼容性
+
+![image](https://user-gold-cdn.xitu.io/2020/7/26/17389592fa541366?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
+### [示例](https://codepen.io/yjuanjuan/pen/GRWJLdN)
+
+---------------------------
+## 8.旋转跳跃
+
+### transform
+
+- translate:设置元素在 X轴或者 Y轴上的平移
+- scale:设置元素在 X轴或者 Y轴上的缩放
+- rotate: 二维空间中，围绕屏幕法向量旋转，等同于 rotateZ
+- skew: 设置 X轴和 Y轴的倾斜角度
+- matrix
+
+[MDN详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function)
+
+### animation
+
+
+| 属性                      | 描述                                                                | 参考值                                                                                                                                                                                     |
+| :------------------------ | :------------------------------------------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| animation-duration        | 指定动画完成一个周期所需要时间，单位秒（s）或毫秒（ms），默认是 0。 |
+| animation-timing-function | 动画的速度曲线，默认是 "ease"。                                     | `ease`: 慢->快->慢 <br>`line`: 匀速  <br>`ease-in`: 低速开始 <br>`ease-ou`t: 低速结束 始 <br>`cubic-bezier(number, number, number, number)`：特定的贝塞尔曲线类型，4个数值需在[0, 1]区间内 |
+| animation-delay           | 指定动画延迟时间，即动画何时开始，默认是 0。                        | number                                                                                                                                                                                     |
+| animation-iteration-count | 指定动画播放的次数，默认是 1                                        | number:具体次数 <br>infinite: 无限循环                                                                                                                                                     |
+| animation-direction       | 指定动画播放的方向。默认是 normal。                                 | normal：正常方向 <br>  reverse：反方向运行  <br>alternate：动画先正常运行再反方向运行，并持续交替运行  <br> alternate-reverse：动画先反运行再正方向运行，并持续交替运行                    |  |
+| animation-fill-mode       | 指定动画填充模式。默认是 none。                                     | none：默认值。不设置对象动画之外的状态 <br>forwards：设置对象状态为动画结束时的状态 <br>backwards：设置对象状态为动画开始时的状态 <br>both：设置对象状态为动画结束或开始的状态             |
+| animation-play-state      | 指定动画播放状态，正在运行或暂停。默认是 running。                  | running：运动    <br> paused：暂停                                                                                                                                                         |
+| animation-name            | 指定 @keyframes 动画的名称。                                        | string                                                                                                                                                                                     |
+
+[一些动画](https://juejin.cn/post/6854573213230317576)
+
+
+----------------------------
+
+## 9.响应式布局
 
 >- 自适应布局：同一张网页自动适应不同大小的屏幕，根据屏幕宽度，自动调整网页内容大小。
   
@@ -190,4 +297,8 @@ grid是网格布局，分成一块一块的网格；可以说flex是一维布局
 
 
 
-## 
+
+## 参考文章
+
+[grid](https://juejin.cn/post/6854573220306255880)
+
