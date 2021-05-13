@@ -114,15 +114,39 @@ type Person1 = {
 export default Person1
 ```
 
-## Q2：React事件机制、浏览器事件机制（冒泡捕获等）
+## Q: css服务端样式注入
 
-## Q3: css服务端样式注入
+## Q: 1.transform: translateX(20px); 2.margin-left: 20px; 3.position: relative; left: 20px;哪个性能更好？
 
-## Q4: 点击链接跳转前发送的请求会丢失吗
+## Q: 了解哪些css函数
 
-## Q5: 为什么不能在条件语句、循环里用hooks
+## Q: 了解webpack吗，说一说
 
-## Q6: 1.transform: translateX(20px); 2.margin-left: 20px; 3.position: relative; left: 20px;哪个性能更好？
+## Q: 点击链接跳转前发送的请求会丢失吗
+
+## Q: 协商缓存、强缓存
+
+## Q: 跨域怎么解决  跨域的时候服务端会收到请求吗？客户端会收到返回吗？
 
 
+## Q: 为什么react项目里会引用react-dom, react-native 里要引用react-dom吗？
+## Q：浏览器事件机制（冒泡捕获等、）React事件机制
+
+## Q: 为什么不能在条件语句、循环里用hooks
+
+## Q: fiber 了解吗？说一说
+
+## Q: 哪些hooks对应class component 的哪些生命周期
+
+## Q: useEffect里面返回一个函数，这个是发生在什么周期，加上依赖的话也是发生在这个周期吗？
+
+```js
+const [name, setName] = useState('')
+useState(() => {
+  xxxxxxx
+  () => xxxxxx
+}, [name])
+```
+
+## Q: next里面的react 和浏览器里面的react有什么区别？
 
