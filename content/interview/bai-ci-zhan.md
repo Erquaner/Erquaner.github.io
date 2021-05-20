@@ -9,19 +9,19 @@ hiddenFromHomePage: true
 
 Answer:
 
-- 1.都可以用来描述对象或函数的类型，但语法不同。
+{{% admonition type="info" title="1.都可以用来描述对象或函数的类型，但语法不同。" details="true" %}}
 
 ```ts
-
 interface SetPoint {
-    (x: number, y: number): void;
+  (x: number, y: number): void;
 }
 
 type SetPoint = (x: number, y: number) => void;
-
 ```
 
-- 2.type类型别名还可以用于其他类型
+{{% /admonition %}}
+
+{{% admonition type="info" title="2.type类型别名还可以用于其他类型" details="true" %}}
 
 ```ts
 
@@ -34,33 +34,38 @@ type MyDiv = typeof div;
 
 ```
 
-- 3.extends: interface可以extends interface和type, type也可以extends interface type。但两者语法不同
-  
-    - interface extends interface
+{{% /admonition %}}
+
+
+{{% admonition type="info" title="3.extends: interface可以extends interface和type, type也可以extends interface type。但两者语法不同" details="true" %}}
+
+  - interface extends interface
         ```ts
           interface PointX {x: number}
           interface Point extends PointX {y: number}
         ```
-    - interface extends type
+  - interface extends type
         ```ts
           type PointX = { x: number; }
           interface Point extends PointX {y: number}
         ```
-    - type extends type
+  - type extends type
         ```ts
           type PointX = { x: number; };
           type PointY= { y: number; };
           type Point =  PointX  & PointY
         ```
-    - type extends interface
+  - type extends interface
         ```ts
           type PointX = { x: number; };
           interface PointY  {x: number}
           type Point =  PointX  & PointY
         ```
 
-- 4.interface 可以定义多次，并会合并多次，但type不可以
-  
+{{% /admonition %}}
+
+
+{{% admonition type="info" title="4.interface 可以定义多次，并会合并多次，但type不可以" details="true" %}}
   ```ts
   interface User {
     name: string
@@ -71,8 +76,11 @@ type MyDiv = typeof div;
 
   //此时User -> {name: string; password: string}
   ```
+{{% /admonition %}}
 
-- 5.type 能使用 in 关键字生成映射类型，但 interface 不行。
+  
+{{% admonition type="info" title="5.type 能使用 in 关键字生成映射类型，但 interface 不行。" details="true" %}}
+  
 ```ts
 type Status = 200|500
 
@@ -96,8 +104,9 @@ const test:StatusMap  = {
 //}
 ```
 
-- 6.默认导出方式不同
+{{% /admonition %}}
 
+{{% admonition type="info" title="6.默认导出方式不同" details="true" %}}
 ```ts 
 export default interface Person {
   name: string
@@ -113,6 +122,10 @@ type Person1 = {
 }
 export default Person1
 ```
+{{% /admonition %}}
+
+
+
 
 ## Q: css服务端样式注入
 
@@ -133,6 +146,12 @@ export default Person1
 ## Q：浏览器事件机制（冒泡捕获等、）React事件机制
 
 ## Q: 为什么不能在条件语句、循环里用hooks
+
+
+[官方文档解释](https://zh-hans.reactjs.org/docs/hooks-rules.html#explanation)
+
+[https://zhuanlan.zhihu.com/p/65012054](https://zhuanlan.zhihu.com/p/65012054)
+
 
 ## Q: fiber 了解吗？说一说
 

@@ -5,9 +5,11 @@ draft: false
 hiddenFromHomePage: true
 ---
 
-[promise](./promise)
+[promise](../promise)
 
 [apply-call-bind](../apply-call-bind)
 
-[事件循环](../event-loop)
+[es6-11](../es6)
+
+
 
