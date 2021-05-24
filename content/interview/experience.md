@@ -7,3 +7,5 @@ hiddenFromHomePage: true
 
 [超有爱](../bai-ci-zhan)
 
+[ban-yu](../ban-yu)
+

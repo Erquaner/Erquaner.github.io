@@ -1,12 +1,12 @@
 ---
-title: "apply call bind"
-date: 2021-04-19T16:25:20+08:00
+title: "手写代码"
+date: 2021-05-01T16:25:20+08:00
 draft: false
-toc: true
 hiddenFromHomePage: true
 ---
 
-## 三者调用及区别
+
+## call/apply/bind调用及区别
 
 ```js
 apply: (thisArg, [param1,param2, param3...]) => result
@@ -109,3 +109,5 @@ Function.prototype.myBind = function (objThis, ...params) {
 };
 ```
 [示例](https://codesandbox.io/s/apply-call-bind-k5vd5?file=/src/App.js)
+
+## 

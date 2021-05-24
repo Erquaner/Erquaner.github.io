@@ -5,11 +5,8 @@ draft: false
 hiddenFromHomePage: true
 ---
 
-[promise](../promise)
-
-[apply-call-bind](../apply-call-bind)
-
 [es6-11](../es6)
 
+[手写代码](../realize)
 
 
