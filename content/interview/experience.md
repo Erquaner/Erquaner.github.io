@@ -9,3 +9,6 @@ hiddenFromHomePage: true
 
 [ban-yu](../ban-yu)
 
+[lan-hu](../lan-hu)
+
+[lao-hu](../lao-hu)
