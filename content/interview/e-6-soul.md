@@ -33,6 +33,8 @@ hiddenFromHomePage: true
 
 #### pop push splice concat改变原数组吗
 
+### 判断js类型有哪些方法
+
 ### ` <script>` 的 defer 和 sync属性
 
 
