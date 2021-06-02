@@ -7,6 +7,310 @@ tags: ["es6"]
 toc: true
 ---
 
+
+## 箭头函数
+
+- this指向创建外部的上下文，this是静态的 不能修改指向
+- 不能用做构造函数，与new使用会报错
+- 没有`argument`,可以用rest
+- 不可以使用`yield`命令，因此箭头函数不能用作 `Generator `函数。
+
+-----------------------
+## Symbol
+
+{{% admonition type="info" title="1.一种基本数据类型"  details="true"  %}} 
+
+```js
+let a = Symbol()
+typeof a //"symbol"
+
+```
+{{% /admonition %}}
+{{% admonition type="info" title="2.Symbol函数的返回值是不相等的。"  details="true"  %}} 
+
+
+```js
+
+let s1 = Symbol('foo');
+let s2 = Symbol('foo');
+s1 === s2 // false
+```
+
+{{% /admonition %}}
+
+{{% admonition type="info" title="3.Symbol 值不能与其他类型的值进行运算，会报错"  %}} 
+{{% /admonition %}}
+
+{{% admonition type="info" title="4.只能转换成String 和Boolean"  details="true" %}} 
+
+```js
+let a = Symbol('foo')
+String(a) //'Symbol('foo')'
+
+Boolean(a) // true
+```
+
+{{% /admonition %}}
+
+{{% admonition type="info" title="5.作为对象属性名需要使用[ ]"  details="true" %}} 
+
+```js
+const mySymbol = Symbol();
+const a = {
+  [mySymbol]: 'mySymbol'
+};
+
+a.mySymbol = 'Hello!'; //只是给a添加了一个‘mySymbol’属性
+a[mySymbol] // 'mySymbol'
+a['mySymbol'] // "Hello!"
+
+```
+{{% /admonition %}}
+
+
+{{% admonition type="info" title="6.遍历属性名使用`Object.getOwnPropertySymbols()`"   details="true" %}} 
+
+
+- Symbol 作为属性名，for...in、for...of、Object.keys()、Object.getOwnPropertyNames()、JSON.stringify()都无法遍历返回
+  
+- Reflect.ownKeys()方法可以返回所有类型的键名，包括常规键名和 Symbol 键名。
+  
+```js
+const obj = {};
+let a = Symbol('a');
+let b = Symbol('b');
+
+obj[a] = 'Hello';
+obj[b] = 'World';
+
+const objectSymbols = Object.getOwnPropertySymbols(obj);
+
+console.log(objectSymbols)
+// [Symbol(a), Symbol(b)]
+```
+
+{{% /admonition %}}
+
+
+---------------------------------------
+
+
+
+## Set
+
+{{% admonition type="info" title="1.类似于数组，但是成员的值都是唯一的，没有重复的值。"  details="true" %}} 
+
+-  判断是否重复相等，类似于=== ， 但在Set内部， NaN ===  NaN 
+ 
+```js
+  const person = {age: 1}
+  const set1 = new Set([person, person]) //Set(1){age: 1}
+  const set2 = new Set([{age: 1}, {age: 1}]) //Set(1){{age: 1}, {age: 1}}
+  new Set([NaN, NaN]) //Set(1){NaN}
+```
+
+{{% /admonition %}}
+
+
+{{% admonition type="info" title="2.实例方法。"  details="true"%}} 
+
+- ` Set.prototype.constructor`：构造函数，默认就是Set函数。
+- `Set.prototype.size`：返回Set实例的成员总数。
+
+- 操作方法
+    - `Set.prototype.add(value)`：添加某个值，返回 Set 结构本身。
+    - `Set.prototype.delete(value)`：删除某个值，返回一个布尔值，表示删除是否成功。
+    - `Set.prototype.has(value)`：返回一个布尔值，表示该值是否为Set的成员。
+    - `Set.prototype.clear()`：清除所有成员，没有返回值。
+
+- 遍历方法
+  - `Set.prototype.keys()`：返回键名的遍历器
+  - `Set.prototype.values()`：返回键值的遍历器
+  - `Set.prototype.entries()`：返回键值对的遍历器
+  - `Set.prototype.forEach()`：使用回调函数遍历每个成员
+
+  由于 Set 结构没有键名，只有键值（或者说键名和键值是同一个值），所以keys方法和values方法的行为完全一致。
+
+{{% /admonition %}}
+
+{{% admonition type="info" title="3.应用"  details="true"%}} 
+
+- 数组去重 
+  ```js 
+  function removeRepeatNumber (arr) {
+    const set = new Set(arr)
+    return Array.from(set)
+  }
+  console.log(removeRepeatNumber([1,2,4,3,4,2,3]))
+  ```
+
+- 数组求交并集集
+
+```js
+  function union (arr1, arr2) {
+    return Array.from(new Set([...arr1, ...arr2]))
+  }
+  console.log(union([1,2,3,4], [2,3,4,5,6]))
+```
+- 数组求交集
+  
+```js
+  function intersect (arr1, arr2) {
+    return arr1.filter(x =>arr2.includes(x))
+  }
+  console.log(intersect([1,2,3,4], [2,3,4,5,6]))
+```
+- 数组求差集
+  
+```js
+  function difference (arr1, arr2) {
+    return arr1.filter(x => !arr2.includes(x))
+  }
+  console.log(difference([2,3,4,5,6], [1,2,3,4]))
+```
+
+
+{{% /admonition %}}
+
+{{% admonition type="info" title="4.WeakSet: 和Set相似，都是不重复值的集合"  details="true"%}}
+
+- 与Set的区别
+
+    - 成员必须是对象或者数组，不能是其他值
+  ```js
+    const ws = new WeakSet();
+    ws.add(1)
+    // TypeError: Invalid value used in weak set
+    ws.add(Symbol())
+    // TypeError: invalid value used in weak set
+  ```
+    - WeakSet中的对象都是弱引用，如果其他对象都不在引用该WeakSet对象，垃圾回收机制会自动回收该对象占用的内存
+    - 因为不一定什么时候执行垃圾回收机制， 所以无法遍历，所有遍历方法无法使用，也没有size方法
+
+{{% /admonition %}}
+
+---------------------------
+
+## Map
+
+{{% admonition type="info" title="1.是值-值，任何值都可以做key" %}}
+
+{{% /admonition %}}
+
+{{% admonition type="info" title="2.实例方法" details="true"%}}
+
+- `size`属性返回 Map 结构的成员总数。
+
+- 操作方法
+    - `Map.prototype.set(key, value)`: 返回set成功之后的Map对象，可以链式调用 
+    - `Map.prototype.get(key)`: 读取key对应的键值，如果找不到key，返回undefined。
+    - `Map.prototype.has(key)`: 判断是否有某个键，返回true/false
+    - `Map.prototype.delete(key)`: 删除某个键，成功删除返回true,相反返回false
+    - `Map.prototype.clear()`: 清空所有成员，无返回值。
+
+- 遍历方法
+    - `Map.prototype.keys()`：返回键名的遍历器。
+    - `Map.prototype.values()`：返回键值的遍历器。
+    - `Map.prototype.entries()`：返回所有成员的遍历器。
+    - `Map.prototype.forEach()`：遍历 Map 的所有成员。
+
+
+
+
+{{% /admonition %}}
+
+{{% admonition type="info" title="3.与其他类型的互相转换" details="true"%}}
+
+- 转换为数组(使用扩展运算符)
+
+```js
+const myMap = new Map()
+  .set(true, 7)
+  .set({foo: 3}, ['abc']);
+[...myMap]
+// [ [ true, 7 ], [ { foo: 3 }, [ 'abc' ] ] ]
+```
+- 数组 转为 Map(作为构造函数入参)
+```js
+new Map([
+  [true, 7],
+  [{foo: 3}, ['abc']]
+])
+// Map {
+//   true => 7,
+//   Object {foo: 3} => ['abc']
+// }
+```
+- Map 转为对象
+ 如果key都是字符串可以直接转换，如果key不是字符串则会被转为字符串在作为key
+```js
+function strMapToObj(strMap) {
+  let obj = Object.create(null);
+  for (let [k,v] of strMap) {
+    obj[k] = v;
+  }
+  return obj;
+}
+
+const myMap = new Map()
+  .set('yes', true)
+  .set('no', false);
+strMapToObj(myMap)
+```
+- 对象转为Map(Object.entries())
+
+```js
+let obj = {"a":1, "b":2};
+let map = new Map(Object.entries(obj));
+```
+{{% /admonition %}}
+
+{{% admonition type="info" title="4.WeakMap: 与Map类似都是键值对的集合" details="true"%}}
+
+- WeakMap只接受对象或者数组作为键(null除外)
+  
+```js
+    const map = new WeakMap();
+    map.set(1, 2)
+    // TypeError: 1 is not an object!
+    map.set(Symbol(), 2)
+    // TypeError: Invalid value used as weak map key
+    map.set(null, 2)
+    // TypeError: Invalid value used as weak map key
+```
+
+- WeakMap中的键都是弱引用，如果对应的键被垃圾回收了，所对应的值也会被回收
+  
+```js
+const  myDiv = document.getElementById('myDiv')
+const wMap  = new WeakMap().set(myDiv, 'someThing')
+
+```
+    如果`myDiv`后续被删掉了， 那么wMap对应的键值对也会被回收.
+    所以 `WeakMap的专用场合就是，它的键所对应的对象，可能会在将来消失。`
+
+-  无法遍历，没有遍历方法以及size属性
+-  应用：
+      - 上述dom应用
+      - 部署私有属性
+      ```js
+      const _counter = new WeakMap();
+      const _action = new WeakMap();
+
+      class Countdown {
+        constructor(counter, action) {
+          _counter.set(this, counter);
+          _action.set(this, action);
+        }
+      }
+      // DONE
+      ```
+      Countdown类的两个内部属性_counter和_action，是实例的弱引用，所以如果删除实例，它们也就随之消失，不会造成内存泄漏。
+
+
+{{% /admonition %}}
+
+---------------------------
 ## proxy
 
 ### 概念
@@ -98,3 +402,5 @@ Reflect对象一共有 13 个静态方法（匹配Proxy的13种拦截行为）�
 [Proxy](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
 
 [Reflect](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect)
+
+[阮一峰es6入门](https://es6.ruanyifeng.com/)
