@@ -17,4 +17,9 @@ hiddenFromHomePage: true
 
 [soul](../e-6-soul)
 
+[hao-wei-lai](../e-9-bei-ke)
+
 [fu-dao](../e-8-yuan-fu-dao)
+
+[bei-ke](../e-9-bei-ke)
+

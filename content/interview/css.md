@@ -57,12 +57,13 @@ BFC 即 Block Formatting Contexts (块级格式化上下文)，就像一个封�
 
 - 常见伪类: `:hover` `:active`  `:link`  `:force`  `:disabled` `:not`  `:first-child`  `:first-of-type` `:nth-child `
 
+- `:nth-child`和`:nth-of-type`区别： `p:nth-child(2)`表示父元素下面第二个子元素且是p标签，`p:nth-of-type(2)`表示父元素下面第二个p标签
 
 ### 伪元素
 
 - 用于创建不在文档树中的元素，并为其添加样式。比如`::before/:before`可以为某一个元素前面添加文本和样式，但其实这些文本并不在文档树中。
 
-- 常见伪类: `::before/:before` `::after/:after`  `::first-line/:first-line`  `::first-letter/:first-letter`  `::selection` `::placeholder` `::backdrop` 
+- 常见元素: `::before/:before` `::after/:after`  `::first-line/:first-line`  `::first-letter/:first-letter`  `::selection` `::placeholder` `::backdrop` 
 
 
 >css3规范中规定`:`表示伪类，`::`表示伪元素，但也有部分仍旧支持`:`表示伪元素。[详解](http://www.alloyteam.com/2016/05/summary-of-pseudo-classes-and-pseudo-elements/#prettyPhoto)

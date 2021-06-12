@@ -110,4 +110,122 @@ Function.prototype.myBind = function (objThis, ...params) {
 ```
 [示例](https://codesandbox.io/s/apply-call-bind-k5vd5?file=/src/App.js)
 
-## 
+## instanceof 
+
+```js
+function myInstanceof (left, right) {
+  if(typeof left !== 'object' || b ===  null) {
+    return false
+  }
+  let proto = left.__proto__
+  while(proto) {
+    if(proto === null) return false
+    if(proto === right.prototype) return true
+    proto = proto.__proto
+  }
+}
+
+```
+
+## Object.create
+
+```js
+function createObj(obj, properties) {
+  function F() {}
+  F.prototype = obj
+  let myObj = new F()
+  if(typeof properties === 'object') {
+    Object.definproperty(myObj, properties)
+  }
+  return myObj
+}
+```
+
+## new
+
+- 创建一个新的对象
+- 继承父类原型上的方法.
+- 添加父类的属性到新的对象上并初始化. 保存方法的执行结果.
+- 如果执行结果有返回值并且是一个对象, 返回执行的结果, 否则, 返回新创建的对象。
+```js
+function myNew1((fn, ...args) ) {
+  const obj = new Object()
+  obj.__proto__ = fn.prototype
+  let res = fn.apply(obj, args)
+  return typeof res === 'object' ? res: obj;
+}
+
+function myNew2 (fn, ...args) {
+  const obj = Object.create({})
+  const value = fn.apply(obj, args)
+  return value instanceof Object ? value: obj
+}
+```
+{{% admonition type="info" title="new Object.create区别" details="true" %}}
+
+1.传参区别
+
+2.Object.create()如果传入构造函数，是不会调用构造函数的，所以构造函数内部的方法属性无法继承
+
+{{% /admonition %}}
+
+## 浅拷贝shallow clone
+
+```js
+//[].concat 、...扩展符、Object.assign({})
+function shallowCopy(obj) {
+  let result = {}
+  for(let key in obj) {
+    if(obj.hasOwnProperty(key)) {
+      result[key] = obj[key]
+    }
+  }
+  return result
+}
+
+```
+
+## 深拷贝 deep clone
+
+```js
+function deepClone(obj) {
+  let map = new WeakMap();
+
+  function dp(obj) {
+    let existObj = map.get(obj);
+    // 如果这个对象已被记录则直接返回
+    if (existObj) {
+      return existObj;
+    }
+    let keyArr = Object.keys(obj),
+      key = null,
+      temp = null,
+      result = {};
+    map.set(obj, result);
+    for (let i = 0; i < keyArr.length; i++) {
+      key = keyArr[i];
+      temp = obj[key];
+      if (temp && typeof temp === "object") {
+        result[key] = dp(temp);
+      } else {
+        result[key] = temp;
+      }
+    }
+    return result;
+  }
+
+  return dp(obj);
+}
+
+```
+
+
+## 柯里化
+
+
+## jsonp
+
+## promise
+
+## xhr
+

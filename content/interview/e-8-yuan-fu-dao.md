@@ -32,12 +32,14 @@ interface B {
   car: number;
 }
 
-A & B =?
-A|B = ?
+A & B =? 
+A|B = ? 
 
 interface B extends A 和 A&B一样吗
 
+
 ```
+[答案](https://codesandbox.io/s/ts-extends--9jc4w)
 
 ### 实现一个Mutable 可以修改已读属性
 
@@ -60,8 +62,9 @@ const p = new Promise((resolve, reject) => {
   resolve(0)
   console.log(1)
   reject(2)
+  
 })
-p.then(res=> console.log(res)).catch(e => console.log(e))
+// p.then(res=> console.log(res)).catch(e => console.log(e))
 
 
 p.then(res=> console.log(res))
@@ -80,3 +83,6 @@ p.catch(e => console.log(e))
 ## 编程 
 
 实现一个函数foo(list, limit) 一次发送的请求不超过limit个
+
+[my answer](https://codesandbox.io/s/promise-bingfa-sqhrk)
+

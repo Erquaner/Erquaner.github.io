@@ -380,7 +380,25 @@ console.log(p.a);       // 10
 ```
 {{% /admonition %}}
 
+{{% admonition type="info" title="3.defineProperty:拦截了Object.defineProperty()操作" details="true" %}}
 
+```js
+
+var handler = {
+  defineProperty (target, key, descriptor) {
+    return false;
+  }
+};
+var target = {};
+var proxy = new Proxy(target, handler);
+proxy.foo = 'bar' // 不会生效
+
+```
+上面代码中，defineProperty()方法内部没有任何操作，只返回false，导致添加新属性总是无效。注意，这里的false只是用来提示操作失败，本身并不能阻止添加新属性。
+
+注意，如果目标对象不可扩展（non-extensible），则defineProperty()不能增加目标对象上不存在的属性，否则会报错。另外，如果目标对象的某个属性不可写（writable）或不可配置（configurable），则defineProperty()方法不得改变这两个设置。
+
+{{% /admonition %}}
 
 ## reflect 
 
@@ -391,6 +409,186 @@ Reflect 是一个内置的对象，它提供拦截 JavaScript 操作的方法。
 ### 方法
 
 Reflect对象一共有 13 个静态方法（匹配Proxy的13种拦截行为）。
+
+## 模块化
+
+### CommonJS
+
+{{% admonition type="info" title="同步加载模块(即运行时加载)，加载的是这个模块的浅拷贝" details="true" %}}
+
+```js
+// 定义模块math.js
+var basicNum = 0;
+function add(a, b) {
+  return a + b;
+}
+module.exports = { //在这里写上需要向外暴露的函数、变量
+  add: add
+}
+
+// 引用自定义的模块时，参数包含路径，可省略.js
+var math = require('./math');
+math.add(2, 5);
+
+// 引用核心模块(node自带的模块)时，不需要带路径
+var http = require('http');
+http.createService(...).listen(3000);
+
+
+
+//几种写法
+// 1. 正确  
+module.exports = {  
+    name: 'lindaidai',  
+    sex: 'boy'  
+}  
+  
+// 2. 正确  
+exports.name = 'lindaidai';  
+exports.sex = 'boy'  
+  
+// 3. 正确  
+module.exports.name = 'lindaidai';  
+module.exports.sex = 'boy'  
+  
+// 4. 无效  
+exports = {  
+    name: 'lindaidai',  
+    sex: 'boy'  
+}  
+```
+
+{{% /admonition %}}
+
+### AMD 规范（需要安装requirejs）
+
+{{% admonition type="info" title="1. 出现主要是解决CommonJs同步加载,AMD规范采用异步方式加载模块，模块的加载不影响它后面语句的运行"  %}}
+
+{{% /admonition %}}
+
+
+{{% admonition type="info" title="2. AMD 推崇依赖前置、提前执行"  %}}
+
+{{% /admonition %}}
+
+
+{{% admonition type="info" title="3. 所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行" details="true" %}}
+
+
+
+```js
+//math.ts
+define(function () {  
+  var add = function (a, b) {  
+    return a + b;  
+  }  
+  return {  
+    add: add  
+  }  
+})  
+
+
+//index.ts
+var requirejs = require("requirejs"); //引入requirejs模块  
+  
+requirejs(['math'],function(math) {  
+  console.log(math)  
+  console.log(math.add(1, 2));  
+})  
+```
+{{% /admonition %}}
+
+
+### CMD
+
+{{% admonition type="info" title="1.CMD推崇依赖就近、延迟执行行"  %}}
+
+{{% /admonition %}}
+
+{{% admonition type="info" title="2.引用:define(id?, dependencies?, factory)" details="true"  %}}
+```js 
+
+// 所有模块都通过 define 来定义  
+define(function(require, exports, module) {  
+  
+  // 通过 require 引入依赖  
+  var $ = require('jquery');  
+  var Spinning = require('./spinning');  
+  
+  // 通过 exports 对外提供接口  
+  exports.doSomething = ...  
+  
+  // 或者通过 module.exports 提供整个接口  
+  module.exports = ...  
+  
+}); 
+
+```
+{{% /admonition %}}
+
+> `AMD和CMD最大的区别是对依赖模块的执行时机处理不同(AMD推崇依赖前置,CMD推崇就近依赖)，注意不是加载的时机或者方式不同，二者皆为异步加载模块。`
+
+### ES6 Modules
+
+- `import` 引入,具有提升效果，会提升到模块的首部，首先执行
+- `export` 导出
+- `export {xx} from 'xxx'` 过渡导出
+    ```js
+    //a.js
+    const add = function () {}
+    export {add}
+    //b.js
+    export {add} from 'a.js'
+    //c.js
+    import {add} from 'b.js'
+    ```
+- `import` 的模块变量是不可重新赋值的，它只是个可读引用，不过却可以改写属性
+- `import` 、`export`可以出现在模块的任何位置，但如果在块级作用域内会报错。是因为处于条件代码块之中，就没法做静态优化了，违背了ES6模块的设计初衷。
+- 与bable转化
+    
+    转换前
+    
+    ```js
+    // math.js输出
+    export const count = 0;
+
+    //index.js引入
+    import {count} from './math.js'  
+    console.log(count)  
+
+    ```
+    
+    转换后
+
+    ```js
+    // math.js
+    "use strict";  
+      
+    Object.defineProperty(exports, "__esModule", {  
+      value: true  
+    });  
+    exports.count = void 0;  
+    const count = 0;  
+    exports.count = count;  
+
+    //index.js
+    "use strict";  
+      
+    var _m = require("./m1.js");  
+      
+    console.log(_m.count);  
+
+    ```
+
+{{% admonition type="info" title="es6 Modules和CommonsJs区别" details="true"  %}}
+
+- CommonJs是值的浅拷贝; ES6 Modules是值的引用，指向内存的地址，输出模块的内部的修改会影响引用的修改
+- CommonJS模块是运行时加载，因为加载的是对象（即module.exports）；ES6 Modules是编译时输出接口， ES6模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。
+- CommonJS this指向当前模块，ES6 Modules this指向undefined
+- CommonJs导入的模块路径可以是一个表达式，因为它使用的是require()方法；而ES6 Modules只能是字符串
+- ES6 Modules中没有这些顶层变量：arguments、require、module、exports、__filename、__dirname
+  
+{{% /admonition %}}
 
 
 
@@ -404,3 +602,6 @@ Reflect对象一共有 13 个静态方法（匹配Proxy的13种拦截行为）�
 [Reflect](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect)
 
 [阮一峰es6入门](https://es6.ruanyifeng.com/)
+
+
+[CommonJS、AMD、CMD、ES6 模块规范讲解](https://segmentfault.com/a/1190000022599809)
