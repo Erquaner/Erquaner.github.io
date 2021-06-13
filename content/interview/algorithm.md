@@ -57,6 +57,49 @@ function quickSort(arr, left, right) {
 
 
 ```js
+function merge(a, b) {
+  let i = 0,
+    j = 0;
+  let aLength = a?.length || 0,
+    bLength = b?.length || 0;
+  let newArr = [];
+  while (i < aLength && j < bLength) {
+    if (a[i] <= b[j]) {
+      newArr.push(a[i]);
+      i++;
+    } else {
+      newArr.push(b[j]);
+      j++;
+    }
+  }
+
+  //a还剩一些
+  if (i < aLength && j === bLength) {
+    while (i < aLength) {
+      newArr.push(a[i]);
+      i++;
+    }
+  }
+
+  //b还剩一些
+  if (j < bLength && i === aLength) {
+    while (j < bLength) {
+      newArr.push(b[j]);
+      j++;
+    }
+  }
+  return newArr;
+}
+function mergeSort(arr) {
+  if (arr.length <= 1) {
+    return arr;
+  }
+  const middle = Math.floor(arr.length / 2);
+  const left = arr.slice(0, middle);
+  const right = arr.slice(middle);
+
+  return merge(mergeSort(left), mergeSort(right));
+}
 
 
 ```
@@ -77,7 +120,7 @@ function reverseList(head) {
 
 ```
 
-## LRU
+
 
 
 
@@ -99,3 +142,4 @@ function reverseList(head) {
 
 
 
+## LRU

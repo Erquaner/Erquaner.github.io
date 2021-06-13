@@ -26,7 +26,7 @@ js
 
 [node](./node)
 
-[优化](./optimize)
+[优化](./better)
 
 [算法](./algorithm)
 

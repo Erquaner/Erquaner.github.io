@@ -330,6 +330,7 @@ target(目标对象)、propKey(属性名)、receiver?(Proxy或者继承Proxy的�
 
 - 会拦截这些操作：`proxy[foo]`, `proxy.bar`, `Object.create(proxy)[foo]`, `Reflect.get()`
 
+- 可以继承。
 
 - 示例
 
@@ -400,6 +401,17 @@ proxy.foo = 'bar' // 不会生效
 
 {{% /admonition %}}
 
+- **has(target, propKey)**：拦截`propKey in proxy`的操作，返回一个布尔值。
+- **deleteProperty(target, propKey)**：拦截`delete proxy[propKey]`的操作，返回一个布尔值。
+- **ownKeys(target)**：拦截`Object.getOwnPropertyNames(proxy)`、`Object.getOwnPropertySymbols(proxy)`、`Object.keys(proxy)`、`for...in`循环，返回一个数组。该方法返回目标对象所有自身的属性的属性名，而`Object.keys()`的返回结果仅包括目标对象自身的可遍历属性。
+- **getOwnPropertyDescriptor(target, propKey)**：拦截`Object.getOwnPropertyDescriptor(proxy, propKey)`，返回属性的描述对象。
+- **preventExtensions(target)**：拦截`Object.preventExtensions(proxy)`，返回一个布尔值。
+- **getPrototypeOf(target)**：拦截`Object.getPrototypeOf(proxy)`，返回一个对象。
+- **isExtensible(target)**：拦截`Object.isExtensible(proxy)`，返回一个布尔值。
+- **setPrototypeOf(target, proto)**：拦截`Object.setPrototypeOf(proxy, proto)`，返回一个布尔值。如果目标对象是函数，那么还有两种额外操作可以拦截。
+- **apply(target, object, args)**：拦截 Proxy 实例作为函数调用的操作，比如`proxy(...args)`、`proxy.call(object, ...args)`、`proxy.apply(...)`
+- **construct(target, args)**：拦截 `Proxy` 实例作为构造函数调用的操作，比如`new proxy(...args)`。
+
 ## reflect 
 
 ### 概念
@@ -409,6 +421,72 @@ Reflect 是一个内置的对象，它提供拦截 JavaScript 操作的方法。
 ### 方法
 
 Reflect对象一共有 13 个静态方法（匹配Proxy的13种拦截行为）。
+
+- **Reflect.get(target, name, receiver)**: 查找并返回`target`对象的`name`属性，如果没有该属性，则返回`undefined`
+    - 如果`name`属性部署了读取函数（`getter`），则读取函数的`this`绑定`receiver`。
+    - 如果第一个参数不是对象，`Reflect.get`方法会报错。
+- **Reflect.set(target, name, value, receiver)**: 设置target对象的name属性等于value。
+    - 如果`name`属性设置了赋值函数，则赋值函数的`this`绑定`receiver`,并且与proxe混用还会触发`Proxy.defineProperty`拦截。
+    - 如果第一个参数不是对象，`Reflect.set`会报错。
+- **Reflect.has(obj, name)**: 对应name in obj里面的in运算符。返回true/false。
+    - 如果第一个参数不是对象，`Reflect.has()`会报错。
+
+- **Reflect.deleteProperty(obj, name)**: 等同于`delete obj[name]`，用于删除对象的属性。删除成功返回true，反之false。
+    - 如果第一个参数不是对象，`Reflect.deleteProperty()`会报错。
+- **Reflect.construct(target, args)**: 等同于new target(...args)
+  - 如果第一个参数不是函数，`Reflect.construct()`会报错。
+  ```js
+    function Greeting(name) {
+      this.name = name;
+    }
+
+    // new 的写法
+    const instance = new Greeting('张三');
+
+    // Reflect.construct 的写法
+    const instance = Reflect.construct(Greeting, ['张三']);
+  ```
+- **Reflect.getPrototypeOf(obj)**: 用于读取对象的`__proto__`属性，对应`Object.getPrototypeOf(obj)`。
+    - `Reflect.getPrototypeOf`和`Object.getPrototypeOf`的区别是如果参数不是对象，`Object.getPrototypeOf`会将其转化成对象再运行，`Reflect.getPrototypeOf`会报错
+    ```js
+    const myObj = new FancyThing();
+
+    // 旧写法
+    Object.getPrototypeOf(myObj) === FancyThing.prototype;
+
+    // 新写法
+    Reflect.getPrototypeOf(myObj) === FancyThing.prototype;
+
+    ```
+- **Reflect.setPrototypeOf(obj, newProto)**: 用于设置目标对象的原型（prototype），对应Object.setPrototypeOf(obj, newProto)方法。它返回一个布尔值，表示是否设置成功。`
+    - 如果第一个参数是`undefined`或`null`，`Object.setPrototypeOf`和`Reflect.setPrototypeOf都会报错。
+    - 如果第一个参数数字、字符串、布尔值，`Object.setPrototypeOf`会返回第一个参数本身，而`Reflect.setPrototypeOf`会报错。
+    - 如果无法设置目标对象的原型（比如`Object.freeze`），`Reflect.setPrototypeOf`方法返回`false`。
+
+- **Reflect.apply(func, thisArg, args)**: 等同于`Function.prototype.apply.call(func, thisArg, args)`，用于绑定this对象后执行给定函数。
+- **Reflect.defineProperty(target, propertyKey, attributes)**: 基本等同于`Object.defineProperty`，用来为对象定义属性。
+    - 如果`Reflect.defineProperty`的第一个参数不是对象，会抛出错误.
+
+- **Reflect.getOwnPropertyDescriptor(target, propertyKey)**: 基本等同于`Object.getOwnPropertyDescriptor`，用于得到指定属性的描述对象
+    - 和`Object.getOwnPropertyDescriptor`的区别是如果第一个参数不是对象，`Object.getOwnPropertyDescriptor`会返回`undefined`，`Reflect.getOwnPropertyDescriptor`会报错
+- **Reflect.isExtensible (target)**: 对应`Object.isExtensible`，返回一个布尔值，表示当前对象是否可扩展。
+    - 如果参数不是对象，`Object.isExtensible`会返回false，因为非对象本来就是不可扩展的，而R`eflect.isExtensible`会报错。
+- **Reflect.preventExtensions(target)**: 对应`Object.preventExtensions`方法，用于让一个对象变为不可扩展。它返回一个布尔值，表示是否操作成功。
+    - 如果参数不是对象，`Object.preventExtensions`在 ES5 环境报错，在 ES6 环境返回传入的参数，而`Reflect.preventExtensions`会报错。
+- **Reflect.ownKeys (target)**: 用于返回对象的所有属性，基本等同于`Object.getOwnPropertyNames`与`Object.getOwnPropertySymbols`之和。
+    - 如果`Reflect.ownKeys()`方法的第一个参数不是对象，会报错。
+    ```js
+    let myObject = {
+      foo: 1,
+      bar: 2,
+      [Symbol.for('baz')]: 3,
+      [Symbol.for('bing')]: 4,
+    };
+    
+    Reflect.ownKeys(myObject)
+    // ['foo', 'bar', Symbol(baz), Symbol(bing)]
+    ```
+
 
 ## 模块化
 

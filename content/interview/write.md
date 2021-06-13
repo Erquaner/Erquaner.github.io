@@ -6,6 +6,17 @@ hiddenFromHomePage: true
 ---
 
 
+## promise
+
+- Promise就是为了解决回调地狱的问题而产生的。
+- 特点 
+    - Promise 本质是一个状态机，每个 Promise 有三种状态：pending、fulfilled 以及rejected。状态转变只能是- pending —> fulfilled 或者 pending —> rejected。状态转变不可逆。
+    - then 方法可以被同一个 promise 调用多次。
+    - then 方法必须返回一个 promise。规范2.2.7中规定， then 必须返回一个新的 Promise
+    - 值穿透
+
+
+
 ## call/apply/bind调用及区别
 
 ```js
