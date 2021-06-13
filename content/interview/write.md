@@ -220,12 +220,31 @@ function deepClone(obj) {
 ```
 
 
-## 柯里化
-
-
-## jsonp
-
-## promise
-
 ## xhr
 
+```js
+function myAjax(method, url, data) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest()
+    xhr.open(method, url, true)
+    xhr.onreadystatechange = function () {
+      if(xhr.readyState === 4) {
+        if(xhr.status === 200) {
+          resolve(xhr.responseText)
+        }else {
+          reject(xhr.responseText)
+        }
+       }
+    }
+    if(method === 'POST') {
+      	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    }
+    xhr.send(method === 'GET' ? null : data)
+  })
+}
+
+```
+
+
+
+## 实现并发请求
