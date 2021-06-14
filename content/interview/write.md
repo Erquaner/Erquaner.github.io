@@ -15,7 +15,54 @@ hiddenFromHomePage: true
     - then 方法必须返回一个 promise。规范2.2.7中规定， then 必须返回一个新的 Promise
     - 值穿透
 
+- 实现
 
+```js
+const PENDING = "pending"
+const FULFILLED = "fulfilled"
+const REJECTED = "rejected"
+function myPromise(callback) {
+  let _this = this
+  _this.currentState = PENDING // Promise当前的状态
+  _this.value = void 0
+  let onResolvedCallbacks = [] // Promise resolve时的回调函数集
+  let onRejectedCallbacks = [] // Promise reject时的回调函数集
+  _this.reslove = (value) => {
+     if (value instanceof MyPromise) {
+        // 如果 value 是个 MyPromise， 递归执行
+        return value.then(_this.resolve, _this.reject)
+     }
+    setTimeout(() => {
+      if(_this.currentState === PENDING) {
+        _this.value = value
+        _this.currentState = FULFILLED
+        _this.onResolvedCallbacks.forEach(cb => cb())
+      }
+    }, 0)
+  }
+  _this.reject = () => {
+      setTimeout(() => {
+         if(_this.currentState === PENDING) {
+            _this.value = value
+            _this.currentState = REJECTED 
+            _this.onRejectedCallbacks.forEach(cb => cb())
+         }
+    }, 0)
+  }
+
+  // 异常处理
+  // new Promise(() => throw Error('error'))
+  try {
+      callback(_this.resolve, _this.reject) // 执行callback并传入相应的参数
+  } catch(e) {
+      _this.reject(e)
+  }
+}
+```
+
+[原文](https://github.com/sisterAn/blog/issues/13)
+
+[全部代码](https://codesandbox.io/s/promise-93r4e)
 
 ## call/apply/bind调用及区别
 
