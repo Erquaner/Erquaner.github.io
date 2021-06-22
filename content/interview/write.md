@@ -18,51 +18,129 @@ hiddenFromHomePage: true
 - 实现
 
 ```js
-const PENDING = "pending"
-const FULFILLED = "fulfilled"
-const REJECTED = "rejected"
-function myPromise(callback) {
-  let _this = this
-  _this.currentState = PENDING // Promise当前的状态
-  _this.value = void 0
-  let onResolvedCallbacks = [] // Promise resolve时的回调函数集
-  let onRejectedCallbacks = [] // Promise reject时的回调函数集
-  _this.reslove = (value) => {
-     if (value instanceof MyPromise) {
-        // 如果 value 是个 MyPromise， 递归执行
-        return value.then(_this.resolve, _this.reject)
-     }
-    setTimeout(() => {
-      if(_this.currentState === PENDING) {
-        _this.value = value
-        _this.currentState = FULFILLED
-        _this.onResolvedCallbacks.forEach(cb => cb())
-      }
-    }, 0)
-  }
-  _this.reject = () => {
-      setTimeout(() => {
-         if(_this.currentState === PENDING) {
-            _this.value = value
-            _this.currentState = REJECTED 
-            _this.onRejectedCallbacks.forEach(cb => cb())
-         }
-    }, 0)
+const PENDING = "PENDING";
+const FULFILLED = "FULFILLED";
+const REJECTED = "REJECTED";
+
+class WPromise {
+  constructor(executor) {
+    this.status = PENDING;
+    this.value = undefined;
+    this.reason = undefined;
+
+    this.callbacks = [];
+
+    try {
+      executor(this._resolve.bind(this), this._reject.bind(this));
+    } catch (e) {
+      this._reject(e);
+    }
   }
 
-  // 异常处理
-  // new Promise(() => throw Error('error'))
-  try {
-      callback(_this.resolve, _this.reject) // 执行callback并传入相应的参数
-  } catch(e) {
-      _this.reject(e)
+  _resolve(value) {
+    if (value instanceof WPromise) {
+      value.then(this._resolve.bind(this), this._reject.bind(this));
+      return;
+    }
+    if (this.status === PENDING) {
+      this.status = FULFILLED;
+      this.value = value;
+      this.callbacks.forEach((cb) => {
+        this._handle(cb);
+      });
+    }
+  }
+
+  static resolve(value) {
+    // 判断是否是thenable对象
+    if (
+      value instanceof WPromise ||
+      (typeof value === "object" && "then" in value)
+    ) {
+      return value;
+    }
+
+    return new WPromise((resolve) => resolve(value));
+  }
+
+  _reject(reason) {
+    if (reason instanceof WPromise) {
+      reason.then(this._resolve.bind(this), this._reject.bind(this));
+      return;
+    }
+    if (this.status === PENDING) {
+      this.status = REJECTED;
+      this.reason = reason;
+      this.callbacks.forEach((cb) => {
+        this._handle(cb);
+      });
+    }
+  }
+
+  _handle(cb) {
+    const { onFailed, onFulfilled, nextReject, nextResolve } = cb;
+    if (this.status === PENDING) {
+      this.callbacks.push(cb);
+      return;
+    }
+
+    if (this.status === FULFILLED) {
+      const nextValue =
+        typeof onFulfilled === "function"
+          ? onFulfilled(this.value)
+          : this.value;
+
+      nextResolve(nextValue);
+      return;
+    }
+    if (this.status === REJECTED) {
+      const nextReason =
+        typeof onFailed === "function" ? onFailed(this.reason) : this.reason;
+
+      nextReject(nextReason);
+    }
+  }
+
+  then(onFulfilled, onFailed) {
+    // 值穿透
+    return new WPromise((nextResolve, nextReject) => {
+      this._handle({
+        nextReject,
+        nextResolve,
+        onFailed,
+        onFulfilled,
+      });
+    });
+  }
+
+  static all(arr) {
+    return new WPromise((resolve, reject) => {
+      const resultArr = [];
+      let len = 0;
+
+      Array.from(arr).forEach((item, idx) => {
+        WPromise.resolve(item).then((data) => {
+          resultArr[idx] = data;
+          len++;
+
+          if (len === arr.length) {
+            resolve(resultArr);
+          }
+        }, reject);
+      });
+    });
+  }
+
+  static race(arr) {
+    return new WPromise((resolve, reject) => {
+      Array.from(arr).forEach((item) => {
+        WPromise.resolve(item).then(resolve, reject);
+      });
+    });
   }
 }
 ```
 
-[原文](https://github.com/sisterAn/blog/issues/13)
-
-[全部代码](https://codesandbox.io/s/promise-93r4e)
 
 ## call/apply/bind调用及区别
 
@@ -317,13 +395,13 @@ add(1, 2, 3)(4) = 10;
 add(1)(2)(3)(4)(5) = 15;
 
 ////////////////////////////////////////
-function add() {
+function add(...outArgs) {
     // 第一次执行时，定义一个数组专门用来存储所有的参数
-    var _args = Array.prototype.slice.call(arguments);
+    const _args = [...outArgs]
 
     // 在内部声明一个函数，利用闭包的特性保存_args并收集所有的参数值
-    var _adder = function() {
-        _args.push(...arguments);
+    const _adder = function(...args) {
+        _args.push(...args);
         return _adder;
     };
 

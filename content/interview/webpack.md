@@ -344,8 +344,8 @@ webpack --mode=production
 webpack 支持所有符合 ES5 标准 的浏览器（不支持 IE8 及以下版本）。webpack 的 import() 和 require.ensure() 需要 Promise。如果想要支持旧版浏览器，还需要提前加载 polyfill。
 
 
-## treeShaking 
-
-
 ## 热更新
 
+
+
+## treeShaking 

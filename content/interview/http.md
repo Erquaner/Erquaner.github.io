@@ -223,6 +223,8 @@ SSL 剥离：阻止用户使用 https 访问网站。解决方案是强制浏览
   - 不必再为绕过 HTTP1.x 限制而多做很多工作。
 - 压缩报头，减少开销。
 
+[keep-alive和多路复用区别](https://jishuin.proginn.com/p/763bfbd5a2d7)
+
 ## 输入一个 url 按下回车后发生了什么
 
 [输入一个 url 按下回车后发生了什么](https://zhuanlan.zhihu.com/p/133906695)
