@@ -11,8 +11,6 @@ hiddenFromHomePage: true
 
 [lan-hu](../e-3-lan-hu)
 
-[lao-hu](../e-4-lao-hu)
-
 [tu-zhan](../e-5-tu-zhan)
 
 [soul](../e-6-soul)
@@ -22,4 +20,8 @@ hiddenFromHomePage: true
 [fu-dao](../e-8-yuan-fu-dao)
 
 [bei-ke](../e-9-bei-ke)
+
+[10](../interview/e-10-xi-ma-la-ya)
+
+[11](../interview/e-11-elem)
 
