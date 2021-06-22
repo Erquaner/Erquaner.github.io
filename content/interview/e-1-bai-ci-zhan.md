@@ -143,7 +143,7 @@ export default Person1
 
 
 ## Q: 为什么react项目里会引用react-dom, react-native 里要引用react-dom吗？
-## Q：浏览器事件机制（冒泡捕获等、）React事件机制
+## Q：浏览器事件机制（冒泡捕获等）、React事件机制
 
 ## Q: 为什么不能在条件语句、循环里用hooks
 

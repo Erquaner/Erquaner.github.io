@@ -6,3 +6,8 @@ toc: true
 hiddenFromHomePage: true
 tags: ["设计模式"]
 ---
+
+
+## 发布订阅
+
+## 数据视图双向绑定

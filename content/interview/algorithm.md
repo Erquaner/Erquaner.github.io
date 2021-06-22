@@ -143,3 +143,42 @@ function reverseList(head) {
 
 
 ## LRU
+
+```js
+/**
+ * @param {number} capacity
+ */
+var LRUCache = function(capacity) {
+        this.capacity = capacity;
+        this.cache = new Map();
+};
+/** 
+ * @param {number} key
+ * @return {number}
+ */
+LRUCache.prototype.get = function(key) {
+       if(!this.cache.has(key)) return -1;
+        const value = this.cache.get(key);
+        this.cache.delete(key);
+        this.cache.set(key, value);
+        return value;
+};
+
+/** 
+ * @param {number} key 
+ * @param {number} value
+ * @return {void}
+ */
+LRUCache.prototype.put = function(key, value) {
+    if(this.cache.has(key)){
+        this.cache.delete(key);
+    }else{
+        if(this.cache.size === this.capacity){
+            // 获取到Map中第一个数据的key值，即最近最少访问的key，删之
+            const delKey = this.cache.keys().next().value;
+            this.cache.delete(delKey);
+        }
+    }
+    this.cache.set(key, value);
+};
+```
