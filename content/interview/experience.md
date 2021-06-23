@@ -21,7 +21,9 @@ hiddenFromHomePage: true
 
 [bei-ke](../e-9-bei-ke)
 
-[10](../interview/e-10-xi-ma-la-ya)
+[10](../e-10-xi-ma-la-ya)
 
-[11](../interview/e-11-elem)
+[11](../e-11-elem)
+
+[12](../e-12-hong-shu)
 
