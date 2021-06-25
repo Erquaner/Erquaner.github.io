@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>node on Eating...Hungry..</title>
+    <link>http://localhost:1313/tags/node/</link>
+    <description>Recent content in node on Eating...Hungry..</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 04 May 2021 16:25:20 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/node/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>node</title>
+      <link>http://localhost:1313/interview/node/</link>
+      <pubDate>Tue, 04 May 2021 16:25:20 +0800</pubDate>
+      
+      <guid>http://localhost:1313/interview/node/</guid>
+      <description>进程和线程 进程 是资源分配和调度的基本单位，是操作系统的基础，是线程的容器。比如打开浏览器是一个进程，再打开记事本就是开了两个进程。 进程守护：</description>
+    </item>
+    
+  </channel>
+</rss>

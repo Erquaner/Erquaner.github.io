@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>es6 on Eating...Hungry..</title>
+    <link>http://localhost:1313/tags/es6/</link>
+    <description>Recent content in es6 on Eating...Hungry..</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 01 May 2021 16:25:20 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/es6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>es6</title>
+      <link>http://localhost:1313/interview/es6/</link>
+      <pubDate>Sat, 01 May 2021 16:25:20 +0800</pubDate>
+      
+      <guid>http://localhost:1313/interview/es6/</guid>
+      <description>箭头函数 this指向创建外部的上下文，this是静态的 不能修改指向 不能用做构造函数，与new使用会报错 没有argument,可以用rest 不</description>
+    </item>
+    
+  </channel>
+</rss>

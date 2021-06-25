@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>菜圈的bug - Eating...Hungry..</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Quaner" /><meta name="description" content="今天发现了一个bug 我的页面是有三个状态或者更多，我会定义一个renderTree函数，根据pageStatus的不同返回不同的dom 这个时" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.80.0 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/daily/2019-12-08-%E9%9A%8F%E7%AC%94/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="菜圈的bug" />
+<meta property="og:description" content="今天发现了一个bug 我的页面是有三个状态或者更多，我会定义一个renderTree函数，根据pageStatus的不同返回不同的dom 这个时" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/daily/2019-12-08-%E9%9A%8F%E7%AC%94/" />
+<meta property="article:published_time" content="2019-12-08T20:26:44+08:00" />
+<meta property="article:modified_time" content="2019-12-08T20:26:44+08:00" />
+<meta itemprop="name" content="菜圈的bug">
+<meta itemprop="description" content="今天发现了一个bug 我的页面是有三个状态或者更多，我会定义一个renderTree函数，根据pageStatus的不同返回不同的dom 这个时">
+<meta itemprop="datePublished" content="2019-12-08T20:26:44+08:00" />
+<meta itemprop="dateModified" content="2019-12-08T20:26:44+08:00" />
+<meta itemprop="wordCount" content="351">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="菜圈的bug"/>
+<meta name="twitter:description" content="今天发现了一个bug 我的页面是有三个状态或者更多，我会定义一个renderTree函数，根据pageStatus的不同返回不同的dom 这个时"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Quaner</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/daily/">
+        <li class="mobile-menu-item">小笔记</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Quaner</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/daily/">小笔记</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <h2 id="今天发现了一个bug">今天发现了一个bug</h2>
+<p>我的页面是有三个状态或者更多，我会定义一个<code>renderTree</code>函数，根据<code>pageStatus</code>的不同返回不同的dom</p>
+<p>这个时候就像如下伪代码，期望当我的状态变了会呈现不同的页面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">const</span> <span class="nx">renderTree</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">switch</span><span class="p">(</span><span class="nx">pageStatus</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nx">0</span>: <span class="kt">return</span> <span class="p">&lt;</span><span class="nt">Modal</span><span class="p">&gt;{</span><span class="nx">modalValue</span><span class="p">}&lt;/</span><span class="nt">Modal</span><span class="p">&gt;;</span>
+    <span class="k">case</span> <span class="nx">1</span>: <span class="kt">return</span> <span class="p">&lt;</span><span class="nt">Stepper</span><span class="p">&gt;{</span><span class="nx">content</span><span class="p">}&lt;/</span><span class="nt">Stepper</span><span class="p">&gt;;</span>
+    <span class="k">default</span><span class="o">:</span> <span class="k">return</span> <span class="p">...;</span>
+  <span class="p">}</span>
+<span class="p">},</span> <span class="p">[</span><span class="nx">pageStatus</span><span class="p">])</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>但是紧接着，我的其中一个<code>case</code>里面有一个步进器去加减一个数的组件。</p>
+<p>当我去加减的时候发现数值似乎并没有发生变化。</p>
+<p>这当然也不是牧老师的组件的问题，一定是我又写了bug！</p>
+<p>经过牧老师的提醒，可能是<code>useCallback</code>使用上有些问题。其实是我的依赖项写少了。</p>
+<p>当我的页面的显示依赖了很多的变量的时候，就需要考虑周全把他们都写上。</p>
+<p>所以上面伪代码需要改成如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">const</span> <span class="nx">renderTree</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">switch</span><span class="p">(</span><span class="nx">pageStatus</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nx">0</span>: <span class="kt">return</span> <span class="p">&lt;</span><span class="nt">Modal</span><span class="p">&gt;{</span><span class="nx">modalValue</span><span class="p">}&lt;/</span><span class="nt">Modal</span><span class="p">&gt;;</span>
+    <span class="k">case</span> <span class="nx">1</span>: <span class="kt">return</span> <span class="p">&lt;</span><span class="nt">Stepper</span><span class="p">&gt;{</span><span class="nx">content</span><span class="p">}&lt;/</span><span class="nt">Stepper</span><span class="p">&gt;;</span>
+    <span class="k">default</span><span class="o">:</span> <span class="k">return</span> <span class="p">...;</span>
+  <span class="p">}</span>
+<span class="p">},</span> <span class="p">[</span><span class="nx">pageStatus</span><span class="p">,</span> <span class="nx">modalValue</span><span class="p">,</span> <span class="nx">content</span><span class="p">])</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="https://codesandbox.io/s/objective-elbakyan-u37dk">举例</a></p>
+<h2 id="记住">记住！</h2>
+<p>git push origin &ndash;delete + 远端分支    //删除远端分支</p>
+
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>Quaner</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

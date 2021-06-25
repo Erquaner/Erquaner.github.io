@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Eating...Hungry..</title>
+    <link>http://localhost:1313/tags/</link>
+    <description>Recent content in Tags on Eating...Hungry..</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 04 May 2021 16:25:20 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>html</title>
+      <link>http://localhost:1313/tags/html/</link>
+      <pubDate>Tue, 04 May 2021 16:25:20 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/html/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>node</title>
+      <link>http://localhost:1313/tags/node/</link>
+      <pubDate>Tue, 04 May 2021 16:25:20 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/node/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>typescript</title>
+      <link>http://localhost:1313/tags/typescript/</link>
+      <pubDate>Tue, 04 May 2021 16:25:20 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/typescript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>设计模式</title>
+      <link>http://localhost:1313/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Tue, 04 May 2021 16:25:20 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>es6</title>
+      <link>http://localhost:1313/tags/es6/</link>
+      <pubDate>Sat, 01 May 2021 16:25:20 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/es6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>webpack</title>
+      <link>http://localhost:1313/tags/webpack/</link>
+      <pubDate>Sat, 01 May 2021 16:25:20 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/webpack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>css</title>
+      <link>http://localhost:1313/tags/css/</link>
+      <pubDate>Tue, 20 Apr 2021 16:25:20 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/css/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>react</title>
+      <link>http://localhost:1313/tags/react/</link>
+      <pubDate>Sat, 01 Feb 2020 10:47:01 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/react/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
