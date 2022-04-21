@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>移动端适配 - Eating...Hungry..</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Quaner" /><meta name="description" content="相关单位概念 px: 根据屏幕分辨率而言的，是绝对长度单位，它不会根据屏幕的大小进行调整。 设备像素比：DPR = 设备分辨率/设备屏幕宽度；window" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.80.0 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/daily/2020-03-05-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="移动端适配" />
+<meta property="og:description" content="相关单位概念 px: 根据屏幕分辨率而言的，是绝对长度单位，它不会根据屏幕的大小进行调整。 设备像素比：DPR = 设备分辨率/设备屏幕宽度；window" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/daily/2020-03-05-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/" />
+<meta property="article:published_time" content="2020-03-05T10:47:01+08:00" />
+<meta property="article:modified_time" content="2020-03-05T10:47:01+08:00" />
+<meta itemprop="name" content="移动端适配">
+<meta itemprop="description" content="相关单位概念 px: 根据屏幕分辨率而言的，是绝对长度单位，它不会根据屏幕的大小进行调整。 设备像素比：DPR = 设备分辨率/设备屏幕宽度；window">
+<meta itemprop="datePublished" content="2020-03-05T10:47:01+08:00" />
+<meta itemprop="dateModified" content="2020-03-05T10:47:01+08:00" />
+<meta itemprop="wordCount" content="1085">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="移动端适配"/>
+<meta name="twitter:description" content="相关单位概念 px: 根据屏幕分辨率而言的，是绝对长度单位，它不会根据屏幕的大小进行调整。 设备像素比：DPR = 设备分辨率/设备屏幕宽度；window"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Quaner</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/daily/">
+        <li class="mobile-menu-item">小笔记</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Quaner</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/daily/">小笔记</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <h2 id="相关单位概念">相关单位概念</h2>
+<ul>
+<li>px: 根据屏幕分辨率而言的，是<code>绝对长度单位</code>，它不会根据屏幕的大小进行调整。
+<ul>
+<li>设备像素比：DPR = 设备分辨率/设备屏幕宽度；<code>window.devicePixelRatio = document.body.clientWidth / window.screen.width;</code></li>
+</ul>
+</li>
+<li>em: 是相<code>对字体长度单位</code>。如果用于font-size属性本身，则是相对于父元素的font-size。
+<ul>
+<li>如果父级没设置，则相对于浏览器默认字体大小16px。即1em = 16px</li>
+<li>em的值并不是固定的。</li>
+<li>em会继承父级元素的字体大小。</li>
+</ul>
+</li>
+<li>rem: root em 是相对html的font-size
+<ul>
+<li>为了简化font-size的换算，一般在css中的根元素html中声明font-size=62.5%，这就使rem值变为16px*62.5%=10px,即1rem = 10px。方便后续计算。</li>
+</ul>
+</li>
+<li>vh: 1vh = 1%height,所以一般100vh表示整个屏幕的高度</li>
+<li>vw: 1vh = 1%width,所以一般100vh表示整个屏幕的宽度</li>
+</ul>
+<h2 id="移动端适配的几种方案">移动端适配的几种方案：</h2>
+<h3 id="rem方案">rem方案</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span> <span class="nx">PageResize</span><span class="p">(){</span>
+	<span class="p">(</span><span class="kd">function</span> <span class="nx">getResize</span><span class="p">(){</span>
+		<span class="kd">var</span> <span class="nx">width</span><span class="o">=</span><span class="nb">window</span><span class="p">.</span><span class="nx">innerWidth</span><span class="o">||</span><span class="nb">window</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">clientWidth</span><span class="o">||</span><span class="nb">window</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">clientWidth</span><span class="p">;</span>
+		<span class="nx">width</span><span class="o">&gt;</span><span class="mi">750</span><span class="o">?</span><span class="nx">width</span><span class="o">=</span><span class="mi">750</span><span class="o">:</span><span class="kc">null</span><span class="p">;</span>
+		<span class="nx">width</span><span class="o">&lt;</span><span class="mi">320</span><span class="o">?</span><span class="nx">width</span><span class="o">=</span><span class="mi">320</span><span class="o">:</span><span class="kc">null</span><span class="p">;</span>
+		<span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">fontSize</span><span class="o">=</span><span class="p">(</span><span class="nx">width</span><span class="o">*</span><span class="p">(</span><span class="mi">100</span><span class="o">/</span><span class="mi">750</span><span class="p">))</span><span class="o">+</span><span class="s1">&#39;px&#39;</span><span class="p">;</span>
+		<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nb">window</span><span class="p">.</span><span class="nx">onresize</span><span class="p">){</span>
+			<span class="nb">window</span><span class="p">.</span><span class="nx">onresize</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span>
+				<span class="nx">delayFunc</span><span class="p">(</span><span class="nx">getResize</span><span class="p">);</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">})()</span>
+<span class="c1">// 延迟计算加个延迟是为了 当窗口发现变化 页面不是瞬间变化 有个变化的延迟 用户体验更好 
+</span><span class="c1"></span>	<span class="kd">var</span> <span class="nx">timer</span><span class="p">;</span>
+	<span class="kd">var</span> <span class="nx">delayFunc</span><span class="o">=</span><span class="kd">function</span><span class="p">(</span><span class="nx">fn</span><span class="p">){</span>
+		<span class="kd">var</span> <span class="nx">delay</span><span class="o">=</span><span class="mi">300</span><span class="p">;</span><span class="c1">// 根据实际情况可调整延迟时间
+</span><span class="c1"></span>		<span class="c1">// 这里延时执行你的函数
+</span><span class="c1"></span>		<span class="nx">timer</span><span class="o">=</span><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+			<span class="nx">fn</span><span class="p">();</span>
+		<span class="p">},</span><span class="nx">delay</span><span class="p">);</span>
+	<span class="p">};</span>
+<span class="p">})();</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>优点
+<ul>
+<li>自适应好</li>
+<li>兼容性好</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>需要引入js脚本不是纯css适配，且该js脚本还需要前置在css样式前。</li>
+<li>需要监听窗口变化去改变根元素的字体大小</li>
+<li>小像素的精度问题。比如换算之后为 <code>0.625px</code>，其渲染尺寸会变成<code>1px</code>；换算之后为 <code>0.325px</code>会渲染成<code>0</code>。所以遇到一些小像素的可以不进行转换。</li>
+</ul>
+</li>
+</ul>
+<h3 id="vwvh方案">vw/vh方案</h3>
+<ul>
+<li>优点：
+<ul>
+<li>纯css移动端适配方案，不存在脚本依赖的问题</li>
+<li>根据视口宽度的百分比来定义元素宽度，计算方便；</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>兼容性：Ios8及Android4.4以上支持</li>
+</ul>
+</li>
+</ul>
+<h3 id="remvw方案">rem+vw方案</h3>
+<p>设置html元素的font-size单位为vw，然后在布局中直接使用rem单位。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css"><span class="c">/* 假设设计稿的宽度为750px，则1vw=7.5px，为了方便计算，我们将html元素的font-size大小设置为100px，也就是13.333vw=100px。 */</span>
+<span class="nt">html</span><span class="p">{</span>
+  <span class="k">font-size</span><span class="p">:</span><span class="mf">13.333</span><span class="kt">vw</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="百分比">百分比</h3>
+<ul>
+<li>优点 无兼容性问题</li>
+<li>缺点
+<ul>
+<li>字体大小无法随着屏幕大小变化而改变</li>
+<li>设置盒模型的不同属性时，其百分比设置的参考元素不唯一，容易使布局问题变得复杂。</li>
+</ul>
+</li>
+</ul>
+<h3 id="基于媒体查询的响应式设计">基于媒体查询的响应式设计</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css"><span class="p">@</span><span class="k">media</span> <span class="nt">only</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">375px</span><span class="o">)</span><span class="p">{</span>
+    <span class="c">/*样式1*/</span>
+<span class="p">}</span>
+<span class="p">@</span><span class="k">media</span> <span class="nt">only</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">750px</span><span class="o">)</span><span class="p">{</span>
+    <span class="c">/*样式2*/</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>优点
+<ul>
+<li>能够使网页在不同设备、不同分辨率的屏幕上呈现合理布局，不单单是样式伸缩变换。</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>如果要匹配很多的设备与屏幕，需要写很多适配代码，工作量比较大。</li>
+<li>会设置一定量的断点，到达某个断点前后的页面发生突兀变化，用户体验不太友好。</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://blog.csdn.net/yunchong_zhao/article/details/105556533">代码参考</a></p>
+
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>Quaner</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

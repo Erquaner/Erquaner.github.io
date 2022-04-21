@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>css - Eating...Hungry..</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Quaner" /><meta name="description" content="1.BFC 概念: BFC 即 Block Formatting Contexts (块级格式化上下文)，就像一个封闭的箱子，不会影响外部的样式，并且具有一些普通容器所没有的特性。 触发方式: html根元素 f" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.80.0 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/interview/css/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="css" />
+<meta property="og:description" content="1.BFC 概念: BFC 即 Block Formatting Contexts (块级格式化上下文)，就像一个封闭的箱子，不会影响外部的样式，并且具有一些普通容器所没有的特性。 触发方式: html根元素 f" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/interview/css/" />
+<meta property="article:published_time" content="2021-04-20T16:25:20+08:00" />
+<meta property="article:modified_time" content="2021-04-20T16:25:20+08:00" />
+<meta itemprop="name" content="css">
+<meta itemprop="description" content="1.BFC 概念: BFC 即 Block Formatting Contexts (块级格式化上下文)，就像一个封闭的箱子，不会影响外部的样式，并且具有一些普通容器所没有的特性。 触发方式: html根元素 f">
+<meta itemprop="datePublished" content="2021-04-20T16:25:20+08:00" />
+<meta itemprop="dateModified" content="2021-04-20T16:25:20+08:00" />
+<meta itemprop="wordCount" content="5012">
+
+
+
+<meta itemprop="keywords" content="css," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="css"/>
+<meta name="twitter:description" content="1.BFC 概念: BFC 即 Block Formatting Contexts (块级格式化上下文)，就像一个封闭的箱子，不会影响外部的样式，并且具有一些普通容器所没有的特性。 触发方式: html根元素 f"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Quaner</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/daily/">
+        <li class="mobile-menu-item">小笔记</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Quaner</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/daily/">小笔记</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">css</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-04-20 </span>
+        
+          <span class="more-meta"> 约 5012 字 </span>
+          <span class="more-meta"> 预计阅读 11 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1bfc">1.BFC</a>
+      <ul>
+        <li><a href="#概念">概念:</a></li>
+        <li><a href="#触发方式">触发方式:</a></li>
+        <li><a href="#特性">特性:</a></li>
+        <li><a href="#示例httpscodesandboxioscss-yl8v7"><a href="https://codesandbox.io/s/css-yl8v7">示例</a></a></li>
+      </ul>
+    </li>
+    <li><a href="#2伪类伪元素">2.伪类伪元素</a>
+      <ul>
+        <li><a href="#伪类">伪类</a></li>
+        <li><a href="#伪元素">伪元素</a></li>
+      </ul>
+    </li>
+    <li><a href="#3清除浮动">3.清除浮动</a></li>
+    <li><a href="#4flex布局">4.flex布局</a>
+      <ul>
+        <li><a href="#基本概念">基本概念</a></li>
+        <li><a href="#容器">容器</a></li>
+      </ul>
+    </li>
+    <li><a href="#5css匹配是从右向左匹配的">5.css匹配是从右向左匹配的</a></li>
+    <li><a href="#6居中布局">6.居中布局</a>
+      <ul>
+        <li><a href="#行内元素">行内元素</a></li>
+        <li><a href="#块级元素">块级元素</a></li>
+      </ul>
+    </li>
+    <li><a href="#7grid">7.grid</a>
+      <ul>
+        <li><a href="#容器属性">容器属性</a></li>
+        <li><a href="#项目属性">项目属性</a></li>
+        <li><a href="#兼容性">兼容性</a></li>
+        <li><a href="#示例httpscodepenioyjuanjuanpengrwjldn"><a href="https://codepen.io/yjuanjuan/pen/GRWJLdN">示例</a></a></li>
+      </ul>
+    </li>
+    <li><a href="#8旋转跳跃">8.旋转跳跃</a>
+      <ul>
+        <li><a href="#transform">transform</a></li>
+        <li><a href="#animation">animation</a></li>
+      </ul>
+    </li>
+    <li><a href="#9响应式布局">9.响应式布局</a></li>
+    <li><a href="#10移动端适配">10.移动端适配</a></li>
+    <li><a href="#参考文章">参考文章</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="1bfc">1.BFC</h2>
+<h3 id="概念">概念:</h3>
+<p>BFC 即 Block Formatting Contexts (块级格式化上下文)，就像一个封闭的箱子，不会影响外部的样式，并且具有一些普通容器所没有的特性。</p>
+<h3 id="触发方式">触发方式:</h3>
+<ul>
+<li>html根元素</li>
+<li>float不为none (left、right)</li>
+<li>绝对定位元素：position (absolute、fixed)</li>
+<li>overflow 除了 visible 以外的值 (hidden、auto、scroll)</li>
+<li>display 为 inline-block、table-cells、flex</li>
+</ul>
+<h3 id="特性">特性:</h3>
+<ul>
+<li>
+<p>同一个 BFC 下外边距会发生折叠</p>
+</li>
+<li>
+<p>清除浮动</p>
+<p>浮动元素会脱离文档流，使父元素高度塌陷</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;border: 1px solid #000;&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width: 100px;height: 100px;background: #eee;float: left;&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>此时触发容器的BFC，便可以解决浮动带来的问题
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="hl"><span class="lnt">1
+</span></span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="hl">      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;border: 1px solid #000; overflow: hidden&#34;</span><span class="p">&gt;</span>
+</span>        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width: 100px;height: 100px;background: #eee;float: left;&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      </code></pre></td></tr></table>
+</div>
+</div></p>
+</li>
+<li>
+<p>阻止元素被浮动元素覆盖</p>
+</li>
+</ul>
+<h3 id="示例httpscodesandboxioscss-yl8v7"><a href="https://codesandbox.io/s/css-yl8v7">示例</a></h3>
+<hr>
+<h2 id="2伪类伪元素">2.伪类伪元素</h2>
+<p>伪类伪元素的存在是为了修饰不在文档树中的元素</p>
+<h3 id="伪类">伪类</h3>
+<ul>
+<li>
+<p>只有处于dom树无法描述的状态下才能为元素添加样式，所以将其称为伪类。用于当元素处于某个状态时，为其添加对应的样式，例如用户悬停在某一元素下可以用<code>:hover</code></p>
+</li>
+<li>
+<p>常见伪类: <code>:hover</code> <code>:active</code>  <code>:link</code>  <code>:force</code>  <code>:disabled</code> <code>:not</code>  <code>:first-child</code>  <code>:first-of-type</code> <code>:nth-child </code></p>
+</li>
+<li>
+<p><code>:nth-child</code>和<code>:nth-of-type</code>区别： <code>p:nth-child(2)</code>表示父元素下面第二个子元素且是p标签，<code>p:nth-of-type(2)</code>表示父元素下面第二个p标签</p>
+</li>
+</ul>
+<h3 id="伪元素">伪元素</h3>
+<ul>
+<li>
+<p>用于创建不在文档树中的元素，并为其添加样式。比如<code>::before/:before</code>可以为某一个元素前面添加文本和样式，但其实这些文本并不在文档树中。</p>
+</li>
+<li>
+<p>常见元素: <code>::before/:before</code> <code>::after/:after</code>  <code>::first-line/:first-line</code>  <code>::first-letter/:first-letter</code>  <code>::selection</code> <code>::placeholder</code> <code>::backdrop</code></p>
+</li>
+</ul>
+<blockquote>
+<p>css3规范中规定<code>:</code>表示伪类，<code>::</code>表示伪元素，但也有部分仍旧支持<code>:</code>表示伪元素。<a href="http://www.alloyteam.com/2016/05/summary-of-pseudo-classes-and-pseudo-elements/#prettyPhoto">详解</a></p>
+</blockquote>
+<hr>
+<h2 id="3清除浮动">3.清除浮动</h2>
+<ul>
+<li>clear清除浮动（添加空div法）在浮动元素下方添加空div,并给该元素写css样式：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css"><span class="nt">div</span> <span class="p">{</span>
+    <span class="k">clear</span><span class="p">:</span><span class="kc">both</span><span class="p">;</span><span class="k">height</span><span class="p">:</span><span class="mi">0</span><span class="p">;</span><span class="k">overflow</span><span class="p">:</span><span class="kc">hidden</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>给浮动元素父级设置高度</li>
+<li>父级同时浮动（需要给父级同级元素添加浮动）</li>
+<li>父级设置成inline-block，其margin: 0 auto居中方式失效</li>
+<li>给父级添加overflow:hidden 清除浮动方法</li>
+<li>万能清除法 after伪类 清浮动（现在主流方法，推荐使用）
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css"><span class="p">.</span><span class="nc">float_div</span><span class="p">:</span><span class="nd">after</span><span class="p">{</span>
+  <span class="k">content</span><span class="p">:</span><span class="s2">&#34;.&#34;</span><span class="p">;</span>
+  <span class="k">clear</span><span class="p">:</span><span class="kc">both</span><span class="p">;</span>
+  <span class="k">display</span><span class="p">:</span><span class="kc">block</span><span class="p">;</span>
+  <span class="k">height</span><span class="p">:</span><span class="mi">0</span><span class="p">;</span>
+  <span class="k">overflow</span><span class="p">:</span><span class="kc">hidden</span><span class="p">;</span>
+  <span class="k">visibility</span><span class="p">:</span><span class="kc">hidden</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">float_div</span><span class="p">{</span>
+  <span class="n">zoom</span><span class="p">:</span><span class="mi">1</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<hr>
+<h2 id="4flex布局">4.flex布局</h2>
+<h3 id="基本概念">基本概念</h3>
+<ul>
+<li>
+<p>容器：采用 Flex 布局的元素；分为父容器、子容器；父容器可以统一设置子容器的排列方式，子容器也可以单独设置自身的排列方式，如果两者同时设置，以子容器的设置为准。</p>
+</li>
+<li>
+<p>轴：容器默认存在两根轴：水平的主轴和垂直的交叉轴。子容器默认沿主轴排列</p>
+</li>
+</ul>
+<h3 id="容器">容器</h3>
+<ul>
+<li>父容器</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">用途</th>
+<th style="text-align:left">值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">justify-content</td>
+<td style="text-align:center">用于定义如何沿着主轴方向排列子容器</td>
+<td style="text-align:left">flex-start:起始端对齐<!-- raw HTML omitted -->flex-end:末尾端对齐<!-- raw HTML omitted -->center:居中对齐<!-- raw HTML omitted -->space-around:子容器沿主轴均匀分布，位于首尾两端的子容器到父容器的距离是子容器间距的一半<!-- raw HTML omitted -->space-between:子容器沿主轴均匀分布，位于首尾两端的子容器与父容器相切。</td>
+</tr>
+<tr>
+<td style="text-align:center">align-items</td>
+<td style="text-align:center">沿着交叉轴方向分配子容器的间距</td>
+<td style="text-align:left">flex-start：起始端对齐<!-- raw HTML omitted -->flex-end：末尾段对齐<!-- raw HTML omitted -->center：居中对齐<!-- raw HTML omitted -->baseline:baseline：基线对齐，这里的 baseline 默认是指首行文字<!-- raw HTML omitted -->stretch：子容器沿交叉轴方向的尺寸拉伸至与父容器一致</td>
+</tr>
+<tr>
+<td style="text-align:center">flex-direction</td>
+<td style="text-align:center">决定主轴的方向</td>
+<td style="text-align:left">row（默认值）：主轴为水平方向，起点在左端<!-- raw HTML omitted -->row-reverse：主轴为水平方向，起点在右端<!-- raw HTML omitted -->column：主轴为垂直方向，起点在上沿。<!-- raw HTML omitted -->column-reverse：主轴为垂直方向，起点在下沿。</td>
+</tr>
+<tr>
+<td style="text-align:center">flex-wrap</td>
+<td style="text-align:center">默认情况下，所有子容器都排在一条轴线上。flex-wrap属性定义，如果一条轴线排不下，如何换行。</td>
+<td style="text-align:left">nowrap（默认）：不换行。<!-- raw HTML omitted -->wrap：换行，第一行在上方。<!-- raw HTML omitted -->       wrap-reverse：换行，第一行在下方。</td>
+</tr>
+<tr>
+<td style="text-align:center">flex-flow</td>
+<td style="text-align:center">是flex-direction属性和flex-wrap属性的简写形式</td>
+<td style="text-align:left">flex-flow: <code>flex-direction</code> &amp;&amp;<code>flex-wrap</code></td>
+</tr>
+<tr>
+<td style="text-align:center">align-content</td>
+<td style="text-align:center">定义了多根轴线的对齐方式。如果子容器只有一根轴线，该属性不起作用。</td>
+<td style="text-align:left">flex-start：与交叉轴的起点对齐<!-- raw HTML omitted -->     flex-end：与交叉轴的终点对齐。<!-- raw HTML omitted -->center：与交叉轴的中点对齐。<!-- raw HTML omitted -->      space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。<!-- raw HTML omitted -->space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。<!-- raw HTML omitted -->stretch（默认值）：轴线占满整个交叉轴。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>子容器</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">用途</th>
+<th style="text-align:left">值</th>
+<th style="text-align:left">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">order</td>
+<td style="text-align:center">定义子容器的排列顺序。数值越小，排列越靠前，默认为0。</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:center">flex-grow</td>
+<td style="text-align:center">定义子容器的放大比例，默认为0，即如果存在剩余空间，也不放大。</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">如果所有子容器的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个子容器的flex-grow属性为2，其他子容器都为1，则前者占据的剩余空间将比其他项多一倍。</td>
+</tr>
+<tr>
+<td style="text-align:center">flex-shrink</td>
+<td style="text-align:center">定义了子容器的缩小比例，默认为1，即如果空间不足，该项目将缩小。</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">如果所有子容器的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个子容器的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。</td>
+</tr>
+<tr>
+<td style="text-align:center">flex-basis</td>
+<td style="text-align:center">定义了在分配多余空间之前，子容器占据的主轴空间</td>
+<td style="text-align:left">length/auto</td>
+<td style="text-align:left">它可以设为跟width或height一样的值（比如100px），则项目将占据固定空间。</td>
+</tr>
+<tr>
+<td style="text-align:center">align-self</td>
+<td style="text-align:center">属性允许单个子容器有与其他子容器不一样的对齐方式，可覆盖align-items。默认值为auto，表示继承父容器的align-items属性，如果没有父元素，则等同于stretch。</td>
+<td style="text-align:left">auto / flex-start /flex-end / center / baseline / stretch</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:center">flex</td>
+<td style="text-align:center">flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。</td>
+<td style="text-align:left"><code>flex-grow</code> &amp;&amp; <code>flex-shrink</code> &amp;&amp;  <code>flex-basis </code></td>
+<td style="text-align:left">flex: 1 = flex: 1 1 0 <!-- raw HTML omitted -->flex: 2 = flex: 2 1 0<!-- raw HTML omitted -->flex: auto = flex: 1 1 auto<!-- raw HTML omitted -->flex: none = flex: 0 0 auto</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="5css匹配是从右向左匹配的">5.css匹配是从右向左匹配的</h2>
+<p>如下面为例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="s">&#34;container&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="s">&#34;content&#34;</span><span class="p">&gt;</span> 
+    <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>content<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="s">&#34;content&#34;</span><span class="p">&gt;</span> 
+    <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>content<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="s">&#34;content&#34;</span><span class="p">&gt;</span>  
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="s">&#34;wrap&#34;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>here<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css"><span class="p">.</span><span class="nc">container</span> <span class="p">.</span><span class="nc">content</span> <span class="p">.</span><span class="nc">wrap</span> <span class="nt">span</span> <span class="p">{</span><span class="k">color</span><span class="p">:</span> <span class="kc">red</span><span class="p">;}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果从左向右，大量的性能浪费在了匹配元素上，会先从container开始向下遍历寻找content再继续找wrap 最后找到符合的span。如果在找span的过程中发现某一节点不对，还需要向上回溯，加入有100个content，往上回溯就会很损失性能。</p>
+<p>但如果从右向左，会先找到所有的span，对于每一个span再向上找wrap,以此类推。</p>
+<p>但如果在叶子上存在多个不符合条件的span，从右向左也会比较耗能。但平均的来看从右向左还是更高效一些。</p>
+<hr>
+<h2 id="6居中布局">6.居中布局</h2>
+<h3 id="行内元素">行内元素</h3>
+<ul>
+<li>我们可以利用<code>text-align: center</code>来实现元素的<code>水平居中</code>。</li>
+</ul>
+<h3 id="块级元素">块级元素</h3>
+<ul>
+<li>
+<p>已知宽高</p>
+<p>（1）我们可以利用<code>margin:0 auto</code>来实现元素的<code>水平居中</code>。</p>
+<p>（2）我们可以利用<code>line-height: height</code>来实现元素的<code>垂直居中</code>。</p>
+<p>（3）利用<code>position: absolute</code>+<code>top: 0; left: 0; right: 0; bottom: 0</code>+<code>margin: 0</code>，由于宽高固定，因此对应方向实现平分，可以实现<code>水平和垂直居中</code>。</p>
+<p>（4）利用<code>position: absolute</code>，将元素通过<code>top:50%; left:50%</code>到页面中心，然后再通过<code>margin负值</code>来调整元素的中心点到页面中心,可以实现<code>水平和垂直居中</code>。</p>
+</li>
+<li>
+<p>宽高不限</p>
+<p>（4）利用<code>position: absolute</code>，将元素通过<code>top:50%; left:50%</code>到页面中心，然后再通过<code>translate</code>来调整元素的中心点到页面的中心,可以实现<code>水平和垂直居中</code>。</p>
+<p>（5）使用<code>display: flex</code>布局，通过<code>align-items:center; justify-content:center</code>设置容器的垂直和水平方向上为居中对齐，实现子元素也可以<code>垂直水平居中</code>。</p>
+<p>(6) 使用<code>display: table</code>布局，通过<code>align-items:center; justify-content:center</code>设置容器的垂直和水平方向上为居中对齐，实现子元素也可以<code>垂直水平居中</code>。</p>
+</li>
+</ul>
+<hr>
+<h2 id="7grid">7.grid</h2>
+<p>grid是网格布局，分成一块一块的网格；可以说flex是一维布局，而grid是二维布局。和flex类似分为容器和项目。</p>
+<h3 id="容器属性">容器属性</h3>
+<ul>
+<li><code>display: grid</code>容器是块级元素; <code>display:inline-grid;</code>容器是行内元素</li>
+<li><code>grid-template-columns</code> 设置列宽; <code>grid-template-rows</code> 设置行高
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css"><span class="c">/*  声明了三列，宽度分别为 200px 100px 200px */</span>
+<span class="nt">grid-template-columns</span><span class="o">:</span> <span class="nt">200px</span> <span class="nt">100px</span> <span class="nt">200px</span><span class="o">;</span>
+ <span class="c">/*  声明了两行，行高分别为 50px 50px  */</span>
+<span class="nt">grid-template-rows</span><span class="o">:</span> <span class="nt">50px</span> <span class="nt">50px</span><span class="o">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>repeat() 函数</strong>：可以简化重复的值。该函数接受两个参数，第一个参数是重复的次数，第二个参数是所要重复的值。上面的两行等高就可以写成这样: <code>grid-template-rows: repeat(2, 50px);</code></li>
+<li><strong>auto-fill 关键字</strong>：表示自动填充，让一行（或者一列）中尽可能的容纳更多的单元格。<code>grid-template-columns: repeat(auto-fill, 100px)</code> 表示列宽是 100 px，但列的数量是不固定的，随着浏览器的宽度自适应放置元素。</li>
+<li><strong>fr 关键字</strong>：fr 单位代表网格容器中可用空间的一等份。<code>grid-template-columns: 200px 1fr 2fr</code> 表示第一个列宽设置为 200px，后面剩余的宽度分为两部分，宽度分别为剩余宽度的 1/3 和 2/3。</li>
+<li><strong>minmax() 函数</strong>：它接受两个参数，分别为最小值和最大值。<code>grid-template-columns: 1fr 1fr minmax(300px, 2fr)</code> 表示第三个列宽最少也是要 300px，但是最大不能大于第一第二列宽的两倍。</li>
+<li><strong>auto 关键字</strong>：<code>grid-template-columns: 100px auto 100px</code> 表示第一第三列为 100px，中间由浏览器决定长度.</li>
+</ul>
+</li>
+<li><code>grid-row-gap</code> 设置行间距。</li>
+<li><code>grid-column-gap</code>设置列间距。</li>
+<li><code>grid-gap</code> 是<code>grid-row-gap</code>、<code>grid-column-gap</code>的简写形式。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css">  <span class="c">/* 行间距10 */</span>
+  <span class="nt">grid-row-gap</span><span class="o">:</span> <span class="nt">10px</span><span class="o">;</span> 
+  <span class="c">/* 列间距20 */</span>
+  <span class="nt">grid-column-gap</span><span class="o">:</span> <span class="nt">20px</span> <span class="o">;</span>
+
+  <span class="c">/* 行间距10,列间距20 */</span>
+  <span class="nt">grid-gap</span><span class="o">:</span> <span class="nt">10px</span> <span class="nt">20px</span><span class="o">;</span> 
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p><code>grid-template-areas</code>:用于定义区域，一个区域由一个或者多个单元格组成(与<code>grid-area</code>搭配使用)</p>
+</li>
+<li>
+<p><code>grid-auto-flow</code>:类似flex的flex-direction,定义元素怎样排列。默认的放置顺序是&quot;先行后列&quot;(row),column-&ldquo;先列后行&rdquo;。<code>dense</code>表示尽可能的铺满表格。</p>
+</li>
+<li>
+<p><code>justify-items</code>: start | end | center | stretch 设置单元格内容的水平位置（左中右）</p>
+</li>
+<li>
+<p><code>align-items</code> : start | end | center | stretch 设置单元格的垂直位置（上中下）</p>
+</li>
+<li>
+<p><code>justify-content</code>: start | end | center | stretch | space-around | space-between | space-evenly 整个内容区域在容器里面的水平位置（左中右）</p>
+</li>
+<li>
+<p><code>align-content</code>:  start | end | center | stretch | space-around | space-between | space-evenly  整个内容区域的垂直位置（上中下）。</p>
+</li>
+<li>
+<p><code>grid-template-columns</code> 、 <code>grid-template-rows</code> 设置隐性网格的列宽列高。</p>
+<blockquote>
+<p>grid-template-columns 属性和 grid-template-rows 属性只是指定了两行两列，但实际有九个元素，就会产生隐式网格。通过 grid-auto-rows 可以指定隐式网格的行高为 50px。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="项目属性">项目属性</h3>
+<ul>
+<li>
+<p><code>grid-column-start</code> ：左边框所在的垂直网格线</p>
+</li>
+<li>
+<p><code>grid-row-start</code> ：上边框所在的水平网格线</p>
+</li>
+<li>
+<p><code>grid-row-end</code> ：下边框所在的水平网格线</p>
+</li>
+<li>
+<p><code>grid-column-end</code> ：右边框所在的垂直网格线</p>
+</li>
+<li>
+<p><code>grid-area</code>:指定项目放在哪一个区域（与<code>grid-template-areas</code>搭配使用）</p>
+</li>
+<li>
+<p><code>justify-self</code> 属性设置单元格内容的水平位置（左中右），跟justify-items用法完全一致，但只作用于单个项目</p>
+</li>
+<li>
+<p><code>align-self</code> 属性设置单元格内容的垂直位置（上中下），跟align-items用法完全一致，但只作用于单个项目</p>
+</li>
+</ul>
+<h3 id="兼容性">兼容性</h3>
+<p><img src="https://user-gold-cdn.xitu.io/2020/7/26/17389592fa541366?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="image"></p>
+<h3 id="示例httpscodepenioyjuanjuanpengrwjldn"><a href="https://codepen.io/yjuanjuan/pen/GRWJLdN">示例</a></h3>
+<hr>
+<h2 id="8旋转跳跃">8.旋转跳跃</h2>
+<h3 id="transform">transform</h3>
+<ul>
+<li>translate:设置元素在 X轴或者 Y轴上的平移</li>
+<li>scale:设置元素在 X轴或者 Y轴上的缩放</li>
+<li>rotate: 二维空间中，围绕屏幕法向量旋转，等同于 rotateZ</li>
+<li>skew: 设置 X轴和 Y轴的倾斜角度</li>
+<li>matrix</li>
+</ul>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function">MDN详情</a></p>
+<h3 id="animation">animation</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">参考值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">animation-duration</td>
+<td style="text-align:left">指定动画完成一个周期所需要时间，单位秒（s）或毫秒（ms），默认是 0。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">animation-timing-function</td>
+<td style="text-align:left">动画的速度曲线，默认是 &ldquo;ease&rdquo;。</td>
+<td style="text-align:left"><code>ease</code>: 慢-&gt;快-&gt;慢 <!-- raw HTML omitted --><code>line</code>: 匀速  <!-- raw HTML omitted --><code>ease-in</code>: 低速开始 <!-- raw HTML omitted --><code>ease-ou</code>t: 低速结束 始 <!-- raw HTML omitted --><code>cubic-bezier(number, number, number, number)</code>：特定的贝塞尔曲线类型，4个数值需在[0, 1]区间内</td>
+</tr>
+<tr>
+<td style="text-align:left">animation-delay</td>
+<td style="text-align:left">指定动画延迟时间，即动画何时开始，默认是 0。</td>
+<td style="text-align:left">number</td>
+</tr>
+<tr>
+<td style="text-align:left">animation-iteration-count</td>
+<td style="text-align:left">指定动画播放的次数，默认是 1</td>
+<td style="text-align:left">number:具体次数 <!-- raw HTML omitted -->infinite: 无限循环</td>
+</tr>
+<tr>
+<td style="text-align:left">animation-direction</td>
+<td style="text-align:left">指定动画播放的方向。默认是 normal。</td>
+<td style="text-align:left">normal：正常方向 <!-- raw HTML omitted -->  reverse：反方向运行  <!-- raw HTML omitted -->alternate：动画先正常运行再反方向运行，并持续交替运行  <!-- raw HTML omitted --> alternate-reverse：动画先反运行再正方向运行，并持续交替运行</td>
+</tr>
+<tr>
+<td style="text-align:left">animation-fill-mode</td>
+<td style="text-align:left">指定动画填充模式。默认是 none。</td>
+<td style="text-align:left">none：默认值。不设置对象动画之外的状态 <!-- raw HTML omitted -->forwards：设置对象状态为动画结束时的状态 <!-- raw HTML omitted -->backwards：设置对象状态为动画开始时的状态 <!-- raw HTML omitted -->both：设置对象状态为动画结束或开始的状态</td>
+</tr>
+<tr>
+<td style="text-align:left">animation-play-state</td>
+<td style="text-align:left">指定动画播放状态，正在运行或暂停。默认是 running。</td>
+<td style="text-align:left">running：运动    <!-- raw HTML omitted --> paused：暂停</td>
+</tr>
+<tr>
+<td style="text-align:left">animation-name</td>
+<td style="text-align:left">指定 @keyframes 动画的名称。</td>
+<td style="text-align:left">string</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://juejin.cn/post/6854573213230317576">一些动画</a></p>
+<hr>
+<h2 id="9响应式布局">9.响应式布局</h2>
+<ul>
+<li>
+<p>自适应布局：同一张网页自动适应不同大小的屏幕，根据屏幕宽度，自动调整网页内容大小。</p>
+</li>
+<li>
+<p>响应式布局：可以自动识别屏幕宽度、并做出相应调整的网页设计，布局和展示的内容可能会有所变动。</p>
+</li>
+<li>
+<p>区别：如果网页内容过多，整体会显得拥挤。所以响应式布局是自适应布局的改进，布局和展示的内容可能会有所变动。</p>
+</li>
+</ul>
+<h2 id="10移动端适配">10.移动端适配</h2>
+<p><a href="../../daily/2020-03-05-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D">几种设配方案</a></p>
+<h2 id="参考文章">参考文章</h2>
+<p><a href="https://juejin.cn/post/6854573220306255880">grid</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Quaner</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2021-04-20
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/css/">css</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/interview/write/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">手写代码</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/interview/react/">
+            <span class="next-text nav-default">react</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>Quaner</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

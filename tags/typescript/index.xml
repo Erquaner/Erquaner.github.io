@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>typescript on Eating...Hungry..</title>
+    <link>http://localhost:1313/tags/typescript/</link>
+    <description>Recent content in typescript on Eating...Hungry..</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 04 May 2021 16:25:20 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/typescript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ts</title>
+      <link>http://localhost:1313/interview/ts/</link>
+      <pubDate>Tue, 04 May 2021 16:25:20 +0800</pubDate>
+      
+      <guid>http://localhost:1313/interview/ts/</guid>
+      <description>typescript中interface 和type的区别 Answer: 1 2 3 4 5 interface SetPoint { (x: number, y: number): void; } type SetPoint = (x: number, y: number) =&amp;gt; void; 1 2 3 4 5 6 7 8 //number type MyNumber = number; //dom let div = document.createElement(&amp;#39;div&amp;#39;);</description>
+    </item>
+    
+  </channel>
+</rss>

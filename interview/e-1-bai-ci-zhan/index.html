@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title> - Eating...Hungry..</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Quaner" /><meta name="description" content="Q1：typescript中interface 和type的区别 Answer: 1 2 3 4 5 interface SetPoint { (x: number, y: number): void; } type SetPoint = (x: number, y: number) =&amp;gt; void; 1 2 3 4 5 6 7 8 //number type MyNumber = number; //dom let" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.80.0 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/interview/e-1-bai-ci-zhan/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="" />
+<meta property="og:description" content="Q1：typescript中interface 和type的区别 Answer: 1 2 3 4 5 interface SetPoint { (x: number, y: number): void; } type SetPoint = (x: number, y: number) =&gt; void; 1 2 3 4 5 6 7 8 //number type MyNumber = number; //dom let" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/interview/e-1-bai-ci-zhan/" />
+<meta property="article:published_time" content="2021-05-01T16:25:20+08:00" />
+<meta property="article:modified_time" content="2021-05-01T16:25:20+08:00" />
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Q1：typescript中interface 和type的区别 Answer: 1 2 3 4 5 interface SetPoint { (x: number, y: number): void; } type SetPoint = (x: number, y: number) =&gt; void; 1 2 3 4 5 6 7 8 //number type MyNumber = number; //dom let">
+<meta itemprop="datePublished" content="2021-05-01T16:25:20+08:00" />
+<meta itemprop="dateModified" content="2021-05-01T16:25:20+08:00" />
+<meta itemprop="wordCount" content="762">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Q1：typescript中interface 和type的区别 Answer: 1 2 3 4 5 interface SetPoint { (x: number, y: number): void; } type SetPoint = (x: number, y: number) =&gt; void; 1 2 3 4 5 6 7 8 //number type MyNumber = number; //dom let"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Quaner</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/daily/">
+        <li class="mobile-menu-item">小笔记</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Quaner</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/daily/">小笔记</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title"></h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-05-01 </span>
+        
+          <span class="more-meta"> 约 762 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#q1typescript中interface-和type的区别">Q1：typescript中interface 和type的区别</a></li>
+    <li><a href="#q-css服务端样式注入">Q: css服务端样式注入</a></li>
+    <li><a href="#q-1transform-translatex20px-2margin-left-20px-3position-relative-left-20px哪个性能更好">Q: 1.transform: translateX(20px); 2.margin-left: 20px; 3.position: relative; left: 20px;哪个性能更好？</a></li>
+    <li><a href="#q-了解哪些css函数">Q: 了解哪些css函数</a></li>
+    <li><a href="#q-了解webpack吗说一说">Q: 了解webpack吗，说一说</a></li>
+    <li><a href="#q-点击链接跳转前发送的请求会丢失吗">Q: 点击链接跳转前发送的请求会丢失吗</a></li>
+    <li><a href="#q-协商缓存强缓存">Q: 协商缓存、强缓存</a></li>
+    <li><a href="#q-跨域怎么解决--跨域的时候服务端会收到请求吗客户端会收到返回吗">Q: 跨域怎么解决  跨域的时候服务端会收到请求吗？客户端会收到返回吗？</a></li>
+    <li><a href="#q-为什么react项目里会引用react-dom-react-native-里要引用react-dom吗">Q: 为什么react项目里会引用react-dom, react-native 里要引用react-dom吗？</a></li>
+    <li><a href="#q浏览器事件机制冒泡捕获等react事件机制">Q：浏览器事件机制（冒泡捕获等）、React事件机制</a></li>
+    <li><a href="#q-为什么不能在条件语句循环里用hooks">Q: 为什么不能在条件语句、循环里用hooks</a></li>
+    <li><a href="#q-fiber-了解吗说一说">Q: fiber 了解吗？说一说</a></li>
+    <li><a href="#q-哪些hooks对应class-component-的哪些生命周期">Q: 哪些hooks对应class component 的哪些生命周期</a></li>
+    <li><a href="#q-useeffect里面返回一个函数这个是发生在什么周期加上依赖的话也是发生在这个周期吗">Q: useEffect里面返回一个函数，这个是发生在什么周期，加上依赖的话也是发生在这个周期吗？</a></li>
+    <li><a href="#q-next里面的react-和浏览器里面的react有什么区别">Q: next里面的react 和浏览器里面的react有什么区别？</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="q1typescript中interface-和type的区别">Q1：typescript中interface 和type的区别</h2>
+<p>Answer:</p>
+<!-- raw HTML omitted -->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">interface</span> <span class="nx">SetPoint</span> <span class="p">{</span>
+  <span class="p">(</span><span class="nx">x</span>: <span class="kt">number</span><span class="p">,</span> <span class="nx">y</span>: <span class="kt">number</span><span class="p">)</span><span class="o">:</span> <span class="k">void</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">type</span> <span class="nx">SetPoint</span> <span class="o">=</span> <span class="p">(</span><span class="nx">x</span>: <span class="kt">number</span><span class="p">,</span> <span class="nx">y</span>: <span class="kt">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts">
+<span class="c1">//number
+</span><span class="c1"></span><span class="kr">type</span> <span class="nx">MyNumber</span> <span class="o">=</span> <span class="kt">number</span><span class="p">;</span>
+
+<span class="c1">//dom
+</span><span class="c1"></span><span class="kd">let</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
+<span class="kr">type</span> <span class="nx">MyDiv</span> <span class="o">=</span> <span class="k">typeof</span> <span class="nx">div</span><span class="p">;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<ul>
+<li>interface extends interface
+<code>ts interface PointX {x: number} interface Point extends PointX {y: number}</code></li>
+<li>interface extends type
+<code>ts type PointX = { x: number; } interface Point extends PointX {y: number}</code></li>
+<li>type extends type
+<code>ts type PointX = { x: number; }; type PointY= { y: number; }; type Point =  PointX  &amp; PointY</code></li>
+<li>type extends interface
+<code>ts type PointX = { x: number; }; interface PointY  {x: number} type Point =  PointX  &amp; PointY</code></li>
+</ul>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">interface</span> <span class="nx">User</span> <span class="p">{</span>
+  <span class="nx">name</span>: <span class="kt">string</span>
+<span class="p">}</span>
+<span class="kr">interface</span> <span class="nx">User</span> <span class="p">{</span>
+  <span class="nx">password</span>: <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="c1">//此时User -&gt; {name: string; password: string}
+</span></code></pre></td></tr></table>
+</div>
+</div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">type</span> <span class="nx">Status</span> <span class="o">=</span> <span class="mi">200</span><span class="o">|</span><span class="mi">500</span>
+
+<span class="kr">type</span> <span class="nx">StatusMap</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">[</span><span class="nx">key</span> <span class="k">in</span> <span class="nx">Status</span><span class="p">]</span><span class="o">:</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">test</span>:<span class="kt">StatusMap</span>  <span class="o">=</span> <span class="p">{</span>
+  <span class="mi">200</span><span class="o">:</span> <span class="s2">&#34;ok&#34;</span><span class="p">,</span>
+  <span class="mi">500</span><span class="o">:</span> <span class="s2">&#34;server error&#34;</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+</span><span class="cm">报错 
+</span><span class="cm">接口中的计算属性名称必须引用必须引用类型为文本类型或 &#34;unique symbol&#34; 的表达式。
+</span><span class="cm">计算属性名的类型必须为 &#34;string&#34;、&#34;number&#34;、&#34;symbol&#34; 或 &#34;any&#34;。
+</span><span class="cm">“Status”仅表示类型，但在此处却作为值使用。
+</span><span class="cm">**/</span>
+<span class="c1">//interface StatusMap2 {
+</span><span class="c1">//  [key in Status]: string
+</span><span class="c1">//}
+</span></code></pre></td></tr></table>
+</div>
+</div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">export</span> <span class="k">default</span> <span class="kr">interface</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="nx">name</span>: <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="c1">//会报错
+</span><span class="c1">// export default type Person = {
+</span><span class="c1">//   name: string
+</span><span class="c1">// }
+</span><span class="c1"></span>
+<span class="kr">type</span> <span class="nx">Person1</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">name</span>: <span class="kt">string</span>
+<span class="p">}</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">Person1</span>
+</code></pre></td></tr></table>
+</div>
+</div><!-- raw HTML omitted -->
+<h2 id="q-css服务端样式注入">Q: css服务端样式注入</h2>
+<h2 id="q-1transform-translatex20px-2margin-left-20px-3position-relative-left-20px哪个性能更好">Q: 1.transform: translateX(20px); 2.margin-left: 20px; 3.position: relative; left: 20px;哪个性能更好？</h2>
+<h2 id="q-了解哪些css函数">Q: 了解哪些css函数</h2>
+<h2 id="q-了解webpack吗说一说">Q: 了解webpack吗，说一说</h2>
+<h2 id="q-点击链接跳转前发送的请求会丢失吗">Q: 点击链接跳转前发送的请求会丢失吗</h2>
+<h2 id="q-协商缓存强缓存">Q: 协商缓存、强缓存</h2>
+<h2 id="q-跨域怎么解决--跨域的时候服务端会收到请求吗客户端会收到返回吗">Q: 跨域怎么解决  跨域的时候服务端会收到请求吗？客户端会收到返回吗？</h2>
+<h2 id="q-为什么react项目里会引用react-dom-react-native-里要引用react-dom吗">Q: 为什么react项目里会引用react-dom, react-native 里要引用react-dom吗？</h2>
+<h2 id="q浏览器事件机制冒泡捕获等react事件机制">Q：浏览器事件机制（冒泡捕获等）、React事件机制</h2>
+<h2 id="q-为什么不能在条件语句循环里用hooks">Q: 为什么不能在条件语句、循环里用hooks</h2>
+<p><a href="https://zh-hans.reactjs.org/docs/hooks-rules.html#explanation">官方文档解释</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/65012054">https://zhuanlan.zhihu.com/p/65012054</a></p>
+<h2 id="q-fiber-了解吗说一说">Q: fiber 了解吗？说一说</h2>
+<h2 id="q-哪些hooks对应class-component-的哪些生命周期">Q: 哪些hooks对应class component 的哪些生命周期</h2>
+<h2 id="q-useeffect里面返回一个函数这个是发生在什么周期加上依赖的话也是发生在这个周期吗">Q: useEffect里面返回一个函数，这个是发生在什么周期，加上依赖的话也是发生在这个周期吗？</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="p">[</span><span class="nx">name</span><span class="p">,</span> <span class="nx">setName</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nx">useState</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">xxxxxxx</span>
+  <span class="p">()</span> <span class="p">=&gt;</span> <span class="nx">xxxxxx</span>
+<span class="p">},</span> <span class="p">[</span><span class="nx">name</span><span class="p">])</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="q-next里面的react-和浏览器里面的react有什么区别">Q: next里面的react 和浏览器里面的react有什么区别？</h2>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Quaner</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2021-05-01
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/interview/design-mode/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">设计模式</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/interview/e-5-tu-zhan/">
+            <span class="next-text nav-default"></span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>Quaner</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

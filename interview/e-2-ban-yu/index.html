@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title> - Eating...Hungry..</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Quaner" /><meta name="description" content="一面 说一说ES6的新特性吧 map, object的key都是字符串吗 promise promise为了解决什么问题 promise原理了解过吗 浏览器缓存机制 etag last-modified 的作" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.80.0 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/interview/e-2-ban-yu/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="" />
+<meta property="og:description" content="一面 说一说ES6的新特性吧 map, object的key都是字符串吗 promise promise为了解决什么问题 promise原理了解过吗 浏览器缓存机制 etag last-modified 的作" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/interview/e-2-ban-yu/" />
+<meta property="article:published_time" content="2021-05-20T16:25:20+08:00" />
+<meta property="article:modified_time" content="2021-05-20T16:25:20+08:00" />
+<meta itemprop="name" content="">
+<meta itemprop="description" content="一面 说一说ES6的新特性吧 map, object的key都是字符串吗 promise promise为了解决什么问题 promise原理了解过吗 浏览器缓存机制 etag last-modified 的作">
+<meta itemprop="datePublished" content="2021-05-20T16:25:20+08:00" />
+<meta itemprop="dateModified" content="2021-05-20T16:25:20+08:00" />
+<meta itemprop="wordCount" content="213">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="一面 说一说ES6的新特性吧 map, object的key都是字符串吗 promise promise为了解决什么问题 promise原理了解过吗 浏览器缓存机制 etag last-modified 的作"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Quaner</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/daily/">
+        <li class="mobile-menu-item">小笔记</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Quaner</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/daily/">小笔记</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title"></h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-05-20 </span>
+        
+          <span class="more-meta"> 约 213 字 </span>
+          <span class="more-meta"> 预计阅读 1 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一面">一面</a>
+      <ul>
+        <li><a href="#说一说es6的新特性吧">说一说ES6的新特性吧</a></li>
+        <li><a href="#map-object的key都是字符串吗">map, object的key都是字符串吗</a></li>
+        <li><a href="#promise">promise</a></li>
+        <li><a href="#浏览器缓存机制">浏览器缓存机制</a></li>
+        <li><a href="#etag-last-modified-的作用-是否都需要存在只存在etag不是更好吗">etag last-modified 的作用 ，是否都需要存在？只存在etag不是更好吗？</a></li>
+        <li><a href="#小程序底层机制了解吗">小程序底层机制了解吗？</a></li>
+        <li><a href="#为什么使用typescript">为什么使用typescript?</a></li>
+        <li><a href="#看输出">看输出</a></li>
+        <li><a href="#算法最长不重复子串">算法：最长不重复子串</a></li>
+      </ul>
+    </li>
+    <li><a href="#二面">二面</a>
+      <ul>
+        <li><a href="#主要问项目">主要问项目</a></li>
+        <li><a href="#虚拟列表怎么实现">虚拟列表怎么实现</a></li>
+      </ul>
+    </li>
+    <li><a href="#三面">三面</a>
+      <ul>
+        <li><a href="#自我介绍">自我介绍</a></li>
+        <li><a href="#为什么离职">为什么离职</a></li>
+        <li><a href="#优缺点">优缺点</a></li>
+        <li><a href="#最有成就感的事情">最有成就感的事情</a></li>
+        <li><a href="#从组长身上学到了什么">从组长身上学到了什么</a></li>
+        <li><a href="#有什么要问的">有什么要问的</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="一面">一面</h2>
+<h3 id="说一说es6的新特性吧">说一说ES6的新特性吧</h3>
+<h3 id="map-object的key都是字符串吗">map, object的key都是字符串吗</h3>
+<h3 id="promise">promise</h3>
+<h4 id="promise为了解决什么问题">promise为了解决什么问题</h4>
+<h4 id="promise原理了解过吗">promise原理了解过吗</h4>
+<h3 id="浏览器缓存机制">浏览器缓存机制</h3>
+<h3 id="etag-last-modified-的作用-是否都需要存在只存在etag不是更好吗">etag last-modified 的作用 ，是否都需要存在？只存在etag不是更好吗？</h3>
+<h3 id="小程序底层机制了解吗">小程序底层机制了解吗？</h3>
+<h3 id="为什么使用typescript">为什么使用typescript?</h3>
+<h4 id="泛型了解吗">泛型了解吗？</h4>
+<h4 id="了解哪些内置的泛型">了解哪些内置的泛型？</h4>
+<h3 id="看输出">看输出</h3>
+<h3 id="算法最长不重复子串">算法：最长不重复子串</h3>
+<h2 id="二面">二面</h2>
+<h3 id="主要问项目">主要问项目</h3>
+<h3 id="虚拟列表怎么实现">虚拟列表怎么实现</h3>
+<h4 id="虚拟列表带锚点怎么实现">虚拟列表带锚点怎么实现</h4>
+<h2 id="三面">三面</h2>
+<h3 id="自我介绍">自我介绍</h3>
+<h3 id="为什么离职">为什么离职</h3>
+<h3 id="优缺点">优缺点</h3>
+<h3 id="最有成就感的事情">最有成就感的事情</h3>
+<h3 id="从组长身上学到了什么">从组长身上学到了什么</h3>
+<h3 id="有什么要问的">有什么要问的</h3>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Quaner</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2021-05-20
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/interview/e-16-bai-du/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default"></span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/interview/e-3-lan-hu/">
+            <span class="next-text nav-default"></span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>Quaner</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

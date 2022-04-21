@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>音视频 - Eating...Hungry..</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Quaner" /><meta name="description" content="直播相关音视频理论 一个完整的直播链路： 采集 —&amp;gt; 编码 —&amp;gt; 封装 —&amp;gt; 推流 —&amp;gt; 服务器 客户端 —&amp;gt; 拉流 —&amp;gt; 解码 —&amp;g" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.80.0 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/daily/2021-04-23/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="音视频" />
+<meta property="og:description" content="直播相关音视频理论 一个完整的直播链路： 采集 —&gt; 编码 —&gt; 封装 —&gt; 推流 —&gt; 服务器 客户端 —&gt; 拉流 —&gt; 解码 —&g" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/daily/2021-04-23/" />
+<meta property="article:published_time" content="2020-02-01T10:47:01+08:00" />
+<meta property="article:modified_time" content="2020-02-01T10:47:01+08:00" />
+<meta itemprop="name" content="音视频">
+<meta itemprop="description" content="直播相关音视频理论 一个完整的直播链路： 采集 —&gt; 编码 —&gt; 封装 —&gt; 推流 —&gt; 服务器 客户端 —&gt; 拉流 —&gt; 解码 —&g">
+<meta itemprop="datePublished" content="2020-02-01T10:47:01+08:00" />
+<meta itemprop="dateModified" content="2020-02-01T10:47:01+08:00" />
+<meta itemprop="wordCount" content="1950">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="音视频"/>
+<meta name="twitter:description" content="直播相关音视频理论 一个完整的直播链路： 采集 —&gt; 编码 —&gt; 封装 —&gt; 推流 —&gt; 服务器 客户端 —&gt; 拉流 —&gt; 解码 —&g"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Quaner</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/daily/">
+        <li class="mobile-menu-item">小笔记</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Quaner</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/daily/">小笔记</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <h1 id="直播相关音视频理论">直播相关音视频理论</h1>
+<blockquote>
+<p>一个完整的直播链路：</p>
+<p>采集 —&gt;  编码   —&gt;  封装 —&gt; 推流  —&gt; 服务器</p>
+<p>客户端 —&gt;  拉流  —&gt;  解码  —&gt; 渲染</p>
+</blockquote>
+<h2 id="直播传输协议">直播传输协议</h2>
+<p>直播分为推流和拉流。主播端推流，观众端拉流。</p>
+<h3 id="rtmp">RTMP</h3>
+<blockquote>
+<p>Real Time Messaging Protocol，即实时消息传送协议</p>
+</blockquote>
+<p>适合推流，实时较高。</p>
+<h3 id="hls">HLS</h3>
+<p>收到的是m3u8文件和对应的几个ts文件，m3u8是索引文件，用于指定ts的播放顺序。</p>
+<ul>
+<li>使用 HTTPS 加密 ts 文件</li>
+<li>快/倒放</li>
+<li>广告插入</li>
+<li>不同分辨率视频切换</li>
+</ul>
+<p>适合移动端拉流，有一定延迟（tcp握手+u3m8下载+第一个ts下载）。</p>
+<h3 id="http-flv">HTTP-FLV</h3>
+<p>直接发起长连接，下载对应的 FLV 文件。低延时。适合PC拉流。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">协议</th>
+<th style="text-align:center">原理</th>
+<th style="text-align:center">延时</th>
+<th style="text-align:center">优点</th>
+<th>使用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">HLS</td>
+<td style="text-align:center">短链接Http</td>
+<td style="text-align:center">集合一段时间数据生成ts切片文件更新m3u8文件</td>
+<td style="text-align:center">10s - 30s</td>
+<td style="text-align:center">跨平台</td>
+<td>拉流，移动端为主</td>
+</tr>
+<tr>
+<td style="text-align:center">RTMP</td>
+<td style="text-align:center">长链接Tcp</td>
+<td style="text-align:center">每个时刻的数据收到后立即发送</td>
+<td style="text-align:center">1-3s</td>
+<td style="text-align:center">延时低、实时性好</td>
+<td>推流，PC+直播+实时性要求高＋互动性强</td>
+</tr>
+<tr>
+<td style="text-align:center">HDL (HTTP-FLV)</td>
+<td style="text-align:center">短链接HTTP</td>
+<td style="text-align:center">直接发起HTTP连接，下载对应的 FLV 文件</td>
+<td style="text-align:center">1-3s</td>
+<td style="text-align:center">延时低</td>
+<td>拉流，PC+实时性要求高</td>
+</tr>
+</tbody>
+</table>
+<h2 id="视频封装格式">视频封装格式</h2>
+<blockquote>
+<p>以什么方式把视频和音频数据打包成一个文件</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>推出机构</th>
+<th>流媒体</th>
+<th>支持的视频编码</th>
+<th>支持音频编码格式</th>
+<th>应用领域</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AVI</td>
+<td>Mirosoft Inc.</td>
+<td>不支持</td>
+<td>几乎所有</td>
+<td>几乎所有</td>
+<td>下载的视频文件（现在可能很少见到）</td>
+</tr>
+<tr>
+<td>MP4</td>
+<td>MPEG</td>
+<td>支持</td>
+<td>MPEG-2、MPEG-4、H.264</td>
+<td>AAC，MPEG-1 Layers I, II, III、AC-3等</td>
+<td>互联网视频</td>
+</tr>
+<tr>
+<td>TS</td>
+<td>MPEG</td>
+<td>支持</td>
+<td>MPEG-2、MPEG-4、H.264</td>
+<td>AAC，MPEG-1 Layers I, II, III</td>
+<td>互联网视频、IPTV、数字电视</td>
+</tr>
+<tr>
+<td>FLV</td>
+<td>Adobe Inc.</td>
+<td>支持</td>
+<td>Sorenson、VP6、H264</td>
+<td>MP3，ADPCM，Linear PCM、AAC等</td>
+<td>互联网视频</td>
+</tr>
+<tr>
+<td>RMVB</td>
+<td>Real Networks Inc.</td>
+<td>支持</td>
+<td>RealVideo 8，9，10</td>
+<td>AAC、Cook Codec、RealAudio Lossless</td>
+<td>下载的视频文件</td>
+</tr>
+</tbody>
+</table>
+<h2 id="视频编码格式"><strong>视频编码格式</strong></h2>
+<blockquote>
+<p>指的是一种压缩视频图像的算法。</p>
+</blockquote>
+<p>主流的视频编码格式如下：</p>
+<p><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1go6q4fafohj20hh08mq2x.jpg" alt="img"></p>
+<h3 id="ipb-帧">I、P、B 帧</h3>
+<p>I 帧、P 帧、B 帧的区别在于：</p>
+<ul>
+<li>I 帧（Intra coded frames）：I 帧图像采用帧内编码方式，即只利用了单帧图像内的空间相关性，而没有利用时间相关性。I 帧使用帧内压缩，不使用运动补偿，由于 I 帧不依赖其它帧，所以是随机存取的入点，同时是解码的基准帧。I 帧主要用于接收机的初始化和信道的获取，以及节目的切换和插入，I 帧图像的压缩倍数相对较低。I 帧图像是周期性出现在图像序列中的，出现频率可由编码器选择。</li>
+<li>P 帧（Predicted frames）：P 帧和 B 帧图像采用帧间编码方式，即同时利用了空间和时间上的相关性。P 帧图像只采用前向时间预测，可以提高压缩效率和图像质量。P 帧图像中可以包含帧内编码的部分，即 P 帧中的每一个宏块可以是前向预测，也可以是帧内编码。</li>
+<li>B 帧（Bi-directional predicted frames）：B 帧图像采用双向时间预测，可以大大提高压缩倍数。值得注意的是，由于 B 帧图像采用了未来帧作为参考，因此 MPEG-2 编码码流中图像帧的传输顺序和显示顺序是不同的。</li>
+</ul>
+<p>简单地讲，I帧是一个完整的画面，而P帧和B帧记录的是相对于I帧的变化。没有I帧，P帧和B帧就无法解码。</p>
+<p>这就带来一个问题：在视频流中，先到来的 B 帧无法立即解码，需要等待它依赖的后面的 I、P 帧先解码完成，这样一来播放时间与解码时间不一致了，顺序打乱了，那这些帧该如何播放呢？这时就需要我们来了解另外两个概念：DTS 和 PTS。</p>
+<h3 id="dtspts-的概念">DTS、PTS 的概念</h3>
+<p>DTS、PTS 的概念如下所述：</p>
+<ul>
+<li>DTS（Decoding Time Stamp）：即解码时间戳，这个时间戳的意义在于告诉播放器该在什么时候解码这一帧的数据。</li>
+<li>PTS（Presentation Time Stamp）：即显示时间戳，这个时间戳用来告诉播放器该在什么时候显示这一帧的数据。</li>
+</ul>
+<p>需要注意的是：虽然 DTS、PTS 是用于指导播放端的行为，但它们是在编码的时候由编码器生成的。</p>
+<p>当视频流中没有 B 帧时，通常 DTS 和 PTS 的顺序是一致的。但如果有 B 帧时，就回到了我们前面说的问题：解码顺序和播放顺序不一致了。</p>
+<p>比如一个视频中，帧的显示顺序是：I B B P，现在我们需要在解码 B 帧时知道 P 帧中信息，因此这几帧在视频流中的顺序可能是：I P B B，这时候就体现出每帧都有 DTS 和 PTS 的作用了。DTS 告诉我们该按什么顺序解码这几帧图像，PTS 告诉我们该按什么顺序显示这几帧图像。顺序大概如下：</p>
+<ol>
+<li><code>PTS: 1 4 2 3</code></li>
+<li><code>DTS: 1 2 3 4</code></li>
+<li><code>Stream: I P B B</code></li>
+</ol>
+<h2 id="视频播放原理">视频播放原理</h2>
+<p>解协议，解封装，解码视音频，视音频同步。本地视频播放无需解协议。</p>
+<p><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1go6q87ntv6j20740bw74c.jpg" alt="uwxfejdwjo"></p>
+<h2 id="直播视频相关参数">直播视频相关参数</h2>
+<ul>
+<li>
+<p>码流：指视频文件在单位时间内使用的数据流量，也叫码率或码流率, 是视频编码中画面质量控制中最重要的部分。码流越大，采样率越高，越接近原始画面。</p>
+</li>
+<li>
+<p>比特率：在数字多媒体领域，比特率是单位时间播放连续的媒体如压缩后的音频或视频的比特数量。在视频领域,比特率常翻译为码率（和码流实际是一个意思）。</p>
+</li>
+<li>
+<p>分辨率：图像单位英寸中所包含的像素点数，影响画面清晰度</p>
+</li>
+<li>
+<p>帧率 ：  每秒显示帧数(FPS），影响画面流畅度</p>
+</li>
+</ul>
+
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>Quaner</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

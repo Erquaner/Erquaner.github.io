@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>antv/f2(中) - Eating...Hungry..</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Quaner" /><meta name="description" content="html中创建antv f2图表 既可以通过将脚本下载到本地也可以直接引入在线资源。 1 2 3 &amp;lt;!-- 引入在线资源 --&amp;gt; &amp;lt;script src=&amp;#34;https://gw.alipayobjects.com/os/antv/assets/f2/3.4.2/f2.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;!-- 友情提醒：请按需更新版本号。 --&amp;gt; 1" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.80.0 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/daily/2019-12-27-antv-f2%E4%B8%AD/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="antv/f2(中)" />
+<meta property="og:description" content="html中创建antv f2图表 既可以通过将脚本下载到本地也可以直接引入在线资源。 1 2 3 &lt;!-- 引入在线资源 --&gt; &lt;script src=&#34;https://gw.alipayobjects.com/os/antv/assets/f2/3.4.2/f2.min.js&#34;&gt;&lt;/script&gt; &lt;!-- 友情提醒：请按需更新版本号。 --&gt; 1" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/daily/2019-12-27-antv-f2%E4%B8%AD/" />
+<meta property="article:published_time" content="2019-12-27T11:39:23+08:00" />
+<meta property="article:modified_time" content="2019-12-27T11:39:23+08:00" />
+<meta itemprop="name" content="antv/f2(中)">
+<meta itemprop="description" content="html中创建antv f2图表 既可以通过将脚本下载到本地也可以直接引入在线资源。 1 2 3 &lt;!-- 引入在线资源 --&gt; &lt;script src=&#34;https://gw.alipayobjects.com/os/antv/assets/f2/3.4.2/f2.min.js&#34;&gt;&lt;/script&gt; &lt;!-- 友情提醒：请按需更新版本号。 --&gt; 1">
+<meta itemprop="datePublished" content="2019-12-27T11:39:23+08:00" />
+<meta itemprop="dateModified" content="2019-12-27T11:39:23+08:00" />
+<meta itemprop="wordCount" content="470">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="antv/f2(中)"/>
+<meta name="twitter:description" content="html中创建antv f2图表 既可以通过将脚本下载到本地也可以直接引入在线资源。 1 2 3 &lt;!-- 引入在线资源 --&gt; &lt;script src=&#34;https://gw.alipayobjects.com/os/antv/assets/f2/3.4.2/f2.min.js&#34;&gt;&lt;/script&gt; &lt;!-- 友情提醒：请按需更新版本号。 --&gt; 1"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Quaner</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/daily/">
+        <li class="mobile-menu-item">小笔记</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Quaner</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/daily/">小笔记</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <h2 id="html中创建antv-f2图表">html中创建antv f2图表</h2>
+<p>既可以通过将脚本下载到本地也可以直接引入在线资源。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- 引入在线资源 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://gw.alipayobjects.com/os/antv/assets/f2/3.4.2/f2.min.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="c">&lt;!-- 友情提醒：请按需更新版本号。 --&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- 引入本地脚本 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;./f2.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>1.创建canvas标签</li>
+<li>2.编写图表绘制代码
+<ul>
+<li>创建 Chart 图表对象，指定图表 ID、指定图表的宽高、边距等信息；</li>
+<li>载入图表数据源；</li>
+<li>使用图形语法进行图表的绘制；</li>
+<li>渲染图表。</li>
+</ul>
+</li>
+</ul>
+<p>代码如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">canvas</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;myChart&#34;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;400&#34;</span> <span class="na">height</span><span class="o">=</span><span class="s">&#34;260&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">canvas</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://gw.alipayobjects.com/os/antv/assets/f2/3.4.2/f2.min.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span> <span class="nx">genre</span><span class="o">:</span> <span class="s1">&#39;Sports&#39;</span><span class="p">,</span> <span class="nx">sold</span><span class="o">:</span> <span class="mi">275</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nx">genre</span><span class="o">:</span> <span class="s1">&#39;Strategy&#39;</span><span class="p">,</span> <span class="nx">sold</span><span class="o">:</span> <span class="mi">115</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nx">genre</span><span class="o">:</span> <span class="s1">&#39;Action&#39;</span><span class="p">,</span> <span class="nx">sold</span><span class="o">:</span> <span class="mi">120</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nx">genre</span><span class="o">:</span> <span class="s1">&#39;Shooter&#39;</span><span class="p">,</span> <span class="nx">sold</span><span class="o">:</span> <span class="mi">350</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nx">genre</span><span class="o">:</span> <span class="s1">&#39;Other&#39;</span><span class="p">,</span> <span class="nx">sold</span><span class="o">:</span> <span class="mi">150</span> <span class="p">},</span>
+<span class="p">];</span>
+
+<span class="c1">// Step 1: 创建 Chart 对象
+</span><span class="c1"></span><span class="kr">const</span> <span class="nx">chart</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">F2</span><span class="p">.</span><span class="nx">Chart</span><span class="p">({</span>
+  <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;myChart&#39;</span><span class="p">,</span>
+  <span class="nx">pixelRatio</span><span class="o">:</span> <span class="nb">window</span><span class="p">.</span><span class="nx">devicePixelRatio</span><span class="p">,</span> <span class="c1">// 指定分辨率
+</span><span class="c1"></span><span class="p">});</span>
+
+<span class="c1">// Step 2: 载入数据源
+</span><span class="c1"></span><span class="nx">chart</span><span class="p">.</span><span class="nx">source</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+
+<span class="c1">// Step 3：创建图形语法，绘制柱状图，由 genre 和 sold 两个属性决定图形位置，genre 映射至 x 轴，sold 映射至 y 轴
+</span><span class="c1"></span><span class="nx">chart</span>
+  <span class="p">.</span><span class="nx">interval</span><span class="p">()</span>
+  <span class="p">.</span><span class="nx">position</span><span class="p">(</span><span class="s1">&#39;genre*sold&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">color</span><span class="p">(</span><span class="s1">&#39;genre&#39;</span><span class="p">);</span>
+
+<span class="c1">// Step 4: 渲染图表
+</span><span class="c1"></span><span class="nx">chart</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>此时你可以看到这样一张图</p>
+<p><img src="../../static-img/2019-12-27-1.jpg" alt="image"></p>
+<h2 id="react中创建antv-f2图表">React中创建antv f2图表</h2>
+<p>在<code>react</code>中创建和html步骤相似，唯一区别的是，需要将图表创建挂载的信息放在初始化的时候。</p>
+<p>也就是<code>class</code>组件的<code>componentDidMount()</code>里面，函数式组件的<code>useEffect(() =&gt; {}, [])</code>中</p>
+<p><a href="https://codesandbox.io/s/black-voice-wbyno">代码传送门</a></p>
+
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>Quaner</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>手写代码 - Eating...Hungry..</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Quaner" /><meta name="description" content="promise Promise就是为了解决回调地狱的问题而产生的。 特点 Promise 本质是一个状态机，每个 Promise 有三种状态：pending、fulfilled 以及reje" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.80.0 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/interview/write/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="手写代码" />
+<meta property="og:description" content="promise Promise就是为了解决回调地狱的问题而产生的。 特点 Promise 本质是一个状态机，每个 Promise 有三种状态：pending、fulfilled 以及reje" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/interview/write/" />
+<meta property="article:published_time" content="2021-05-01T16:25:20+08:00" />
+<meta property="article:modified_time" content="2021-05-01T16:25:20+08:00" />
+<meta itemprop="name" content="手写代码">
+<meta itemprop="description" content="promise Promise就是为了解决回调地狱的问题而产生的。 特点 Promise 本质是一个状态机，每个 Promise 有三种状态：pending、fulfilled 以及reje">
+<meta itemprop="datePublished" content="2021-05-01T16:25:20+08:00" />
+<meta itemprop="dateModified" content="2021-05-01T16:25:20+08:00" />
+<meta itemprop="wordCount" content="2507">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="手写代码"/>
+<meta name="twitter:description" content="promise Promise就是为了解决回调地狱的问题而产生的。 特点 Promise 本质是一个状态机，每个 Promise 有三种状态：pending、fulfilled 以及reje"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Quaner</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/daily/">
+        <li class="mobile-menu-item">小笔记</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Quaner</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/daily/">小笔记</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">手写代码</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-05-01 </span>
+        
+          <span class="more-meta"> 约 2507 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#promise">promise</a></li>
+    <li><a href="#callapplybind调用及区别">call/apply/bind调用及区别</a></li>
+    <li><a href="#call-实现">call 实现</a></li>
+    <li><a href="#apply实现">apply实现</a></li>
+    <li><a href="#bind实现">bind实现</a></li>
+    <li><a href="#instanceof">instanceof</a></li>
+    <li><a href="#objectcreate">Object.create</a></li>
+    <li><a href="#new">new</a></li>
+    <li><a href="#浅拷贝shallow-clone">浅拷贝shallow clone</a></li>
+    <li><a href="#深拷贝-deep-clone">深拷贝 deep clone</a></li>
+    <li><a href="#xhr">xhr</a></li>
+    <li><a href="#实现并发请求">实现并发请求</a></li>
+    <li><a href="#加法柯里化">加法柯里化</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="promise">promise</h2>
+<ul>
+<li>
+<p>Promise就是为了解决回调地狱的问题而产生的。</p>
+</li>
+<li>
+<p>特点</p>
+<ul>
+<li>Promise 本质是一个状态机，每个 Promise 有三种状态：pending、fulfilled 以及rejected。状态转变只能是- pending —&gt; fulfilled 或者 pending —&gt; rejected。状态转变不可逆。</li>
+<li>then 方法可以被同一个 promise 调用多次。</li>
+<li>then 方法必须返回一个 promise。规范2.2.7中规定， then 必须返回一个新的 Promise</li>
+<li>值穿透</li>
+</ul>
+</li>
+<li>
+<p>实现</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">PENDING</span> <span class="o">=</span> <span class="s2">&#34;PENDING&#34;</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">FULFILLED</span> <span class="o">=</span> <span class="s2">&#34;FULFILLED&#34;</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">REJECTED</span> <span class="o">=</span> <span class="s2">&#34;REJECTED&#34;</span><span class="p">;</span>
+
+<span class="kr">class</span> <span class="nx">WPromise</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="p">(</span><span class="nx">executor</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="nx">PENDING</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">reason</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">callbacks</span> <span class="o">=</span> <span class="p">[];</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="nx">executor</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_resolve</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">),</span> <span class="k">this</span><span class="p">.</span><span class="nx">_reject</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">_reject</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">_resolve</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="k">instanceof</span> <span class="nx">WPromise</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">value</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_resolve</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">),</span> <span class="k">this</span><span class="p">.</span><span class="nx">_reject</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="nx">PENDING</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="nx">FULFILLED</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">callbacks</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">cb</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_handle</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="kr">static</span> <span class="nx">resolve</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 判断是否是thenable对象
+</span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span>
+      <span class="nx">value</span> <span class="k">instanceof</span> <span class="nx">WPromise</span> <span class="o">||</span>
+      <span class="p">(</span><span class="k">typeof</span> <span class="nx">value</span> <span class="o">===</span> <span class="s2">&#34;object&#34;</span> <span class="o">&amp;&amp;</span> <span class="s2">&#34;then&#34;</span> <span class="k">in</span> <span class="nx">value</span><span class="p">)</span>
+    <span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">value</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">WPromise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">resolve</span><span class="p">(</span><span class="nx">value</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="nx">_reject</span><span class="p">(</span><span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">reason</span> <span class="k">instanceof</span> <span class="nx">WPromise</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">reason</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_resolve</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">),</span> <span class="k">this</span><span class="p">.</span><span class="nx">_reject</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="nx">PENDING</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="nx">REJECTED</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">reason</span> <span class="o">=</span> <span class="nx">reason</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">callbacks</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">cb</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_handle</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">_handle</span><span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="p">{</span> <span class="nx">onFailed</span><span class="p">,</span> <span class="nx">onFulfilled</span><span class="p">,</span> <span class="nx">nextReject</span><span class="p">,</span> <span class="nx">nextResolve</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">cb</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="nx">PENDING</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">callbacks</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="nx">FULFILLED</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kr">const</span> <span class="nx">nextValue</span> <span class="o">=</span>
+        <span class="k">typeof</span> <span class="nx">onFulfilled</span> <span class="o">===</span> <span class="s2">&#34;function&#34;</span>
+          <span class="o">?</span> <span class="nx">onFulfilled</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
+          <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+
+      <span class="nx">nextResolve</span><span class="p">(</span><span class="nx">nextValue</span><span class="p">);</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="nx">REJECTED</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kr">const</span> <span class="nx">nextReason</span> <span class="o">=</span>
+        <span class="k">typeof</span> <span class="nx">onFailed</span> <span class="o">===</span> <span class="s2">&#34;function&#34;</span> <span class="o">?</span> <span class="nx">onFailed</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">reason</span><span class="p">)</span> <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">reason</span><span class="p">;</span>
+
+      <span class="nx">nextReject</span><span class="p">(</span><span class="nx">nextReason</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">then</span><span class="p">(</span><span class="nx">onFulfilled</span><span class="p">,</span> <span class="nx">onFailed</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 值穿透
+</span><span class="c1"></span>    <span class="k">return</span> <span class="k">new</span> <span class="nx">WPromise</span><span class="p">((</span><span class="nx">nextResolve</span><span class="p">,</span> <span class="nx">nextReject</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">_handle</span><span class="p">({</span>
+        <span class="nx">nextReject</span><span class="p">,</span>
+        <span class="nx">nextResolve</span><span class="p">,</span>
+        <span class="nx">onFailed</span><span class="p">,</span>
+        <span class="nx">onFulfilled</span><span class="p">,</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="kr">static</span> <span class="nx">all</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">WPromise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="kr">const</span> <span class="nx">resultArr</span> <span class="o">=</span> <span class="p">[];</span>
+      <span class="kd">let</span> <span class="nx">len</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+      <span class="nb">Array</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nx">arr</span><span class="p">).</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span> <span class="nx">idx</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="nx">WPromise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">item</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+          <span class="nx">resultArr</span><span class="p">[</span><span class="nx">idx</span><span class="p">]</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+          <span class="nx">len</span><span class="o">++</span><span class="p">;</span>
+
+          <span class="k">if</span> <span class="p">(</span><span class="nx">len</span> <span class="o">===</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">resolve</span><span class="p">(</span><span class="nx">resultArr</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">},</span> <span class="nx">reject</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="kr">static</span> <span class="nx">race</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">WPromise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="nb">Array</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nx">arr</span><span class="p">).</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="nx">WPromise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">item</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="callapplybind调用及区别">call/apply/bind调用及区别</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">apply</span><span class="o">:</span> <span class="p">(</span><span class="nx">thisArg</span><span class="p">,</span> <span class="p">[</span><span class="nx">param1</span><span class="p">,</span><span class="nx">param2</span><span class="p">,</span> <span class="nx">param3</span><span class="p">...])</span> <span class="p">=&gt;</span> <span class="nx">result</span>
+<span class="nx">call</span><span class="o">:</span> <span class="p">(</span><span class="nx">thisArg</span><span class="p">,</span> <span class="nx">param1</span><span class="p">,</span><span class="nx">param2</span><span class="p">,</span> <span class="nx">param3</span><span class="p">...)</span> <span class="p">=&gt;</span> <span class="nx">result</span>
+<span class="nx">bind</span><span class="o">:</span> <span class="p">(</span><span class="nx">thisArg</span><span class="p">,</span> <span class="nx">param1</span><span class="p">,</span><span class="nx">param2</span><span class="p">,</span> <span class="nx">param3</span><span class="p">...)</span> <span class="p">=&gt;</span> <span class="kd">function</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>三个函数都是为了修改this指向问题，除了传参不同，apply、call返回的是传入的函数执行结果， bind是返回传入的函数，可以延缓执行。</p>
+<h2 id="call-实现">call 实现</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nb">Function</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">myCall</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">thisArg</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+   <span class="c1">//1.判断参数合法性/////////////////////////
+</span><span class="c1"></span>  <span class="k">if</span> <span class="p">(</span><span class="nx">thisArg</span> <span class="o">===</span> <span class="kc">null</span> <span class="o">||</span> <span class="nx">thisArg</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//指定为 null 和 undefined 的 this 值会自动指向全局对象(浏览器中为window)
+</span><span class="c1"></span>    <span class="nx">thisArg</span> <span class="o">=</span> <span class="nb">window</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">thisArg</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">(</span><span class="nx">thisArg</span><span class="p">);</span>
+    <span class="c1">//创建一个可包含数字/字符串/布尔值的对象，
+</span><span class="c1"></span>    <span class="c1">//thisArg 会指向一个包含该原始值的对象。
+</span><span class="c1"></span>  <span class="p">}</span>
+
+  <span class="c1">//2.搞定this的指向/////////////////////////
+</span><span class="c1"></span>  <span class="kr">const</span> <span class="nx">specialMethod</span> <span class="o">=</span> <span class="nx">Symbol</span><span class="p">(</span><span class="s2">&#34;anything&#34;</span><span class="p">);</span> <span class="c1">//创建一个不重复的常量
+</span><span class="c1"></span>  <span class="c1">//如果调用myCall的函数名是func，也即以func.myCall()形式调用；
+</span><span class="c1"></span>  <span class="c1">//根据上篇文章介绍，则myCall函数体内的this指向func
+</span><span class="c1"></span>  <span class="nx">thisArg</span><span class="p">[</span><span class="nx">specialMethod</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+  <span class="c1">//给thisArg对象建一个临时属性来储存this（也即func函数）
+</span><span class="c1"></span>  <span class="c1">//进一步地，根据上篇文章介绍，func作为thisArg对象的一个方法被调用，那么func中的this便
+</span><span class="c1"></span>  <span class="c1">//指向thisArg对象。由此，巧妙地完成将this隐式地指向到thisArg！
+</span><span class="c1"></span>  <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">thisArg</span><span class="p">[</span><span class="nx">specialMethod</span><span class="p">](...</span><span class="nx">args</span><span class="p">);</span> <span class="c1">//删除临时方法
+</span><span class="c1"></span>  <span class="k">delete</span> <span class="nx">thisArg</span><span class="p">[</span><span class="nx">specialMethod</span><span class="p">];</span> <span class="c1">//返回临时方法的执行结果
+</span><span class="c1"></span>  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="apply实现">apply实现</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nb">Function</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">myApply</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">thisArg</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="o">||</span> <span class="nx">thisArg</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">window</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">thisArg</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">(</span><span class="nx">thisArg</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="nx">isLikeArray</span><span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span>
+      <span class="nx">o</span> <span class="o">&amp;&amp;</span> <span class="c1">// o不是null、undefined等
+</span><span class="c1"></span>      <span class="k">typeof</span> <span class="nx">o</span> <span class="o">===</span> <span class="s2">&#34;object&#34;</span> <span class="o">&amp;&amp;</span> <span class="c1">// o是对象
+</span><span class="c1"></span>      <span class="nb">isFinite</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="c1">// o.length是有限数值
+</span><span class="c1"></span>      <span class="nx">o</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="c1">// o.length为非负值
+</span><span class="c1"></span>      <span class="nx">o</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="c1">// o.length是整数
+</span><span class="c1"></span>      <span class="nx">o</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="mi">4294967296</span>
+    <span class="p">)</span>
+      <span class="c1">// o.length &lt; 2^32
+</span><span class="c1"></span>      <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">let</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">arguments</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+  <span class="kd">let</span> <span class="nx">result</span><span class="p">;</span>
+  <span class="kr">const</span> <span class="nx">specialMethod</span> <span class="o">=</span> <span class="nx">Symbol</span><span class="p">(</span><span class="s2">&#34;anything&#34;</span><span class="p">);</span>
+  <span class="nx">thisArg</span><span class="p">[</span><span class="nx">specialMethod</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+  <span class="c1">// 处理传进来的第二个参数
+</span><span class="c1"></span>  <span class="k">if</span> <span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 是否传递第二个参数
+</span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">isLikeArray</span><span class="p">(</span><span class="nx">args</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nx">TypeError</span><span class="p">(</span><span class="s2">&#34;第二个参数既不为数组，也不为类数组对象。抛出错误&#34;</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">args</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nx">args</span><span class="p">);</span> <span class="c1">// 转为数组
+</span><span class="c1"></span>      <span class="nx">result</span> <span class="o">=</span> <span class="nx">thisArg</span><span class="p">[</span><span class="nx">specialMethod</span><span class="p">](...</span><span class="nx">args</span><span class="p">);</span> <span class="c1">// 执行函数并展开数组，传递函数参数
+</span><span class="c1"></span>    <span class="p">}</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">result</span> <span class="o">=</span> <span class="nx">thisArg</span><span class="p">[</span><span class="nx">specialMethod</span><span class="p">]();</span>
+  <span class="p">}</span>
+
+  <span class="k">delete</span> <span class="nx">thisArg</span><span class="p">[</span><span class="nx">specialMethod</span><span class="p">];</span>
+  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span> <span class="c1">// 返回函数执行结果
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="bind实现">bind实现</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nb">Function</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">myBind</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">objThis</span><span class="p">,</span> <span class="p">...</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+ <span class="kr">const</span> <span class="nx">thisFn</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span> <span class="c1">//存储调用函数，以及上方的params(函数参数)
+</span><span class="c1"></span>  <span class="c1">//对返回的函数 secondParams 二次传参
+</span><span class="c1"></span>  <span class="kd">let</span> <span class="nx">funcForBind</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(...</span><span class="nx">secondParams</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//检查this是否是funcForBind的实例？也就是检查funcForBind是否通过new调用
+</span><span class="c1"></span>    <span class="kr">const</span> <span class="nx">isNew</span> <span class="o">=</span> <span class="k">this</span> <span class="k">instanceof</span> <span class="nx">funcForBind</span><span class="p">;</span>
+
+    <span class="c1">//new调用就绑定到this上,否则就绑定到传入的objThis上
+</span><span class="c1"></span>    <span class="kr">const</span> <span class="nx">thisArg</span> <span class="o">=</span> <span class="nx">isNew</span> <span class="o">?</span> <span class="k">this</span> <span class="o">:</span> <span class="nb">Object</span><span class="p">(</span><span class="nx">objThis</span><span class="p">);</span>
+
+    <span class="c1">//用call执行调用函数，绑定this的指向，并传递参数。返回执行结果
+</span><span class="c1"></span>    <span class="k">return</span> <span class="nx">thisFn</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">thisArg</span><span class="p">,</span> <span class="p">...</span><span class="nx">params</span><span class="p">,</span> <span class="p">...</span><span class="nx">secondParams</span><span class="p">);</span>
+  <span class="p">};</span>
+  <span class="c1">//复制调用函数的prototype给funcForBind
+</span><span class="c1"></span>  <span class="nx">funcForBind</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">(</span><span class="nx">thisFn</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">funcForBind</span><span class="p">;</span> <span class="c1">//返回拷贝函数d
+</span><span class="c1"></span><span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="https://codesandbox.io/s/apply-call-bind-k5vd5?file=/src/App.js">示例</a></p>
+<h2 id="instanceof">instanceof</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">myInstanceof</span> <span class="p">(</span><span class="nx">left</span><span class="p">,</span> <span class="nx">right</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">left</span> <span class="o">!==</span> <span class="s1">&#39;object&#39;</span> <span class="o">||</span> <span class="nx">b</span> <span class="o">===</span>  <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">false</span>
+  <span class="p">}</span>
+  <span class="kd">let</span> <span class="nx">proto</span> <span class="o">=</span> <span class="nx">left</span><span class="p">.</span><span class="nx">__proto__</span>
+  <span class="k">while</span><span class="p">(</span><span class="nx">proto</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">proto</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="k">return</span> <span class="kc">false</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">proto</span> <span class="o">===</span> <span class="nx">right</span><span class="p">.</span><span class="nx">prototype</span><span class="p">)</span> <span class="k">return</span> <span class="kc">true</span>
+    <span class="nx">proto</span> <span class="o">=</span> <span class="nx">proto</span><span class="p">.</span><span class="nx">__proto</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="objectcreate">Object.create</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">createObj</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">properties</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">function</span> <span class="nx">F</span><span class="p">()</span> <span class="p">{}</span>
+  <span class="nx">F</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">obj</span>
+  <span class="kd">let</span> <span class="nx">myObj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">F</span><span class="p">()</span>
+  <span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">properties</span> <span class="o">===</span> <span class="s1">&#39;object&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">Object</span><span class="p">.</span><span class="nx">definproperty</span><span class="p">(</span><span class="nx">myObj</span><span class="p">,</span> <span class="nx">properties</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">myObj</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="new">new</h2>
+<ul>
+<li>创建一个新的对象</li>
+<li>继承父类原型上的方法.</li>
+<li>添加父类的属性到新的对象上并初始化. 保存方法的执行结果.</li>
+<li>如果执行结果有返回值并且是一个对象, 返回执行的结果, 否则, 返回新创建的对象。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">myNew1</span><span class="p">((</span><span class="nx">fn</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">()</span>
+  <span class="nx">obj</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">=</span> <span class="nx">fn</span><span class="p">.</span><span class="nx">prototype</span>
+  <span class="kd">let</span> <span class="nx">res</span> <span class="o">=</span> <span class="nx">fn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">args</span><span class="p">)</span>
+  <span class="k">return</span> <span class="k">typeof</span> <span class="nx">res</span> <span class="o">===</span> <span class="s1">&#39;object&#39;</span> <span class="o">?</span> <span class="nx">res</span><span class="o">:</span> <span class="nx">obj</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">myNew2</span> <span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">({})</span>
+  <span class="kr">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">fn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">args</span><span class="p">)</span>
+  <span class="k">return</span> <span class="nx">value</span> <span class="k">instanceof</span> <span class="nb">Object</span> <span class="o">?</span> <span class="nx">value</span><span class="o">:</span> <span class="nx">obj</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><!-- raw HTML omitted -->
+<p>1.传参区别</p>
+<p>2.Object.create()如果传入构造函数，是不会调用构造函数的，所以构造函数内部的方法属性无法继承</p>
+<!-- raw HTML omitted -->
+<h2 id="浅拷贝shallow-clone">浅拷贝shallow clone</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">//[].concat 、...扩展符、Object.assign({})
+</span><span class="c1"></span><span class="kd">function</span> <span class="nx">shallowCopy</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">key</span><span class="p">))</span> <span class="p">{</span>
+      <span class="nx">result</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">result</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="深拷贝-deep-clone">深拷贝 deep clone</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">deepClone</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WeakMap</span><span class="p">();</span>
+
+  <span class="kd">function</span> <span class="nx">dp</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">existObj</span> <span class="o">=</span> <span class="nx">map</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+    <span class="c1">// 如果这个对象已被记录则直接返回
+</span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nx">existObj</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">existObj</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kd">let</span> <span class="nx">keyArr</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">obj</span><span class="p">),</span>
+      <span class="nx">key</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="nx">temp</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="nx">result</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="nx">map</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">keyArr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">key</span> <span class="o">=</span> <span class="nx">keyArr</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+      <span class="nx">temp</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">temp</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">temp</span> <span class="o">===</span> <span class="s2">&#34;object&#34;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">result</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">dp</span><span class="p">(</span><span class="nx">temp</span><span class="p">);</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">result</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">temp</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">dp</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="xhr">xhr</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">myAjax</span><span class="p">(</span><span class="nx">method</span><span class="p">,</span> <span class="nx">url</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">()</span>
+    <span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">method</span><span class="p">,</span> <span class="nx">url</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+    <span class="nx">xhr</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">resolve</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">responseText</span><span class="p">)</span>
+        <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
+          <span class="nx">reject</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">responseText</span><span class="p">)</span>
+        <span class="p">}</span>
+       <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">method</span> <span class="o">===</span> <span class="s1">&#39;POST&#39;</span><span class="p">)</span> <span class="p">{</span>
+      	<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">&#34;Content-Type&#34;</span><span class="p">,</span><span class="s2">&#34;application/x-www-form-urlencoded&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">method</span> <span class="o">===</span> <span class="s1">&#39;GET&#39;</span> <span class="o">?</span> <span class="kc">null</span> <span class="o">:</span> <span class="nx">data</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="实现并发请求">实现并发请求</h2>
+<h2 id="加法柯里化">加法柯里化</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// 实现一个add方法，使计算结果能够满足如下预期：
+</span><span class="c1"></span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+<span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)(</span><span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)(</span><span class="mi">4</span><span class="p">)(</span><span class="mi">5</span><span class="p">)</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+
+<span class="c1">////////////////////////////////////////
+</span><span class="c1"></span><span class="kd">function</span> <span class="nx">add</span><span class="p">(...</span><span class="nx">outArgs</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 第一次执行时，定义一个数组专门用来存储所有的参数
+</span><span class="c1"></span>    <span class="kr">const</span> <span class="nx">_args</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">outArgs</span><span class="p">]</span>
+
+    <span class="c1">// 在内部声明一个函数，利用闭包的特性保存_args并收集所有的参数值
+</span><span class="c1"></span>    <span class="kr">const</span> <span class="nx">_adder</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">_args</span><span class="p">.</span><span class="nx">push</span><span class="p">(...</span><span class="nx">args</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">_adder</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="c1">// 利用toString隐式转换的特性，当最后执行时隐式转换，并计算最终的值返回
+</span><span class="c1"></span>    <span class="nx">_adder</span><span class="p">.</span><span class="nx">toString</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">_args</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">accumulator</span><span class="p">,</span> <span class="nx">currentValue</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">accumulator</span> <span class="o">+</span> <span class="nx">currentValue</span><span class="p">;</span>
+        <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">_adder</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">////////////////////////////////////////////////////////
+</span><span class="c1"></span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span>                <span class="c1">//&gt;&gt; 6
+</span><span class="c1"></span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)(</span><span class="mi">4</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span>             <span class="c1">//&gt;&gt; 10
+</span><span class="c1"></span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)(</span><span class="mi">4</span><span class="p">)(</span><span class="mi">5</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span>          <span class="c1">//&gt;&gt; 15
+</span><span class="c1"></span><span class="nx">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">)(</span><span class="mi">1</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span>                <span class="c1">//&gt;&gt; 9
+</span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Quaner</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2021-05-01
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/interview/webpack/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">webpack</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/interview/css/">
+            <span class="next-text nav-default">css</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>Quaner</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

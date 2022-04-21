@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>webpack - Eating...Hungry..</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Quaner" /><meta name="description" content="entry 概念 入口起点(entry point) 指示 webpack 应该使用哪个模块来作为构建其内部依赖图(dependency graph)的开始。进入入口起点后，webpa" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.80.0 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/interview/webpack/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.2e81bbed97b8b282c1aeb57488cc71c8d8c8ec559f3931531bd396bf31e0d4dd.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="webpack" />
+<meta property="og:description" content="entry 概念 入口起点(entry point) 指示 webpack 应该使用哪个模块来作为构建其内部依赖图(dependency graph)的开始。进入入口起点后，webpa" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/interview/webpack/" />
+<meta property="article:published_time" content="2021-05-01T16:25:20+08:00" />
+<meta property="article:modified_time" content="2021-05-01T16:25:20+08:00" />
+<meta itemprop="name" content="webpack">
+<meta itemprop="description" content="entry 概念 入口起点(entry point) 指示 webpack 应该使用哪个模块来作为构建其内部依赖图(dependency graph)的开始。进入入口起点后，webpa">
+<meta itemprop="datePublished" content="2021-05-01T16:25:20+08:00" />
+<meta itemprop="dateModified" content="2021-05-01T16:25:20+08:00" />
+<meta itemprop="wordCount" content="2408">
+
+
+
+<meta itemprop="keywords" content="webpack," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="webpack"/>
+<meta name="twitter:description" content="entry 概念 入口起点(entry point) 指示 webpack 应该使用哪个模块来作为构建其内部依赖图(dependency graph)的开始。进入入口起点后，webpa"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Quaner</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/daily/">
+        <li class="mobile-menu-item">小笔记</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Quaner</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/daily/">小笔记</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">webpack</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-05-01 </span>
+        
+          <span class="more-meta"> 约 2408 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#entry">entry</a>
+      <ul>
+        <li><a href="#概念">概念</a></li>
+        <li><a href="#用法">用法</a></li>
+      </ul>
+    </li>
+    <li><a href="#output">output</a>
+      <ul>
+        <li><a href="#概念-1">概念</a></li>
+        <li><a href="#用法-1">用法</a></li>
+      </ul>
+    </li>
+    <li><a href="#loader">loader</a>
+      <ul>
+        <li><a href="#概念-2">概念</a></li>
+        <li><a href="#用法-2">用法</a></li>
+        <li><a href="#特性">特性</a></li>
+        <li><a href="#常见loader">常见loader</a></li>
+      </ul>
+    </li>
+    <li><a href="#plugin">plugin</a>
+      <ul>
+        <li><a href="#概念-3">概念</a></li>
+        <li><a href="#分析">分析</a></li>
+        <li><a href="#用法-3">用法</a></li>
+        <li><a href="#和loader的区别">和loader的区别</a></li>
+        <li><a href="#自己写一个plugin">自己写一个plugin</a></li>
+        <li><a href="#参考文章">参考文章</a></li>
+      </ul>
+    </li>
+    <li><a href="#mode">mode</a>
+      <ul>
+        <li><a href="#概念-4">概念</a></li>
+        <li><a href="#用法-4">用法</a></li>
+        <li><a href="#三种模式">三种模式</a></li>
+      </ul>
+    </li>
+    <li><a href="#浏览器兼容性">浏览器兼容性</a></li>
+    <li><a href="#热更新">热更新</a></li>
+    <li><a href="#treeshaking">treeShaking</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="entry">entry</h2>
+<h3 id="概念">概念</h3>
+<p>入口起点(entry point) 指示 <code>webpack</code> 应该使用哪个模块来作为构建其内部依赖图(dependency graph)的开始。进入入口起点后，webpack 会找出有哪些模块和库是入口起点（直接和间接）依赖的。</p>
+<p>默认值是 ./src/index.js，但你可以通过在 webpack configuration 中配置 entry 属性，来指定一个（或多个）不同的入口起点。</p>
+<h3 id="用法">用法</h3>
+<p><code>entry: string | string[] | {[entryChunkName: string]: string|string[]}</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">entry</span><span class="o">:</span> <span class="s1">&#39;./path/to/my/entry/file.js&#39;</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">entry</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;./path/to/my/entry/file.js&#39;</span><span class="p">,</span> <span class="s1">&#39;./path/to/my/entry/file1.js&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1">//在多页面应用程序中，服务器会传输一个新的 HTML文档给客户端。页面重新加载此新文档，并且资源被重新下载。我们可以使用 optimization.splitChunks 为页面间共享的应用程序代码创建 bundle。由于入口起点增多，多页应用能够复用入口起点之间的大量代码/模块。
+</span><span class="c1"></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">entry</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">pageOne</span><span class="o">:</span> <span class="s1">&#39;./src/pageOne/index.js&#39;</span><span class="p">,</span>
+    <span class="nx">pageTwo</span><span class="o">:</span> <span class="s1">&#39;./src/pageTwo/index.js&#39;</span><span class="p">,</span>
+    <span class="nx">pageThree</span><span class="o">:</span> <span class="s1">&#39;./src/pageThree/index.js&#39;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="output">output</h2>
+<h3 id="概念-1">概念</h3>
+<p>output可以控制 webpack 如何向硬盘写入编译文件。主要输出文件的默认值是 ./dist/main.js，其他生成文件默认放置在 ./dist 文件夹中。</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h3 id="用法-1">用法</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">//将一个单独的 bundle.js 文件输出到 dist 目录中。
+</span><span class="c1"></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">output</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">filename</span><span class="o">:</span> <span class="s1">&#39;bundle.js&#39;</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">//多入口文件：写入到硬盘：./dist/app.js, ./dist/search.js
+</span><span class="c1"></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">entry</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">app</span><span class="o">:</span> <span class="s1">&#39;./src/app.js&#39;</span><span class="p">,</span>
+    <span class="nx">search</span><span class="o">:</span> <span class="s1">&#39;./src/search.js&#39;</span>
+  <span class="p">},</span>
+  <span class="nx">output</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">filename</span><span class="o">:</span> <span class="s1">&#39;[name].js&#39;</span><span class="p">,</span>
+    <span class="nx">path</span><span class="o">:</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/dist&#39;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">//...
+</span><span class="c1"></span>  <span class="nx">output</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/home/proj/cdn/assets/[hash]&#39;</span><span class="p">,</span>
+    <span class="nx">publicPath</span><span class="o">:</span> <span class="s1">&#39;http://cdn.example.com/assets/[hash]/&#39;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><!-- raw HTML omitted -->
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">__webpack_public_path__</span> <span class="o">=</span> <span class="nx">myRuntimePublicPath</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><!-- raw HTML omitted -->
+<hr>
+<h2 id="loader">loader</h2>
+<h3 id="概念-2">概念</h3>
+<p>webpack 只能理解 JavaScript 和 JSON 文件。 loader 用于webpack 对模块的源代码进行转换，以供应用程序使用，以及被添加到依赖图中。</p>
+<h3 id="用法-2">用法</h3>
+<ul>
+<li>
+<p>1.配置：在 webpack.config.js 文件中配置loader（推荐）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">//webpack.config.js
+</span><span class="c1"></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">rules</span><span class="o">:</span> <span class="p">[</span>
+      <span class="c1">//webpack 对每个 .css 使用 css-loader
+</span><span class="c1"></span>      <span class="p">{</span> <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.css$/</span><span class="p">,</span> <span class="nx">use</span><span class="o">:</span> <span class="s1">&#39;css-loader&#39;</span> <span class="p">},</span>
+      <span class="c1">// 对所有 .ts 文件使用 ts-loader：
+</span><span class="c1"></span>      <span class="p">{</span> <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.ts$/</span><span class="p">,</span> <span class="nx">use</span><span class="o">:</span> <span class="s1">&#39;ts-loader&#39;</span> <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><!-- raw HTML omitted -->
+<p>在下面的示例中，执行顺序是sass-loader -&gt; css-loader-&gt; style-loader</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">rules</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.css$/</span><span class="p">,</span>
+        <span class="nx">use</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span> <span class="nx">loader</span><span class="o">:</span> <span class="s1">&#39;style-loader&#39;</span> <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nx">loader</span><span class="o">:</span> <span class="s1">&#39;css-loader&#39;</span><span class="p">,</span>
+            <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">modules</span><span class="o">:</span> <span class="kc">true</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="p">{</span> <span class="nx">loader</span><span class="o">:</span> <span class="s1">&#39;sass-loader&#39;</span> <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>2.内联：import loader</p>
+<p>使用<code>!</code> 将多个loader分开，<code>?</code>拼接参数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js">  <span class="kr">import</span> <span class="nx">Styles</span> <span class="nx">from</span> <span class="s1">&#39;style-loader!css-loader?modules!./styles.css?key=value&amp;foo=bar&#39;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>3.CLI:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">//这会对 .jade 文件使用 jade-loader, .css 文件使用 style-loader 和 css-loader。
+</span><span class="c1"></span>  <span class="nx">webpack</span> <span class="o">--</span><span class="nx">module</span><span class="o">-</span><span class="nx">bind</span> <span class="nx">jade</span><span class="o">-</span><span class="nx">loader</span> <span class="o">--</span><span class="nx">module</span><span class="o">-</span><span class="nx">bind</span> <span class="s1">&#39;css=style-loader!css-loader&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="特性">特性</h3>
+<ul>
+<li>1.可同步，可异步。</li>
+<li>2.链式调用，按照相反的顺序执行，最后返回webpack期望的JavaScript。</li>
+<li>3.loader可以在node中运行</li>
+<li>4.插件(plugin)可以为 loader 带来更多特性。</li>
+</ul>
+<h3 id="常见loader">常见loader</h3>
+<ul>
+<li>1.json-loader:  加载 JSON 文件（默认包含）</li>
+<li>2.样式:
+<ul>
+<li><a href="https://v4.webpack.docschina.org/loaders/style-loader">style-loader</a> 将模块的导出作为样式添加到 DOM 中</li>
+<li><a href="https://v4.webpack.docschina.org/loaders/css-loader">css-loader</a> 解析 CSS 文件后，使用 import 加载，并且返回 CSS 代码</li>
+<li><a href="https://v4.webpack.docschina.org/loaders/less-loader">less-loader</a> 加载和转译 LESS 文件</li>
+<li><a href="https://v4.webpack.docschina.org/loaders/sass-loader">sass-loader</a> 加载和转译 SASS/SCSS 文件</li>
+<li><a href="https://v4.webpack.docschina.org/loaders/postcss-loader">postcss-loader</a> 使用 PostCSS 加载和转译 CSS/SSS 文件</li>
+<li><a href="https://v4.webpack.docschina.org/loaders/stylus-loader">stylus-loader</a> 加载和转译 Stylus 文件</li>
+</ul>
+</li>
+<li>
+<ol start="3">
+<li>转译</li>
+</ol>
+<ul>
+<li><a href="https://v4.webpack.docschina.org/loaders/ts-loader">ts-loader</a> 或 <a href="https://v4.webpack.docschina.org/loaders/awesome-typescript-loader">awesome-typescript-loader</a> 像 JavaScript 一样加载 TypeScript 2.0+</li>
+<li><a href="https://v4.webpack.docschina.org/loaders/script-loader">script-loader</a> 在全局上下文中执行一次 JavaScript 文件（如在 script 标签），不需要解析</li>
+<li><a href="https://v4.webpack.docschina.org/loaders/babel-loader">babel-loader</a> 加载 ES2015+ 代码，然后使用 Babel 转译为 ES5</li>
+<li><a href="https://v4.webpack.docschina.org/loaders/buble-loader">buble-loader</a> 使用 Bublé 加载 ES2015+ 代码，并且将代码转译为 ES5</li>
+</ul>
+</li>
+<li>
+<ol start="4">
+<li><a href="https://v4.webpack.docschina.org/loaders/eslint-loader">eslint-loader</a> PreLoader，使用 ESLint 清理代码</li>
+</ol>
+</li>
+<li>
+<ol start="5">
+<li>文件</li>
+</ol>
+<ul>
+<li><a href="https://v4.webpack.docschina.org/loaders/file-loader">file-loader</a> 将文件发送到输出文件夹，并返回（相对）URL</li>
+<li><a href="https://v4.webpack.docschina.org/loaders/url-loader">url-loader</a> 和 file-loader 类似，但是能在文件很小的情况下以 base64 的方式把文件内容注入到代码中去。可以设置一个阈值，如果小于这个阈值，会转换成内联的base-64 URL，这会减少小文件的 HTTP 请求数。如果文件大于该阈值，会自动的交给 file-loader 处理。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="plugin">plugin</h2>
+<h3 id="概念-3">概念</h3>
+<p>插件目的在于解决loader无法实现的其他事。loader用于转换某些类型的模块，而插件则可以用于执行范围更广的任务。包括：打包优化，资源管理，注入环境变量。</p>
+<h3 id="分析">分析</h3>
+<p>plugin是一个具有apply方法的JS对象,apply被webpack compiler调用，并且compiler 对象可在整个编译生命周期访问。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">//ConsoleLogOnBuildWebpackPlugin.js
+</span><span class="c1"></span><span class="kr">const</span> <span class="nx">pluginName</span> <span class="o">=</span> <span class="s1">&#39;ConsoleLogOnBuildWebpackPlugin&#39;</span><span class="p">;</span>
+
+<span class="kr">class</span> <span class="nx">ConsoleLogOnBuildWebpackPlugin</span> <span class="p">{</span>
+  <span class="nx">apply</span><span class="p">(</span><span class="nx">compiler</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//pluginName以驼峰命名的插件名称，可以是常量方便复用。
+</span><span class="c1"></span>    <span class="nx">compiler</span><span class="p">.</span><span class="nx">hooks</span><span class="p">.</span><span class="nx">run</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="nx">pluginName</span><span class="p">,</span> <span class="nx">compilation</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;webpack 构建过程开始！&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="用法-3">用法</h3>
+<p>由于插件可以携带参数/选项，你必须在 webpack 配置中，向 plugins 属性传入 new 实例。</p>
+<ul>
+<li>
+<p>1.配置：webpack.config.js</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">//webpack.config.js
+</span><span class="c1"></span><span class="kr">const</span> <span class="nx">HtmlWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;html-webpack-plugin&#39;</span><span class="p">);</span> <span class="c1">//通过 npm 安装
+</span><span class="c1"></span><span class="kr">const</span> <span class="nx">webpack</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;webpack&#39;</span><span class="p">);</span> <span class="c1">//访问内置的插件
+</span><span class="c1"></span><span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">entry</span><span class="o">:</span> <span class="s1">&#39;./path/to/my/entry/file.js&#39;</span><span class="p">,</span>
+  <span class="nx">output</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">filename</span><span class="o">:</span> <span class="s1">&#39;my-first-webpack.bundle.js&#39;</span><span class="p">,</span>
+    <span class="nx">path</span><span class="o">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">&#39;dist&#39;</span><span class="p">)</span>
+  <span class="p">},</span>
+  <span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">rules</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.(js|jsx)$/</span><span class="p">,</span>
+        <span class="nx">use</span><span class="o">:</span> <span class="s1">&#39;babel-loader&#39;</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
+    <span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">ProgressPlugin</span><span class="p">(),</span>
+    <span class="k">new</span> <span class="nx">HtmlWebpackPlugin</span><span class="p">({</span><span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;./src/index.html&#39;</span><span class="p">})</span>
+  <span class="p">]</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>node</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">webpack</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;webpack&#39;</span><span class="p">);</span> <span class="c1">//访问 webpack 运行时(runtime)
+</span><span class="c1"></span><span class="kr">const</span> <span class="nx">configuration</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./webpack.config.js&#39;</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">compiler</span> <span class="o">=</span> <span class="nx">webpack</span><span class="p">(</span><span class="nx">configuration</span><span class="p">);</span>
+
+<span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">ProgressPlugin</span><span class="p">().</span><span class="nx">apply</span><span class="p">(</span><span class="nx">compiler</span><span class="p">);</span>
+
+<span class="nx">compiler</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">stats</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...
+</span><span class="c1"></span><span class="p">});</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="和loader的区别">和loader的区别</h3>
+<ul>
+<li>作用不同：loader主要是起到让webpack拥有了加载和解析非JavaScript文件的能力。plugin可以扩展webpack的功能，让webpack具有更多的灵活性。 在 Webpack 运行的生命周期中会广播出许多事件，Plugin 可以监听这些事件，在合适的时机通过 Webpack 提供的 API 改变输出结果。</li>
+<li>语法不同：loader在rules配置，每一项都是对象；plugin在plugins里面配置，类型为数组，使用前都需要new一个实例</li>
+</ul>
+<h3 id="自己写一个plugin">自己写一个plugin</h3>
+<p>一个 webpack plugin 由如下部分组成：</p>
+<ul>
+<li>一个命名的 Javascript 方法或者 JavaScript 类。</li>
+<li>它的原型上需要定义一个 <code>apply</code> 的方法。</li>
+<li>注册一个事件钩子。</li>
+<li>操作webpack内部实例特定数据。</li>
+<li>功能完成后，调用webpack提供的回调。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">//myPlugin.js
+</span><span class="c1"></span><span class="kr">class</span> <span class="nx">MyPlugin</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">apply</span><span class="p">(</span><span class="nx">compiler</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//done 会在一次编译完成后执行。所以这个插件会在每次打包结束，向控制台首先输出 `Hello World!`。
+</span><span class="c1"></span>    <span class="nx">compiler</span><span class="p">.</span><span class="nx">hooks</span><span class="p">.</span><span class="nx">done</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="s1">&#39;My Plugin&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">stats</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hello World!&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">time</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">MyPlugin</span><span class="p">;</span>
+
+<span class="c1">//webpack.config.js
+</span><span class="c1"></span><span class="kr">const</span> <span class="nx">MyPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./myPlugin&#39;</span><span class="p">);</span>
+<span class="nx">modules</span><span class="p">.</span><span class="kr">export</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">plugins</span><span class="o">:</span><span class="p">[</span>
+      <span class="k">new</span> <span class="nx">MyPlugin</span><span class="p">({</span> <span class="nx">time</span><span class="o">:</span> <span class="s1">&#39;2021.05.20&#39;</span> <span class="p">}),</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="参考文章">参考文章</h3>
+<p><a href="https://www.manster.me/?p=872">https://www.manster.me/?p=872</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/102917655">https://zhuanlan.zhihu.com/p/102917655</a></p>
+<hr>
+<h2 id="mode">mode</h2>
+<h3 id="概念-4">概念</h3>
+<p>通过设置mode,来启用webpack内置在相应环境下的优化。</p>
+<p>mode: development| production | none (默认production)</p>
+<h3 id="用法-4">用法</h3>
+<ul>
+<li>配置</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js">  <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;production&#39;</span>
+  <span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>CLI</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">webpack</span> <span class="o">--</span><span class="nx">mode</span><span class="o">=</span><span class="nx">production</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="三种模式">三种模式</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">选项</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">development</td>
+<td style="text-align:left">将DefinePlugin中的<code>process.env.NODE_ENV = 'development'</code> 。启用 NamedChunksPlugin 和 NamedModulesPlugin    。<a href="https://v4.webpack.docschina.org/concepts/mode#mode-development">具体导出</a></td>
+</tr>
+<tr>
+<td style="text-align:left">production</td>
+<td style="text-align:left">将DefinePlugin中的<code>process.env.NODE_ENV = 'production'</code>。启用FlagDependencyUsagePlugin, FlagIncludedChunksPlugin, ModuleConcatenationPlugin, NoEmitOnErrorsPlugin, OccurrenceOrderPlugin, SideEffectsFlagPlugin 和 TerserPlugin。<a href="https://v4.webpack.docschina.org/concepts/mode#mode-development">具体导出</a></td>
+</tr>
+<tr>
+<td style="text-align:left">none</td>
+<td style="text-align:left">无任何优化。<a href="https://v4.webpack.docschina.org/concepts/mode#mode-development">具体导出</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="浏览器兼容性">浏览器兼容性</h2>
+<p>webpack 支持所有符合 ES5 标准 的浏览器（不支持 IE8 及以下版本）。webpack 的 import() 和 require.ensure() 需要 Promise。如果想要支持旧版浏览器，还需要提前加载 polyfill。</p>
+<h2 id="热更新">热更新</h2>
+<h2 id="treeshaking">treeShaking</h2>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Quaner</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2021-05-01
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/webpack/">webpack</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/interview/experience/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">experience</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/interview/write/">
+            <span class="next-text nav-default">手写代码</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>Quaner</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>html on Eating...Hungry..</title>
+    <link>http://localhost:1313/tags/html/</link>
+    <description>Recent content in html on Eating...Hungry..</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 04 May 2021 16:25:20 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/html/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>html</title>
+      <link>http://localhost:1313/interview/html/</link>
+      <pubDate>Tue, 04 May 2021 16:25:20 +0800</pubDate>
+      
+      <guid>http://localhost:1313/interview/html/</guid>
+      <description>html语义化 语义化是指根据内容的结构化（内容语义化），选择合适的标签（代码语义化），便于开发者阅读和写出更优雅的代码的同时，让浏览器的爬虫</description>
+    </item>
+    
+    <item>
+      <title>算法</title>
+      <link>http://localhost:1313/interview/algorithm/</link>
+      <pubDate>Tue, 04 May 2021 16:25:20 +0800</pubDate>
+      
+      <guid>http://localhost:1313/interview/algorithm/</guid>
+      <description>排序 快排 平均时间复杂度是O(nlogn)，最差时间复杂度是O(n²）。 核心思想是选定一个基准值x，将比x小的值放到左边，比x大的值放到右边。</description>
+    </item>
+    
+  </channel>
+</rss>
